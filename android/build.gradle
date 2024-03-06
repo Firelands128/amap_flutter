@@ -52,7 +52,7 @@ android {
 
     dependencies {
         // 3D地图
-        implementation 'com.amap.api:3dmap:9.3.0'
+        implementation 'com.amap.api:3dmap:9.8.3'
         // 2D地图
 //        implementation 'com.amap.api:map2d:latest.integration'
         // 导航
