@@ -14,6 +14,7 @@ class _AMapSdkApi: NSObject {
         let arguments = call.arguments as! Dictionary<String, AnyObject>
         let apiKey = arguments["iosKey"] as! String
         _AMapSdkApi.setApiKey(apiKey: apiKey)
+        result(nil)
       }
     })
   }
