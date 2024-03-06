@@ -60,14 +60,14 @@ android {
         debug {
             keyAlias 'debug'
             keyPassword 'password'
-            storeFile file('../debug.keystore')
+            storeFile file('../debug.jks')
             storePassword 'password'
         }
 
         release {
             keyAlias 'debug'
             keyPassword 'password'
-            storeFile file('../debug.keystore')
+            storeFile file('../debug.jks')
             storePassword 'password'
         }
     }
