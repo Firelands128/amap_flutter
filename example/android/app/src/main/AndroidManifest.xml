@@ -29,7 +29,8 @@
     <application
         android:label="amap_flutter_example"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:enableOnBackInvokedCallback="true" tools:targetApi="tiramisu">
         <activity
             android:name=".MainActivity"
             android:exported="true"
