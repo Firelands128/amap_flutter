@@ -174,8 +174,8 @@ class _AMapApi: NSObject {
     self.addMarker(marker: Marker(id: markerId, position: position))
   }
 
-  func getUserLocation() -> Location {
-    return mapView.userLocation.toLocation
+  func getUserLocation() -> Location? {
+    return mapView.userLocation?.toLocation
   }
 
   func start() { }

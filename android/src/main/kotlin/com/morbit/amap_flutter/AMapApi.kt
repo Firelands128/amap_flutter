@@ -96,8 +96,8 @@ class AMapApi(private val amap: AMapFlutter) {
     this.addMarker(Marker(markerId, position))
   }
 
-  fun getUserLocation(): Location {
-    return mapView.map.myLocation.toLocation()
+  fun getUserLocation(): Location? {
+    return mapView.map.myLocation?.toLocation()
   }
 
   fun start() {
