@@ -1,4 +1,4 @@
-part of amap_flutter;
+part of '../amap_flutter.dart';
 
 /// Controller for a single AMap instance running on the host platform.
 class AMapController {

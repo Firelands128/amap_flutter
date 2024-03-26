@@ -1,4 +1,4 @@
-part of amap_flutter;
+part of '../amap_flutter.dart';
 
 /// 高德地图
 class AMapFlutter extends StatefulWidget {

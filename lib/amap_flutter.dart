@@ -1,5 +1,3 @@
-library amap_flutter;
-
 import "dart:async";
 
 import "package:flutter/foundation.dart";
