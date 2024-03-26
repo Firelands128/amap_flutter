@@ -99,7 +99,11 @@ class MouseTool {
 @JS()
 class PolygonEditor {
   /// 构造函数
-  external PolygonEditor(AMap map, Polygon? polygon, PolygonEditorOptions? opts);
+  external PolygonEditor(
+    AMap map,
+    Polygon? polygon,
+    PolygonEditorOptions? opts,
+  );
 
   /// 开始编辑对象
   external void open();
@@ -149,7 +153,11 @@ class PolygonEditorOptions {
 @JS()
 class PolylineEditor {
   /// 构造函数
-  external PolylineEditor(AMap map, Polygon? polygon, PolylineEditorOptions? opts);
+  external PolylineEditor(
+    AMap map,
+    Polygon? polygon,
+    PolylineEditorOptions? opts,
+  );
 
   /// 设置编辑对象
   external void setTarget(Polyline? overlay);
@@ -225,7 +233,11 @@ class CircleEditorOptions {
 @JS()
 class BezierCurveEditor {
   /// 构造函数
-  external BezierCurveEditor(AMap map, BezierCurve? bezier, BezierCurveEditorOptions? opts);
+  external BezierCurveEditor(
+    AMap map,
+    BezierCurve? bezier,
+    BezierCurveEditorOptions? opts,
+  );
 
   /// 设置编辑对象
   external void setTarget(BezierCurve? overlay);
@@ -269,7 +281,11 @@ class BezierCurveEditorOptions {
 @JS()
 class EllipseEditor {
   /// 构造函数
-  external EllipseEditor(AMap map, Ellipse? ellipse, EllipseEditorOptions? opts);
+  external EllipseEditor(
+    AMap map,
+    Ellipse? ellipse,
+    EllipseEditorOptions? opts,
+  );
 
   /// 设置编辑对象
   external void setTarget(Ellipse? overlay);
@@ -310,7 +326,11 @@ class EllipseEditorOptions {
 @JS()
 class RectangleEditor {
   /// 构造函数
-  external RectangleEditor(AMap map, Rectangle? rect, RectangleEditorOptions? opts);
+  external RectangleEditor(
+    AMap map,
+    Rectangle? rect,
+    RectangleEditorOptions? opts,
+  );
 
   /// 设置编辑对象
   external void setTarget(Rectangle? overlay);

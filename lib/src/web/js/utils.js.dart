@@ -46,13 +46,26 @@ class GeometryUtil {
   external ringRingClip(List<LngLat> ring1, List<LngLat> ring2);
 
   /// 判断两个线段是否相交
-  external bool doesSegmentsIntersect(LngLat p1, LngLat p2, LngLat p3, LngLat p4);
+  external bool doesSegmentsIntersect(
+    LngLat p1,
+    LngLat p2,
+    LngLat p3,
+    LngLat p4,
+  );
 
   /// 判断线段和一个路径是否相交
-  external bool doesSegmentLineIntersect(LngLat p1, LngLat p2, List<LngLat> line);
+  external bool doesSegmentLineIntersect(
+    LngLat p1,
+    LngLat p2,
+    List<LngLat> line,
+  );
 
   /// 判断线段和一个环是否相交
-  external bool doesSegmentRingIntersect(LngLat p1, LngLat p2, List<LngLat> ring);
+  external bool doesSegmentRingIntersect(
+    LngLat p1,
+    LngLat p2,
+    List<LngLat> ring,
+  );
 
   /// 判断线段和多个环是否相交
   external bool doesSegmentPolygonIntersect(LngLat p1, LngLat p2);
@@ -85,7 +98,12 @@ class GeometryUtil {
   external bool isPointInPolygons(LngLat p, List<LngLat> polygons);
 
   /// 判断P1是否在P2P3上，tolerance为误差范围
-  external bool isPointOnSegment(LngLat p1, LngLat p2, LngLat p3, num tolerance);
+  external bool isPointOnSegment(
+    LngLat p1,
+    LngLat p2,
+    LngLat p3,
+    num tolerance,
+  );
 
   /// 判断P是否在line上，tolerance为误差范围
   external bool isPointOnLine(LngLat p, List<LngLat> line, num tolerance);
@@ -120,7 +138,12 @@ class DomUtil {
   external Pixel getViewportOffset(HtmlElement element);
 
   /// 在parentNode内部创建一个className类名的tagName元素
-  external HtmlElement create(String tagName, HtmlElement container, String className, String position);
+  external HtmlElement create(
+    String tagName,
+    HtmlElement container,
+    String className,
+    String position,
+  );
 
   /// DOM元素是否包含className
   external bool hasClass(HtmlElement el, String name);

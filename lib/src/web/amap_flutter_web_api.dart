@@ -53,12 +53,14 @@ class AMapFlutterWebApi {
       }
       aMap.setStatus(status);
     }
-    if (config.compassControlEnabled != null || config.compassControlPosition != null) {
+    if (config.compassControlEnabled != null ||
+        config.compassControlPosition != null) {
       if (_controlBar != null) {
         aMap.removeControl(_controlBar!);
         _controlBar == null;
       }
-      if (config.compassControlEnabled == null || config.compassControlEnabled == true) {
+      if (config.compassControlEnabled == null ||
+          config.compassControlEnabled == true) {
         final controlConfig = ControlConfig();
         if (config.compassControlPosition != null) {
           controlConfig.position = config.compassControlPosition!.position;
@@ -67,12 +69,14 @@ class AMapFlutterWebApi {
         aMap.addControl(_controlBar!);
       }
     }
-    if (config.scaleControlEnabled != null || config.scaleControlPosition != null) {
+    if (config.scaleControlEnabled != null ||
+        config.scaleControlPosition != null) {
       if (_scale != null) {
         aMap.removeControl(_scale!);
         _scale = null;
       }
-      if (config.scaleControlEnabled == null || config.scaleControlEnabled == true) {
+      if (config.scaleControlEnabled == null ||
+          config.scaleControlEnabled == true) {
         final controlConfig = ControlConfig();
         if (config.scaleControlPosition != null) {
           controlConfig.position = config.scaleControlPosition!.position;
@@ -81,12 +85,14 @@ class AMapFlutterWebApi {
         aMap.addControl(_scale!);
       }
     }
-    if (config.zoomControlEnabled != null || config.zoomControlPosition != null) {
+    if (config.zoomControlEnabled != null ||
+        config.zoomControlPosition != null) {
       if (_toolbar != null) {
         aMap.removeControl(_toolbar!);
         _toolbar = null;
       }
-      if (config.zoomControlEnabled == null || config.zoomControlEnabled == true) {
+      if (config.zoomControlEnabled == null ||
+          config.zoomControlEnabled == true) {
         final controlConfig = ControlConfig();
         if (config.zoomControlPosition != null) {
           controlConfig.position = config.zoomControlPosition!.position;
@@ -181,20 +187,24 @@ class AMapFlutterWebApi {
           options.showMarker = config.userLocationConfig!.showUserLocation!;
         }
         if (config.userLocationConfig!.userLocationStyle != null) {
-          final userLocationStyle = config.userLocationConfig!.userLocationStyle!;
+          final userLocationStyle =
+              config.userLocationConfig!.userLocationStyle!;
           final circleOptions = CircleOptions();
           if (userLocationStyle.fillColor != null) {
-            circleOptions.fillColor = "#${userLocationStyle.fillColor!.value.toRadixString(16)}";
+            circleOptions.fillColor =
+                "#${userLocationStyle.fillColor!.value.toRadixString(16)}";
           }
           if (userLocationStyle.strokeColor != null) {
-            circleOptions.strokeColor = "#${userLocationStyle.strokeColor!.value.toRadixString(16)}";
+            circleOptions.strokeColor =
+                "#${userLocationStyle.strokeColor!.value.toRadixString(16)}";
           }
           if (userLocationStyle.lineWidth != null) {
             circleOptions.strokeWeight = userLocationStyle.lineWidth!;
           }
           options.circleOptions = circleOptions;
           if (userLocationStyle.image?.icon != null) {
-            options.markerOptions = MarkerOptions()..icon = userLocationStyle.image!.icon!;
+            options.markerOptions = MarkerOptions()
+              ..icon = userLocationStyle.image!.icon!;
           }
         }
         _geolocation = Geolocation(options);
@@ -204,12 +214,18 @@ class AMapFlutterWebApi {
   }
 
   Future<void> moveCamera(CameraPosition position, int duration) async {
-    aMap.setZoomAndCenter(position.zoom, position.position?.lngLat, duration == 0, duration);
+    aMap.setZoomAndCenter(
+        position.zoom, position.position?.lngLat, duration == 0, duration);
   }
 
-  Future<void> moveCameraToFitPosition(List<Position>? positions, EdgePadding padding, int duration) async {
-    final overlays = positions?.map((position) => MarkerJS(MarkerOptions()..position = position.lngLat)).toList();
-    aMap.setFitView(overlays, duration == 0, [padding.top, padding.bottom, padding.left, padding.right]);
+  Future<void> moveCameraToFitPosition(
+      List<Position>? positions, EdgePadding padding, int duration) async {
+    final overlays = positions
+        ?.map(
+            (position) => MarkerJS(MarkerOptions()..position = position.lngLat))
+        .toList();
+    aMap.setFitView(overlays, duration == 0,
+        [padding.top, padding.bottom, padding.left, padding.right]);
   }
 
   Future<void> setRestrictRegion(Region region) async {

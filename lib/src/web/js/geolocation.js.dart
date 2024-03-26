@@ -97,7 +97,10 @@ class GeolocationOptions {
   external String extensions;
 }
 
-typedef GeolocationCallBack = void Function(String status, GeolocationResult result);
+typedef GeolocationCallBack = void Function(
+  String status,
+  GeolocationResult result,
+);
 
 /// 浏览器定位的定位结果，定位的过程和失败信息可以从 message 字段中获取
 @JS()
@@ -154,7 +157,10 @@ class CitySearch {
   external void getCityByIp(String ip, CitySearchCallback callback);
 }
 
-typedef CitySearchCallback = void Function(String status, CitySearchResult result);
+typedef CitySearchCallback = void Function(
+  String status,
+  CitySearchResult result,
+);
 
 @JS()
 @anonymous

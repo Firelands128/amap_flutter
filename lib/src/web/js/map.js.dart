@@ -23,7 +23,12 @@ class AMap {
   external void setCenter(LngLat center, bool immediately, num? duration);
 
   /// 地图缩放至指定级别并以指定点为地图显示中心点
-  external void setZoomAndCenter(num? zoom, LngLat? center, bool immediately, num? duration);
+  external void setZoomAndCenter(
+    num? zoom,
+    LngLat? center,
+    bool immediately,
+    num? duration,
+  );
 
   /// 获取当前地图视图范围/可视区域
   external Bounds getBounds();
@@ -149,13 +154,26 @@ class AMap {
   external void setCity(String cityName);
 
   /// 根据地图上添加的覆盖物分布情况，自动缩放地图到合适的视野级别，参数均可缺省
-  external Bounds setFitView([List<Overlay>? overlays, bool? immediately, List<num>? avoid, num? maxZoom]);
+  external Bounds setFitView([
+    List<Overlay>? overlays,
+    bool? immediately,
+    List<num>? avoid,
+    num? maxZoom,
+  ]);
 
   /// 根据overlays计算出合适的中心点和zoom级别
-  external List<Object> getFitZoomAndCenterByOverlays(List<Overlay> overlays, List<num> avoid, num maxZoom);
+  external List<Object> getFitZoomAndCenterByOverlays(
+    List<Overlay> overlays,
+    List<num> avoid,
+    num maxZoom,
+  );
 
   /// 根据bounds计算出合适的中心点和zoom级别
-  external List<Object> getFitZoomAndCenterByBounds(List<num> bounds, List<num> avoid, num maxZoom);
+  external List<Object> getFitZoomAndCenterByBounds(
+    List<num> bounds,
+    List<num> avoid,
+    num maxZoom,
+  );
 
   /// 添加控件
   external void addControl(Control control);

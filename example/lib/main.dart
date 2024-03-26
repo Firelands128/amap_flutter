@@ -67,20 +67,57 @@ class _AppState extends State<App> {
         ),
         home: Scaffold(
           body: ListView(children: [
-            Item(MapSettingPage.title, (_) => const MapSettingPage()),
+            Item(
+              MapSettingPage.title,
+              (_) => const MapSettingPage(),
+            ),
             if (kIsWeb)
-              Item(MapStylesPage.title, (_) => const MapStylesPage())
+              Item(
+                MapStylesPage.title,
+                (_) => const MapStylesPage(),
+              )
             else
-              Item(MapTypesPage.title, (_) => const MapTypesPage()),
-            if (kIsWeb) Item(MapFeaturesPage.title, (_) => const MapFeaturesPage()),
-            Item(MapControlsPage.title, (_) => const MapControlsPage()),
-            Item(MapControlsPositionPage.title, (_) => const MapControlsPositionPage()),
-            Item(MapLayersPage.title, (_) => const MapLayersPage()),
-            Item(MapViewPage.title, (_) => const MapViewPage()),
-            Item(MapRestrictionPage.title, (_) => const MapRestrictionPage()),
-            Item(MapEventsPage.title, (_) => const MapEventsPage()),
-            Item(AddRemoveMarkerPage.title, (_) => const AddRemoveMarkerPage()),
-            Item(UserLocationPage.title, (_) => const UserLocationPage()),
+              Item(
+                MapTypesPage.title,
+                (_) => const MapTypesPage(),
+              ),
+            if (kIsWeb)
+              Item(
+                MapFeaturesPage.title,
+                (_) => const MapFeaturesPage(),
+              ),
+            Item(
+              MapControlsPage.title,
+              (_) => const MapControlsPage(),
+            ),
+            Item(
+              MapControlsPositionPage.title,
+              (_) => const MapControlsPositionPage(),
+            ),
+            Item(
+              MapLayersPage.title,
+              (_) => const MapLayersPage(),
+            ),
+            Item(
+              MapViewPage.title,
+              (_) => const MapViewPage(),
+            ),
+            Item(
+              MapRestrictionPage.title,
+              (_) => const MapRestrictionPage(),
+            ),
+            Item(
+              MapEventsPage.title,
+              (_) => const MapEventsPage(),
+            ),
+            Item(
+              AddRemoveMarkerPage.title,
+              (_) => const AddRemoveMarkerPage(),
+            ),
+            Item(
+              UserLocationPage.title,
+              (_) => const UserLocationPage(),
+            ),
           ]),
         ),
       ),

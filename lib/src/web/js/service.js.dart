@@ -7,10 +7,19 @@ import 'package:js/js.dart';
 @JS()
 class WebService {
   /// 以 GET 请求方式请求指定的 Web 服务 API 接口
-  external static void get(String path, Object params, WebServiceCallback callback, Object opts);
+  external static void get(
+    String path,
+    Object params,
+    WebServiceCallback callback,
+    Object opts,
+  );
 
   /// 以 POST 请求方式请求指定的 Web 服务 API 接口, 目前只有轨迹纠偏接口需要使用 POST 方式
-  external static void post(String path, dynamic params, WebServiceCallback callback);
+  external static void post(
+    String path,
+    dynamic params,
+    WebServiceCallback callback,
+  );
 }
 
 /// WebService 的回调函数类型

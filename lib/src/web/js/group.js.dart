@@ -21,7 +21,9 @@ class LayerGroup {
   external dynamic setOptions(LayerOptions opts);
 
   /// 对集合中的图层做迭代操作
-  external void eachLayer(Function(Layer layer, num index, List collections) iterator);
+  external void eachLayer(
+    Function(Layer layer, num index, List collections) iterator,
+  );
 
   /// 添加单个图层到集合中，不支持添加重复的图层
   external void addLayer(Layer layer);
@@ -102,7 +104,9 @@ class OverlayGroup {
   external void clearOverlays();
 
   /// 对集合中的覆盖物做迭代操作
-  external void eachOverlay(Function(Overlay overlay, num index, List collections) iterator);
+  external void eachOverlay(
+    Function(Overlay overlay, num index, List collections) iterator,
+  );
 
   /// 在地图上显示集合中覆盖物
   external void show();

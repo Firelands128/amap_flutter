@@ -69,7 +69,8 @@ class _MapTypesPageState extends State<MapTypesPage> {
       builder: (context) => SimpleDialog(
         children: [
           for (final item in types.entries)
-            if (Platform.isIOS || Platform.isAndroid && androidSupport[item.key]!)
+            if (Platform.isIOS ||
+                Platform.isAndroid && androidSupport[item.key]!)
               SimpleDialogOption(
                 onPressed: () {
                   setState(() => mapType = item.key);
@@ -78,7 +79,9 @@ class _MapTypesPageState extends State<MapTypesPage> {
                 child: Row(
                   children: [
                     Icon(
-                      item.key == mapType ? Icons.check_circle_outlined : Icons.radio_button_unchecked,
+                      item.key == mapType
+                          ? Icons.check_circle_outlined
+                          : Icons.radio_button_unchecked,
                       size: 20,
                     ),
                     const SizedBox(width: 8),

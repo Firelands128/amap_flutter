@@ -14,11 +14,19 @@ class Driving {
   external Driving(DrivingOptions opts);
 
   /// 根据起点、终点和途经点（可选）坐标或名称，实现驾车路线规划，途经点通过opts设定
-  external void search(LngLat origin, LngLat destination, DrivingSearchOptions opts, DrivingCallback callback);
+  external void search(
+    LngLat origin,
+    LngLat destination,
+    DrivingSearchOptions opts,
+    DrivingCallback callback,
+  );
 
   /// 根据起点、终点和途经点（可选）坐标或名称，实现驾车路线规划，途经点通过opts设定
   @JS("search")
-  external void searchWithPoints(List<DrivingSearchPoint> points, DrivingCallback callback);
+  external void searchWithPoints(
+    List<DrivingSearchPoint> points,
+    DrivingCallback callback,
+  );
 
   /// 清除搜索结果
   external void clear();
@@ -307,11 +315,17 @@ class TruckDriving {
 
   /// 根据起点、终点和途经点（可选）坐标或名称，实现驾车路线规划，途经点通过opts设定
   @JS("search")
-  external void searchByLocations(List<TruckLocation> locations, DrivingCallback callback);
+  external void searchByLocations(
+    List<TruckLocation> locations,
+    DrivingCallback callback,
+  );
 
   /// 根据起点、终点和途经点（可选）坐标或名称，实现驾车路线规划，途经点通过opts设定
   @JS("search")
-  external void searchByPoints(List<TruckPath> points, DrivingCallback callback);
+  external void searchByPoints(
+    List<TruckPath> points,
+    DrivingCallback callback,
+  );
 
   /// 修改车牌号
   external void setProvinceAndNumber(String province, num number);
@@ -420,7 +434,11 @@ class Walking {
   external void clear();
 
   /// 根据起点、终点坐标，实现步行路线规划
-  external void search(LngLat origin, LngLat destination, WalkingCallback callback);
+  external void search(
+    LngLat origin,
+    LngLat destination,
+    WalkingCallback callback,
+  );
 
   /// 根据起点、终点名称，实现步行路线规划
   @JS("search")
@@ -535,11 +553,18 @@ class Transfer {
   external Transfer(TransferOptions opts);
 
   /// 根据起点和终点坐标，进行公交换乘查询
-  external void search(LngLat origin, LngLat destination, TransferCallback callback);
+  external void search(
+    LngLat origin,
+    LngLat destination,
+    TransferCallback callback,
+  );
 
   /// 根据起点和终点坐标，进行公交换乘查询
   @JS("search")
-  external void searchWithPoints(List<Object> points, TransferCallback callback);
+  external void searchWithPoints(
+    List<Object> points,
+    TransferCallback callback,
+  );
 
   /// 设置公交路径规划出发时间
   external void leaveAt(String time, String date);
@@ -973,7 +998,11 @@ class Riding {
   external void setPolicy(num policy);
 
   /// 根据起点、终点坐标，实现骑行路线规划
-  external void search(LngLat origin, LngLat destination, RidingCallback callback);
+  external void search(
+    LngLat origin,
+    LngLat destination,
+    RidingCallback callback,
+  );
 
   /// 根据起点、终点名称，实现骑行路线规划
   @JS("search")
@@ -1134,7 +1163,12 @@ class RidingTMC {
 @JS()
 class DragRoute {
   /// 构造函数
-  external DragRoute(AMap map, List<LngLat> path, String policy, DragRouteOptions opts);
+  external DragRoute(
+    AMap map,
+    List<LngLat> path,
+    String policy,
+    DragRouteOptions opts,
+  );
 
   /// 开始路径导航。支持鼠标拖拽导航路径节点，更改途经点时，系统实时重新计算并显示导航路径
   external void search();
@@ -1368,7 +1402,10 @@ class GraspRoad {
   external GraspRoad();
 
   /// 用于驾车轨迹的纠偏
-  external void driving(List<OriginPath> originPath, GraspRoadCallback callback);
+  external void driving(
+    List<OriginPath> originPath,
+    GraspRoadCallback callback,
+  );
 }
 
 @JS()
@@ -1434,7 +1471,11 @@ class ArrivalRange {
 
   /// 计算某个时间段内用户通过公交出行可到达的距离范围
   external void search(
-      LngLat origin, num time, Function(String status, ArrivalRangeResult result) callback, ArrivalRangeOptions opts);
+    LngLat origin,
+    num time,
+    Function(String status, ArrivalRangeResult result) callback,
+    ArrivalRangeOptions opts,
+  );
 }
 
 @JS()

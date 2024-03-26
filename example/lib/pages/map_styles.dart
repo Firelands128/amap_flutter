@@ -70,7 +70,9 @@ class _MapStylesPageState extends State<MapStylesPage> {
               child: Row(
                 children: [
                   Icon(
-                    item.key == mapStyle ? Icons.check_circle_outlined : Icons.radio_button_unchecked,
+                    item.key == mapStyle
+                        ? Icons.check_circle_outlined
+                        : Icons.radio_button_unchecked,
                     size: 20,
                   ),
                   const SizedBox(width: 8),

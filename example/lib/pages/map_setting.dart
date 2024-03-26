@@ -103,17 +103,23 @@ class _MapSettingPageState extends State<MapSettingPage> {
                             _labelCheckbox(
                               "平移过程中是否使用动画",
                               animateEnable,
-                              () => setState(() => animateEnable = !animateEnable),
+                              () => setState(
+                                () => animateEnable = !animateEnable,
+                              ),
                             ),
                             _labelCheckbox(
                               "是否可通过键盘控制",
                               keyboardEnable,
-                              () => setState(() => keyboardEnable = !keyboardEnable),
+                              () => setState(
+                                () => keyboardEnable = !keyboardEnable,
+                              ),
                             ),
                             _labelCheckbox(
                               "是否可通过双击鼠标缩放地图",
                               doubleClickZoom,
-                              () => setState(() => doubleClickZoom = !doubleClickZoom),
+                              () => setState(
+                                () => doubleClickZoom = !doubleClickZoom,
+                              ),
                             ),
                             _labelCheckbox(
                               "是否可通过鼠标滚轮缩放地图",
@@ -128,7 +134,9 @@ class _MapSettingPageState extends State<MapSettingPage> {
                             _labelCheckbox(
                               "手机端双指缩放是否以地图中心为中心",
                               touchZoomCenter,
-                              () => setState(() => touchZoomCenter = !touchZoomCenter),
+                              () => setState(
+                                () => touchZoomCenter = !touchZoomCenter,
+                              ),
                             ),
                             _labelCheckbox(
                               "显示文字标注",
@@ -148,12 +156,16 @@ class _MapSettingPageState extends State<MapSettingPage> {
                             _labelCheckbox(
                               "是否展示地图 3D 楼块",
                               showBuildingBlock,
-                              () => setState(() => showBuildingBlock = !showBuildingBlock),
+                              () => setState(
+                                () => showBuildingBlock = !showBuildingBlock,
+                              ),
                             ),
                             _labelCheckbox(
                               "是否自动展示室内地图",
                               showIndoorMap,
-                              () => setState(() => showIndoorMap = !showIndoorMap),
+                              () => setState(
+                                () => showIndoorMap = !showIndoorMap,
+                              ),
                             ),
                           ],
                         ),

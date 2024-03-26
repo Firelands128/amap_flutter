@@ -8,7 +8,12 @@ extension ContextExt on BuildContext {
       context: this,
       builder: (_) => AlertDialog(
         title: Text(title),
-        actions: [TextButton(onPressed: Navigator.of(this).pop, child: const Text('确定'))],
+        actions: [
+          TextButton(
+            onPressed: Navigator.of(this).pop,
+            child: const Text('确定'),
+          ),
+        ],
       ),
     );
   }

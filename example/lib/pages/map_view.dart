@@ -66,7 +66,10 @@ class _MapViewPageState extends State<MapViewPage> {
               const SizedBox(width: 32),
               ElevatedButton(
                 child: const Text(' 视野 2 '),
-                onPressed: () => controller.moveCameraToRegion(region, duration),
+                onPressed: () => controller.moveCameraToRegion(
+                  region,
+                  duration,
+                ),
               ),
               const SizedBox(width: 32),
               ElevatedButton(

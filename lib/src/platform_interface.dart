@@ -26,11 +26,13 @@ abstract class AMapFlutterPlatformInterface extends PlatformInterface {
   }
 
   // The controller we need to broadcast the different events coming from handleMethodCall.
-  final StreamController<MapEvent<Object?>> mapEventStreamController = StreamController<MapEvent<Object?>>.broadcast();
+  final StreamController<MapEvent<Object?>> mapEventStreamController =
+      StreamController<MapEvent<Object?>>.broadcast();
 
   // Returns a filtered view of the events in the _controller, by mapId.
   Stream<MapEvent<Object?>> _events(int mapId) =>
-      mapEventStreamController.stream.where((MapEvent<Object?> event) => event.mapId == mapId);
+      mapEventStreamController.stream
+          .where((MapEvent<Object?> event) => event.mapId == mapId);
 
   Stream<MapInitCompleteEvent> onMapInitComplete({required int mapId}) {
     return _events(mapId).whereType<MapInitCompleteEvent>();
@@ -196,19 +198,32 @@ abstract class AMapFlutterPlatformInterface extends PlatformInterface {
   }
 
   /// 移动地图视野
-  Future<void> moveCamera(CameraPosition position, int duration, {required int mapId}) {
+  Future<void> moveCamera(
+    CameraPosition position,
+    int duration, {
+    required int mapId,
+  }) {
     throw UnimplementedError('moveCamera() has not been implemented.');
   }
 
   /// 移动地图视野到某个地图区域
-  Future<void> moveCameraToRegion(Region region, int duration, {required int mapId}) {
+  Future<void> moveCameraToRegion(
+    Region region,
+    int duration, {
+    required int mapId,
+  }) {
     throw UnimplementedError('moveCamera() has not been implemented.');
   }
 
   /// 移动地图视野到包含一组坐标点的某个地图区域
-  Future<void> moveCameraToFitPosition(List<Position>? positions, EdgePadding padding, int duration,
-      {required int mapId}) {
-    throw UnimplementedError('moveCameraToRegionWithPosition() has not been implemented.');
+  Future<void> moveCameraToFitPosition(
+    List<Position>? positions,
+    EdgePadding padding,
+    int duration, {
+    required int mapId,
+  }) {
+    throw UnimplementedError(
+        'moveCameraToRegionWithPosition() has not been implemented.');
   }
 
   /// 限制地图显示区域
@@ -218,7 +233,9 @@ abstract class AMapFlutterPlatformInterface extends PlatformInterface {
 
   /// 取消地图显示区域限制
   Future<void> removeRestrictRegion({required int mapId}) {
-    throw UnimplementedError('removeRestrictRegion() has not been implemented.');
+    throw UnimplementedError(
+      'removeRestrictRegion() has not been implemented.',
+    );
   }
 
   /// 添加标记点
@@ -232,8 +249,14 @@ abstract class AMapFlutterPlatformInterface extends PlatformInterface {
   }
 
   /// 更新标记点
-  Future<void> updateMarker(String markerId, Position position, {required int mapId}) {
-    throw UnimplementedError('updateMarker() has not been implemented.');
+  Future<void> updateMarker(
+    String markerId,
+    Position position, {
+    required int mapId,
+  }) {
+    throw UnimplementedError(
+      'updateMarker() has not been implemented.',
+    );
   }
 
   /// 获取当前定位信息

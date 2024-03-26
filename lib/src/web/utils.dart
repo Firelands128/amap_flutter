@@ -30,10 +30,18 @@ extension AMapFlutter$Ext on AMapFlutter {
   js.MapOptions get mapOptions {
     final options = js.MapOptions();
     if (mapStyle != null) options.mapStyle = mapStyle as String;
-    if (initCameraPosition?.position != null) options.center = initCameraPosition!.position!.lngLat;
-    if (initCameraPosition?.zoom != null) options.zoom = initCameraPosition!.zoom as num;
-    if (initCameraPosition?.heading != null) options.rotation = initCameraPosition!.heading as num;
-    if (initCameraPosition?.skew != null) options.pitch = initCameraPosition!.skew as num;
+    if (initCameraPosition?.position != null) {
+      options.center = initCameraPosition!.position!.lngLat;
+    }
+    if (initCameraPosition?.zoom != null) {
+      options.zoom = initCameraPosition!.zoom as num;
+    }
+    if (initCameraPosition?.heading != null) {
+      options.rotation = initCameraPosition!.heading as num;
+    }
+    if (initCameraPosition?.skew != null) {
+      options.pitch = initCameraPosition!.skew as num;
+    }
     if (dragEnable != null) options.dragEnable = dragEnable as bool;
     if (zoomEnable != null) options.zoomEnable = zoomEnable as bool;
     if (tiltEnable != null) options.pitchEnable = tiltEnable as bool;
@@ -46,7 +54,9 @@ extension AMapFlutter$Ext on AMapFlutter {
     if (touchZoom != null) options.touchZoom = touchZoom!;
     if (touchZoomCenter != null) options.touchZoomCenter = touchZoomCenter!;
     if (isHotspot != null) options.isHotspot = isHotspot!;
-    if (showBuildingBlock != null) options.showBuildingBlock = showBuildingBlock!;
+    if (showBuildingBlock != null) {
+      options.showBuildingBlock = showBuildingBlock!;
+    }
     if (showLabel != null) options.showLabel = showLabel!;
     if (showIndoorMap != null) options.showIndoorMap = showIndoorMap!;
     if (defaultCursor != null) options.defaultCursor = defaultCursor!;

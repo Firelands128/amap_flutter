@@ -462,49 +462,64 @@ class AMapFlutterState extends State<AMapFlutter> {
     if (!setEquals(widget.mapFeatures, oldWidget.mapFeatures)) {
       config.mapFeatures = widget.mapFeatures.toList();
     }
-    if (widget.dragEnable != null && widget.dragEnable != oldWidget.dragEnable) {
+    if (widget.dragEnable != null &&
+        widget.dragEnable != oldWidget.dragEnable) {
       config.dragEnable = widget.dragEnable;
     }
-    if (widget.zoomEnable != null && widget.zoomEnable != oldWidget.zoomEnable) {
+    if (widget.zoomEnable != null &&
+        widget.zoomEnable != oldWidget.zoomEnable) {
       config.zoomEnable = widget.zoomEnable;
     }
-    if (widget.tiltEnable != null && widget.tiltEnable != oldWidget.tiltEnable) {
+    if (widget.tiltEnable != null &&
+        widget.tiltEnable != oldWidget.tiltEnable) {
       config.tiltEnable = widget.tiltEnable;
     }
-    if (widget.rotateEnable != null && widget.rotateEnable != oldWidget.rotateEnable) {
+    if (widget.rotateEnable != null &&
+        widget.rotateEnable != oldWidget.rotateEnable) {
       config.rotateEnable = widget.rotateEnable;
     }
-    if (widget.compassControlEnabled != null && widget.compassControlEnabled != oldWidget.compassControlEnabled) {
+    if (widget.compassControlEnabled != null &&
+        widget.compassControlEnabled != oldWidget.compassControlEnabled) {
       config.compassControlEnabled = widget.compassControlEnabled;
     }
-    if (widget.scaleControlEnabled != null && widget.scaleControlEnabled != oldWidget.scaleControlEnabled) {
+    if (widget.scaleControlEnabled != null &&
+        widget.scaleControlEnabled != oldWidget.scaleControlEnabled) {
       config.scaleControlEnabled = widget.scaleControlEnabled;
     }
-    if (widget.zoomControlEnabled != null && widget.zoomControlEnabled != oldWidget.zoomControlEnabled) {
+    if (widget.zoomControlEnabled != null &&
+        widget.zoomControlEnabled != oldWidget.zoomControlEnabled) {
       config.zoomControlEnabled = widget.zoomControlEnabled;
     }
-    if (widget.hawkEyeControlEnabled != null && widget.hawkEyeControlEnabled != oldWidget.hawkEyeControlEnabled) {
+    if (widget.hawkEyeControlEnabled != null &&
+        widget.hawkEyeControlEnabled != oldWidget.hawkEyeControlEnabled) {
       config.hawkEyeControlEnabled = widget.hawkEyeControlEnabled;
     }
-    if (widget.mapTypeControlEnabled != null && widget.mapTypeControlEnabled != oldWidget.mapTypeControlEnabled) {
+    if (widget.mapTypeControlEnabled != null &&
+        widget.mapTypeControlEnabled != oldWidget.mapTypeControlEnabled) {
       config.mapTypeControlEnabled = widget.mapTypeControlEnabled;
     }
-    if (widget.logoPosition != null && widget.logoPosition != oldWidget.logoPosition) {
+    if (widget.logoPosition != null &&
+        widget.logoPosition != oldWidget.logoPosition) {
       config.logoPosition = widget.logoPosition;
     }
-    if (widget.compassControlPosition != null && widget.compassControlPosition != oldWidget.compassControlPosition) {
+    if (widget.compassControlPosition != null &&
+        widget.compassControlPosition != oldWidget.compassControlPosition) {
       config.compassControlPosition = widget.compassControlPosition;
     }
-    if (widget.scaleControlPosition != null && widget.scaleControlPosition != oldWidget.scaleControlPosition) {
+    if (widget.scaleControlPosition != null &&
+        widget.scaleControlPosition != oldWidget.scaleControlPosition) {
       config.scaleControlPosition = widget.scaleControlPosition;
     }
-    if (widget.zoomControlPosition != null && widget.zoomControlPosition != oldWidget.zoomControlPosition) {
+    if (widget.zoomControlPosition != null &&
+        widget.zoomControlPosition != oldWidget.zoomControlPosition) {
       config.zoomControlPosition = widget.zoomControlPosition;
     }
-    if (widget.showTraffic != null && widget.showTraffic != oldWidget.showTraffic) {
+    if (widget.showTraffic != null &&
+        widget.showTraffic != oldWidget.showTraffic) {
       config.showTraffic = widget.showTraffic;
     }
-    if (widget.showBuildings != null && widget.showBuildings != oldWidget.showBuildings) {
+    if (widget.showBuildings != null &&
+        widget.showBuildings != oldWidget.showBuildings) {
       config.showBuildings = widget.showBuildings;
     }
     if (widget.showIndoorMap != oldWidget.showIndoorMap) {
@@ -517,14 +532,23 @@ class AMapFlutterState extends State<AMapFlutter> {
       config.showRoadNetLayer = widget.showRoadNetLayer;
     }
     if (widget.geolocationControlEnabled != null &&
-        widget.geolocationControlEnabled != oldWidget.geolocationControlEnabled) {
-      config.userLocationConfig =
-          config.userLocationConfig?.copyWith(userLocationButton: widget.geolocationControlEnabled) ??
-              UserLocationConfig(userLocationButton: widget.geolocationControlEnabled);
+        widget.geolocationControlEnabled !=
+            oldWidget.geolocationControlEnabled) {
+      config.userLocationConfig = config.userLocationConfig?.copyWith(
+            userLocationButton: widget.geolocationControlEnabled,
+          ) ??
+          UserLocationConfig(
+            userLocationButton: widget.geolocationControlEnabled,
+          );
     }
-    if (widget.showUserLocation != null && widget.showUserLocation != oldWidget.showUserLocation) {
-      config.userLocationConfig = config.userLocationConfig?.copyWith(showUserLocation: widget.showUserLocation) ??
-          UserLocationConfig(showUserLocation: widget.showUserLocation);
+    if (widget.showUserLocation != null &&
+        widget.showUserLocation != oldWidget.showUserLocation) {
+      config.userLocationConfig = config.userLocationConfig?.copyWith(
+            showUserLocation: widget.showUserLocation,
+          ) ??
+          UserLocationConfig(
+            showUserLocation: widget.showUserLocation,
+          );
     }
     AMapFlutterPlatformInterface.instance.updateMapConfig(config, mapId: mapId);
   }
@@ -566,9 +590,16 @@ class AMapFlutterState extends State<AMapFlutter> {
           userLocationStyle: widget.userLocationStyle,
         ),
       );
-      AMapFlutterPlatformInterface.instance.updateMapConfig(config, mapId: mapId);
+      AMapFlutterPlatformInterface.instance.updateMapConfig(
+        config,
+        mapId: mapId,
+      );
       if (widget.initCameraPosition != null) {
-        AMapFlutterPlatformInterface.instance.moveCamera(widget.initCameraPosition!, 0, mapId: mapId);
+        AMapFlutterPlatformInterface.instance.moveCamera(
+          widget.initCameraPosition!,
+          0,
+          mapId: mapId,
+        );
       }
     });
   }

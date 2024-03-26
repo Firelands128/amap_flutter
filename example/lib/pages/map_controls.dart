@@ -50,7 +50,10 @@ class _MapControlsPageState extends State<MapControlsPage> {
           (item) => Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Padding(padding: const EdgeInsets.only(top: 16), child: Text(item)),
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Text(item),
+              ),
               Switch(
                 value: _state[item]!,
                 onChanged: (value) => setState(() => _state[item] = value),

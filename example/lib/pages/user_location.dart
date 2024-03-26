@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -45,8 +47,9 @@ class _UserLocationPageState extends State<UserLocationPage> {
       body: AMapFlutter(
         showUserLocation: true,
         onUserLocationChange: (location) {
-          // ignore: avoid_print
-          print('${location.position?.latitude}, ${location.position?.longitude}');
+          stdout.writeln(
+            '${location.position?.latitude}, ${location.position?.longitude}',
+          );
         },
         onMapCreated: (controller) async {
           this.controller = controller;

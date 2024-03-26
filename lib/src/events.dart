@@ -36,37 +36,44 @@ class MapPressEvent extends _PositionedMapEvent<void> {
 
 /// 地图双击事件
 class MapDoublePressEvent extends _PositionedMapEvent<void> {
-  MapDoublePressEvent(int mapId, Position position) : super(mapId, position, null);
+  MapDoublePressEvent(int mapId, Position position)
+      : super(mapId, position, null);
 }
 
 /// 地图右键点击事件
 class MapRightPressEvent extends _PositionedMapEvent<void> {
-  MapRightPressEvent(int mapId, Position position) : super(mapId, position, null);
+  MapRightPressEvent(int mapId, Position position)
+      : super(mapId, position, null);
 }
 
 /// 地图长按事件
 class MapLongPressEvent extends _PositionedMapEvent<void> {
-  MapLongPressEvent(int mapId, Position position) : super(mapId, position, null);
+  MapLongPressEvent(int mapId, Position position)
+      : super(mapId, position, null);
 }
 
 /// 地图视野变化事件
 class CameraChangeEvent extends MapEvent<CameraPosition> {
-  CameraChangeEvent(int mapId, CameraPosition cameraPosition) : super(mapId, cameraPosition);
+  CameraChangeEvent(int mapId, CameraPosition cameraPosition)
+      : super(mapId, cameraPosition);
 }
 
 /// 地图视野开始变化事件
 class CameraChangeStartEvent extends MapEvent<CameraPosition> {
-  CameraChangeStartEvent(int mapId, CameraPosition cameraPosition) : super(mapId, cameraPosition);
+  CameraChangeStartEvent(int mapId, CameraPosition cameraPosition)
+      : super(mapId, cameraPosition);
 }
 
 /// 地图视野变化结束事件
 class CameraChangeFinishEvent extends MapEvent<CameraPosition> {
-  CameraChangeFinishEvent(int mapId, CameraPosition cameraPosition) : super(mapId, cameraPosition);
+  CameraChangeFinishEvent(int mapId, CameraPosition cameraPosition)
+      : super(mapId, cameraPosition);
 }
 
 /// 地图平移开始事件
 class MapMoveStartEvent extends _PositionedMapEvent<void> {
-  MapMoveStartEvent(int mapId, Position position) : super(mapId, position, null);
+  MapMoveStartEvent(int mapId, Position position)
+      : super(mapId, position, null);
 }
 
 /// 地图平移事件
@@ -186,25 +193,30 @@ class MarkerClickEvent extends MapEvent<String> {
 
 /// 开始拖动标记点事件
 class MarkerDragStartEvent extends _PositionedMapEvent<String> {
-  MarkerDragStartEvent(int mapId, Position position, String markerId) : super(mapId, position, markerId);
+  MarkerDragStartEvent(int mapId, Position position, String markerId)
+      : super(mapId, position, markerId);
 }
 
 /// 拖动标记点事件
 class MarkerDragEvent extends _PositionedMapEvent<String> {
-  MarkerDragEvent(int mapId, Position position, String markerId) : super(mapId, position, markerId);
+  MarkerDragEvent(int mapId, Position position, String markerId)
+      : super(mapId, position, markerId);
 }
 
 /// 结束拖动标记点事件
 class MarkerDragEndEvent extends _PositionedMapEvent<String> {
-  MarkerDragEndEvent(int mapId, Position position, String markerId) : super(mapId, position, markerId);
+  MarkerDragEndEvent(int mapId, Position position, String markerId)
+      : super(mapId, position, markerId);
 }
 
 /// 用户位置改变事件
 class UserLocationChangeEvent extends MapEvent<Location> {
-  UserLocationChangeEvent(int mapId, Location location) : super(mapId, location);
+  UserLocationChangeEvent(int mapId, Location location)
+      : super(mapId, location);
 }
 
 /// 点击用户定位点事件
 class UserLocationClickEvent extends _PositionedMapEvent<void> {
-  UserLocationClickEvent(int mapId, Position position) : super(mapId, position, null);
+  UserLocationClickEvent(int mapId, Position position)
+      : super(mapId, position, null);
 }

@@ -14,7 +14,12 @@ class Event {
   /// function: 回调函数
   /// context: 事件上下文，缺省为实例本身
   /// once: 是否只执行一次
-  external Event onContext(String type, Function function, Object? context, bool once);
+  external Event onContext(
+    String type,
+    Function function,
+    Object? context,
+    bool once,
+  );
 
   /// 移除当前实例的某一个事件回调
   /// type: 事件类型

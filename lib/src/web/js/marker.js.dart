@@ -942,7 +942,11 @@ class ElasticLabel {
 @JS()
 class MarkerCluster extends Overlay {
   /// 构造函数
-  external MarkerCluster(AMap map, DataOptions dataOptions, MarkerClusterOptions markerClusterOptions);
+  external MarkerCluster(
+    AMap map,
+    DataOptions dataOptions,
+    MarkerClusterOptions markerClusterOptions,
+  );
 
   /// 在原数据基础上添加数据，格式同 dataOptions
   external void addData(DataOptions dataOptions);

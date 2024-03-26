@@ -177,7 +177,9 @@ class CameraPosition {
 
   static CameraPosition decode(List<Object?> result) {
     return CameraPosition(
-      position: result[0] != null ? Position.decode(result[0]! as List<Object?>) : null,
+      position: result[0] != null
+          ? Position.decode(result[0]! as List<Object?>)
+          : null,
       heading: result[1] as double?,
       skew: result[2] as double?,
       zoom: result[3] as double?,
@@ -252,7 +254,9 @@ class Location {
 
   static Location decode(List<Object?> result) {
     return Location(
-      position: result[0] != null ? Position.decode(result[0]! as List<Object?>) : null,
+      position: result[0] != null
+          ? Position.decode(result[0]! as List<Object?>)
+          : null,
       heading: result[1] as double?,
       accuracy: result[2] as double?,
     );
@@ -413,7 +417,9 @@ class MapInitConfig {
     return MapInitConfig(
       mapType: result[0] as MapType?,
       mapStyle: result[1] as String?,
-      cameraPosition: result[2] != null ? CameraPosition.decode(result[2]! as List<Object?>) : null,
+      cameraPosition: result[2] != null
+          ? CameraPosition.decode(result[2]! as List<Object?>)
+          : null,
       dragEnable: result[3] as bool?,
       zoomEnable: result[4] as bool?,
       tiltEnable: result[5] as bool?,
@@ -424,7 +430,9 @@ class MapInitConfig {
       compassControlEnabled: result[10] as bool?,
       scaleControlEnabled: result[11] as bool?,
       zoomControlEnabled: result[12] as bool?,
-      logoPosition: result[13] != null ? UIControlPosition.decode(result[13]! as List<Object?>) : null,
+      logoPosition: result[13] != null
+          ? UIControlPosition.decode(result[13]! as List<Object?>)
+          : null,
       doubleClickZoom: result[14] as bool?,
       scrollWheel: result[15] as bool?,
       touchZoom: result[16] as bool?,
@@ -577,16 +585,26 @@ class MapUpdateConfig {
       zoomControlEnabled: result[9] as bool?,
       hawkEyeControlEnabled: result[10] as bool?,
       mapTypeControlEnabled: result[11] as bool?,
-      logoPosition: result[12] != null ? UIControlPosition.decode(result[12]! as List<Object?>) : null,
-      compassControlPosition: result[13] != null ? UIControlPosition.decode(result[13]! as List<Object?>) : null,
-      scaleControlPosition: result[14] != null ? UIControlPosition.decode(result[14]! as List<Object?>) : null,
-      zoomControlPosition: result[15] != null ? UIControlPosition.decode(result[15]! as List<Object?>) : null,
+      logoPosition: result[12] != null
+          ? UIControlPosition.decode(result[12]! as List<Object?>)
+          : null,
+      compassControlPosition: result[13] != null
+          ? UIControlPosition.decode(result[13]! as List<Object?>)
+          : null,
+      scaleControlPosition: result[14] != null
+          ? UIControlPosition.decode(result[14]! as List<Object?>)
+          : null,
+      zoomControlPosition: result[15] != null
+          ? UIControlPosition.decode(result[15]! as List<Object?>)
+          : null,
       showTraffic: result[16] as bool?,
       showBuildings: result[17] as bool?,
       showIndoorMap: result[18] as bool?,
       showSatelliteLayer: result[19] as bool?,
       showRoadNetLayer: result[20] as bool?,
-      userLocationConfig: result[21] != null ? UserLocationConfig.decode(result[21]! as List<Object?>) : null,
+      userLocationConfig: result[21] != null
+          ? UserLocationConfig.decode(result[21]! as List<Object?>)
+          : null,
     );
   }
 }
@@ -652,8 +670,11 @@ class Position {
   Position({
     required double latitude,
     required double longitude,
-  })  : latitude = latitude < -90.0 ? -90.0 : (latitude > 90.0 ? 90.0 : latitude),
-        longitude = longitude >= -180 && longitude < 180 ? longitude : (longitude + 180.0) % 360.0 - 180.0;
+  })  : latitude =
+            latitude < -90.0 ? -90.0 : (latitude > 90.0 ? 90.0 : latitude),
+        longitude = longitude >= -180 && longitude < 180
+            ? longitude
+            : (longitude + 180.0) % 360.0 - 180.0;
 
   /// 位置的纬度
   double latitude;
@@ -842,7 +863,9 @@ class UserLocationConfig {
     return UserLocationConfig(
       userLocationButton: result[0] as bool?,
       showUserLocation: result[1] as bool?,
-      userLocationStyle: result[2] != null ? UserLocationStyle.decode(result[2]! as List<Object?>) : null,
+      userLocationStyle: result[2] != null
+          ? UserLocationStyle.decode(result[2]! as List<Object?>)
+          : null,
     );
   }
 
@@ -900,7 +923,8 @@ class UserLocationStyle {
       fillColor: result[1] != null ? Color(result[1] as int) : null,
       strokeColor: result[2] != null ? Color(result[2] as int) : null,
       lineWidth: result[3] as double?,
-      image: result[4] != null ? Bitmap.decode(result[4]! as List<Object?>) : null,
+      image:
+          result[4] != null ? Bitmap.decode(result[4]! as List<Object?>) : null,
     );
   }
 }

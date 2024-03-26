@@ -8,7 +8,13 @@ import 'js.dart';
 /// 行政区查询服务，提供行政区信息的查询， 使用该服务可以获取到行政区域的区号、城市编码、中心点、边界、下辖区域等详细信息，为基于行政区域的地图功能提供支持。
 @JS()
 class DistrictSearch {
-  external DistrictSearch(DistrictSearchOptions opts, String level, bool showbiz, String extensions, num subdistrict);
+  external DistrictSearch(
+    DistrictSearchOptions opts,
+    String level,
+    bool showbiz,
+    String extensions,
+    num subdistrict,
+  );
 
   /// 设置关键字对应的行政区级别或商圈，可选值： country：国家 province：省/直辖市 city：市 district：区/县 biz_area：商圈
   external static void setLevel(String level);
@@ -17,7 +23,11 @@ class DistrictSearch {
   external static void setSubdistrict(String subdistrict);
 
   /// 根据关键字查询行政区或商圈信息 关键字支持：行政区名、citycode、adcode、商圈名。默认值：“全国” 当status为complete时，result为DistrictSearchResult； 当status为error时，result为错误信息info； 当status为no_data时，代表检索返回0结果
-  external static void search(dynamic keyword, DistrictSearchCallBack callBack, String keywords);
+  external static void search(
+    dynamic keyword,
+    DistrictSearchCallBack callBack,
+    String keywords,
+  );
 }
 
 @JS()
@@ -49,7 +59,10 @@ class DistrictSearchOptions {
   external num subdistrict;
 }
 
-typedef DistrictSearchCallBack = void Function(String status, DistrictSearchResult result);
+typedef DistrictSearchCallBack = void Function(
+  String status,
+  DistrictSearchResult result,
+);
 
 @JS()
 @anonymous
@@ -142,7 +155,10 @@ class LiveData {
   external String reportTime;
 }
 
-typedef WeatherForecastResult = void Function(Object err, ForecastData forecastData);
+typedef WeatherForecastResult = void Function(
+  Object err,
+  ForecastData forecastData,
+);
 
 @JS()
 @anonymous
@@ -286,17 +302,28 @@ class RoadInfoSearch {
   /// 当status为complete时，result为RoadInfoSearchResult；
   /// 当status为error时，result为错误信息info；
   /// 当status为no_data时，代表检索返回0结果
-  external void roadInfoSearchByRoadId(String id, Function(String status, RoadInfoSearchResult result) callback);
+  external void roadInfoSearchByRoadId(
+    String id,
+    Function(String status, RoadInfoSearchResult result) callback,
+  );
 
   /// 根据给定的关键字查询道路信息，多个关键字用“|”分割，支持中文|中文全拼，status说明同上
-  external void roadInfoSearchByRoadName(String keyword, Function(String status, RoadInfoSearchResult result) callback);
+  external void roadInfoSearchByRoadName(
+    String keyword,
+    Function(String status, RoadInfoSearchResult result) callback,
+  );
 
   /// 根据交叉路口ID查询交叉口信息，ID是交叉口的唯一标识，status说明同上
-  external void crossInfoSearchByCrossId(String id, Function(String status, CrossInfoSearchResult result) callback);
+  external void crossInfoSearchByCrossId(
+    String id,
+    Function(String status, CrossInfoSearchResult result) callback,
+  );
 
   /// 根据道路名称查询交叉口信息，status说明同上
   external void crossInfoSearchByRoadName(
-      String keyword, Function(String status, CrossInfoSearchResult result) callback);
+    String keyword,
+    Function(String status, CrossInfoSearchResult result) callback,
+  );
 
   /// 设置单页显示结果条数，取值范围为[1-100]，超出取值范围按默认值返回
   external void setPageSize(num pageSize);

@@ -2,7 +2,9 @@ part of '../amap_flutter.dart';
 
 /// An implementation of [AMapFlutterPlatformInterface] that uses method channels.
 class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
-  final MethodChannel _initializerChannel = const MethodChannel("plugins.flutter.dev/amap_initializer");
+  final MethodChannel _initializerChannel = const MethodChannel(
+    "plugins.flutter.dev/amap_initializer",
+  );
 
   final Map<int, MethodChannel> _channels = <int, MethodChannel>{};
 
@@ -23,7 +25,9 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         "plugins.flutter.dev/amap_$mapId",
         const StandardMethodCodec(_AMapApiCodec()),
       );
-      channel.setMethodCallHandler((MethodCall call) => _handleMethodCall(call, mapId));
+      channel.setMethodCallHandler(
+        (MethodCall call) => _handleMethodCall(call, mapId),
+      );
       _channels[mapId] = channel;
     }
   }
@@ -361,7 +365,11 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
 
   /// 移动地图视野
   @override
-  Future<void> moveCamera(CameraPosition position, int duration, {required int mapId}) {
+  Future<void> moveCamera(
+    CameraPosition position,
+    int duration, {
+    required int mapId,
+  }) {
     return _channel(mapId).invokeMethod(
       "moveCamera",
       <String, dynamic>{
@@ -373,7 +381,11 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
 
   /// 移动地图视野到某个地图区域
   @override
-  Future<void> moveCameraToRegion(Region region, int duration, {required int mapId}) {
+  Future<void> moveCameraToRegion(
+    Region region,
+    int duration, {
+    required int mapId,
+  }) {
     return _channel(mapId).invokeMethod(
       "moveCameraToRegion",
       <String, dynamic>{
@@ -385,8 +397,12 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
 
   /// 移动地图视野到包含一组坐标点的某个地图区域
   @override
-  Future<void> moveCameraToFitPosition(List<Position>? positions, EdgePadding padding, int duration,
-      {required int mapId}) {
+  Future<void> moveCameraToFitPosition(
+    List<Position>? positions,
+    EdgePadding padding,
+    int duration, {
+    required int mapId,
+  }) {
     return _channel(mapId).invokeMethod(
       "moveCameraToRegionWithPosition",
       <String, dynamic>{
@@ -438,7 +454,11 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
 
   /// 更新标记点
   @override
-  Future<void> updateMarker(String markerId, Position position, {required int mapId}) {
+  Future<void> updateMarker(
+    String markerId,
+    Position position, {
+    required int mapId,
+  }) {
     return _channel(mapId).invokeMethod(
       "updateMarker",
       <String, dynamic>{
@@ -451,7 +471,8 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
   /// 获取当前定位信息
   @override
   Future<Location> getUserLocation({required int mapId}) async {
-    final result = await _channel(mapId).invokeMethod<Location>("getUserLocation");
+    final result =
+        await _channel(mapId).invokeMethod<Location>("getUserLocation");
     if (result == null) throw "Failed to get user location";
     return result;
   }

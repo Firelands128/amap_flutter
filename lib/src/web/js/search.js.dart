@@ -61,7 +61,10 @@ class AutoCompleteOptions {
 }
 
 /// 搜索结果回调
-typedef AutoCompleteSearchCallback = Function(String status, AutoCompleteSearchResult result);
+typedef AutoCompleteSearchCallback = Function(
+  String status,
+  AutoCompleteSearchResult result,
+);
 
 @JS()
 @anonymous
@@ -105,7 +108,11 @@ class PlaceSearch {
   external void search(String keyword, SearchCallback callback);
 
   /// 根据范围和关键词进行范围查询
-  external void searchInBounds(String keyword, Bounds bounds, SearchCallback callback);
+  external void searchInBounds(
+    String keyword,
+    Bounds bounds,
+    SearchCallback callback,
+  );
 
   /// 根据中心点经纬度、半径以及关键字进行周边查询 radius取值范围：0-50000
   external void searchNearBy(String keyword, LngLat center, num radius);
@@ -251,7 +258,11 @@ class CloudDataSearch {
   external clear();
 
   /// 周边检索，根据指定的中心点和半径检索位置数据
-  external searchNearBy(LngLat center, num radius, CloudDataSearchCallback callback);
+  external searchNearBy(
+    LngLat center,
+    num radius,
+    CloudDataSearchCallback callback,
+  );
 
   /// 根据数据id检索位置数据，id检索时不需要设置CloudDataSearchOptions
   external searchById(String id, CloudDataSearchCallback callback);

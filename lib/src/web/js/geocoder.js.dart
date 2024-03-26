@@ -45,7 +45,10 @@ class GeocoderOptions {
 typedef GeocoderCallback = void Function(String status, GeocodeResult result);
 
 /// Geocoder getAddress 回调函数
-typedef ReGeocoderCallback = void Function(String status, ReGeocoderResult result);
+typedef ReGeocoderCallback = void Function(
+  String status,
+  ReGeocoderResult result,
+);
 
 @JS()
 @anonymous

@@ -15,7 +15,8 @@ class MapControlsPositionPage extends StatefulWidget {
   static const title = '地图控件位置';
 
   @override
-  State<MapControlsPositionPage> createState() => _MapControlsPositionPageState();
+  State<MapControlsPositionPage> createState() =>
+      _MapControlsPositionPageState();
 }
 
 class _MapControlsPositionPageState extends State<MapControlsPositionPage> {
@@ -68,38 +69,40 @@ class _MapControlsPositionPageState extends State<MapControlsPositionPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return StatefulBuilder(builder: (BuildContext context, StateSetter stateSetter) {
-          changeState(VoidCallback fn) {
-            stateSetter(fn);
-            setState(fn);
-          }
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter stateSetter) {
+            changeState(VoidCallback fn) {
+              stateSetter(fn);
+              setState(fn);
+            }
 
-          Iterable<String> keys;
-          if (kIsWeb) {
-            keys = webSupport;
-          } else if (Platform.isAndroid) {
-            keys = androidSupport;
-          } else {
-            keys = iOSSupport;
-          }
-          return SimpleDialog(
-            title: const Center(
-              child: Text("地图控件位置设置"),
-            ),
-            contentPadding: const EdgeInsets.all(20),
-            children: keys
-                .map(
-                  (item) => _LabelControlPosition(
-                    name: item,
-                    position: _positions[item]!,
-                    onChanged: (UIControlPosition position) => changeState(() {
-                      _positions[item] = position;
-                    }),
-                  ),
-                )
-                .toList(),
-          );
-        });
+            Iterable<String> keys;
+            if (kIsWeb) {
+              keys = webSupport;
+            } else if (Platform.isAndroid) {
+              keys = androidSupport;
+            } else {
+              keys = iOSSupport;
+            }
+            return SimpleDialog(
+              title: const Center(
+                child: Text("地图控件位置设置"),
+              ),
+              contentPadding: const EdgeInsets.all(20),
+              children: keys
+                  .map(
+                    (item) => _LabelControlPosition(
+                      name: item,
+                      position: _positions[item]!,
+                      onChanged: (UIControlPosition position) => changeState(
+                        () => _positions[item] = position,
+                      ),
+                    ),
+                  )
+                  .toList(),
+            );
+          },
+        );
       },
     );
   }
@@ -224,21 +227,29 @@ class _LabelControlPosition extends StatelessWidget {
                     enabled: enabled,
                     child: Text(
                       anchorLabels[anchor]!,
-                      style: enabled ? null : TextStyle(color: Theme.of(context).disabledColor),
+                      style: enabled
+                          ? null
+                          : TextStyle(color: Theme.of(context).disabledColor),
                     ),
                   );
                 }).toList(),
-                onChanged: (UIControlAnchor? anchor) => onChanged(position.copyWith(anchor: anchor)),
+                onChanged: (UIControlAnchor? anchor) => onChanged(
+                  position.copyWith(anchor: anchor),
+                ),
               ),
               _VerticalTextField(
                 label: "X",
                 initValue: position.offset.x.toString(),
-                onChanged: (value) => onChanged(position.copyWith(offset: position.offset.copyWith(x: value))),
+                onChanged: (value) => onChanged(
+                  position.copyWith(offset: position.offset.copyWith(x: value)),
+                ),
               ),
               _VerticalTextField(
                 label: "Y",
                 initValue: position.offset.y.toString(),
-                onChanged: (value) => onChanged(position.copyWith(offset: position.offset.copyWith(y: value))),
+                onChanged: (value) => onChanged(
+                  position.copyWith(offset: position.offset.copyWith(y: value)),
+                ),
               ),
             ],
           )

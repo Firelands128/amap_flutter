@@ -69,7 +69,9 @@ class _MapFeaturesPageState extends State<MapFeaturesPage> {
             },
             child: Row(children: [
               Icon(
-                mapFeatures.contains(item.key) ? Icons.radio_button_checked : Icons.radio_button_unchecked,
+                mapFeatures.contains(item.key)
+                    ? Icons.radio_button_checked
+                    : Icons.radio_button_unchecked,
                 size: 20,
               ),
               const SizedBox(width: 8),

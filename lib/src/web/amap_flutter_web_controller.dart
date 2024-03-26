@@ -27,42 +27,140 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   }
 
   void addListener(int mapId, AMap map) {
-    map.on("complete", (_) => mapEventStreamController.add(MapCompleteEvent(mapId)));
-    map.on("click", (MapsEvent event) => mapEventStreamController.add(MapPressEvent(mapId, event.lnglat.position)));
-    map.on("dblclick",
-        (MapsEvent event) => mapEventStreamController.add(MapDoublePressEvent(mapId, event.lnglat.position)));
-    map.on("rightclick",
-        (MapsEvent event) => mapEventStreamController.add(MapRightPressEvent(mapId, event.lnglat.position)));
-    map.on("movestart", (_) => mapEventStreamController.add(MapMoveStartEvent(mapId, map.getCenter().position)));
-    map.on("mapmove", (_) => mapEventStreamController.add(MapMoveEvent(mapId, map.getCenter().position)));
-    map.on("moveend", (_) => mapEventStreamController.add(MapMoveEndEvent(mapId, map.getCenter().position)));
-    map.on("resize", (_) => mapEventStreamController.add(MapResizedEvent(mapId, map.getSize().size)));
-    map.on("zoomstart", (_) => mapEventStreamController.add(ZoomChangeStartEvent(mapId, map.getZoom().toDouble())));
-    map.on("zoomchange", (_) => mapEventStreamController.add(ZoomChangeEvent(mapId, map.getZoom().toDouble())));
-    map.on("zoomend", (_) => mapEventStreamController.add(ZoomChangeEndEvent(mapId, map.getZoom().toDouble())));
-    map.on("rotatestart",
-        (_) => mapEventStreamController.add(RotateChangeStartEvent(mapId, map.getRotation().toDouble())));
-    map.on("rotatechange", (_) => mapEventStreamController.add(RotateChangeEvent(mapId, map.getRotation().toDouble())));
-    map.on("rotateend", (_) => mapEventStreamController.add(RotateChangeEndEvent(mapId, map.getRotation().toDouble())));
     map.on(
-        "mousemove", (MapsEvent event) => mapEventStreamController.add(MouseMoveEvent(mapId, event.lnglat.position)));
-    map.on("mousewheel", (_) => mapEventStreamController.add(MouseWheelEvent(mapId, map.getZoom().toDouble())));
+      "complete",
+      (_) => mapEventStreamController.add(MapCompleteEvent(mapId)),
+    );
     map.on(
-        "mouseover", (MapsEvent event) => mapEventStreamController.add(MouseOverEvent(mapId, event.lnglat.position)));
-    map.on("mouseout", (MapsEvent event) => mapEventStreamController.add(MouseOutEvent(mapId, event.lnglat.position)));
-    map.on("mouseup", (MapsEvent event) => mapEventStreamController.add(MouseUpEvent(mapId, event.lnglat.position)));
+      "click",
+      (MapsEvent event) => mapEventStreamController
+          .add(MapPressEvent(mapId, event.lnglat.position)),
+    );
     map.on(
-        "mousedown", (MapsEvent event) => mapEventStreamController.add(MouseDownEvent(mapId, event.lnglat.position)));
+      "dblclick",
+      (MapsEvent event) => mapEventStreamController
+          .add(MapDoublePressEvent(mapId, event.lnglat.position)),
+    );
     map.on(
-        "dragstart", (MapsEvent event) => mapEventStreamController.add(DragStartEvent(mapId, event.lnglat.position)));
-    map.on("dragging", (MapsEvent event) => mapEventStreamController.add(DraggingEvent(mapId, event.lnglat.position)));
-    map.on("dragend", (MapsEvent event) => mapEventStreamController.add(DragEndEvent(mapId, event.lnglat.position)));
+      "rightclick",
+      (MapsEvent event) => mapEventStreamController
+          .add(MapRightPressEvent(mapId, event.lnglat.position)),
+    );
     map.on(
-        "touchstart", (MapsEvent event) => mapEventStreamController.add(TouchStartEvent(mapId, event.lnglat.position)));
-    map.on("touchmove", (MapsEvent event) => mapEventStreamController.add(TouchingEvent(mapId, event.lnglat.position)));
-    map.on("touchend", (MapsEvent event) => mapEventStreamController.add(TouchEndEvent(mapId, event.lnglat.position)));
-    map.on("hotspotclick",
-        (MapsEvent event) => mapEventStreamController.add(PoiClickEvent(mapId, (event as HotspotEvent).poi)));
+      "movestart",
+      (_) => mapEventStreamController
+          .add(MapMoveStartEvent(mapId, map.getCenter().position)),
+    );
+    map.on(
+      "mapmove",
+      (_) => mapEventStreamController
+          .add(MapMoveEvent(mapId, map.getCenter().position)),
+    );
+    map.on(
+      "moveend",
+      (_) => mapEventStreamController
+          .add(MapMoveEndEvent(mapId, map.getCenter().position)),
+    );
+    map.on(
+      "resize",
+      (_) => mapEventStreamController
+          .add(MapResizedEvent(mapId, map.getSize().size)),
+    );
+    map.on(
+      "zoomstart",
+      (_) => mapEventStreamController
+          .add(ZoomChangeStartEvent(mapId, map.getZoom().toDouble())),
+    );
+    map.on(
+      "zoomchange",
+      (_) => mapEventStreamController
+          .add(ZoomChangeEvent(mapId, map.getZoom().toDouble())),
+    );
+    map.on(
+      "zoomend",
+      (_) => mapEventStreamController
+          .add(ZoomChangeEndEvent(mapId, map.getZoom().toDouble())),
+    );
+    map.on(
+      "rotatestart",
+      (_) => mapEventStreamController
+          .add(RotateChangeStartEvent(mapId, map.getRotation().toDouble())),
+    );
+    map.on(
+      "rotatechange",
+      (_) => mapEventStreamController
+          .add(RotateChangeEvent(mapId, map.getRotation().toDouble())),
+    );
+    map.on(
+      "rotateend",
+      (_) => mapEventStreamController
+          .add(RotateChangeEndEvent(mapId, map.getRotation().toDouble())),
+    );
+    map.on(
+      "mousemove",
+      (MapsEvent event) => mapEventStreamController
+          .add(MouseMoveEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "mousewheel",
+      (_) => mapEventStreamController
+          .add(MouseWheelEvent(mapId, map.getZoom().toDouble())),
+    );
+    map.on(
+      "mouseover",
+      (MapsEvent event) => mapEventStreamController
+          .add(MouseOverEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "mouseout",
+      (MapsEvent event) => mapEventStreamController
+          .add(MouseOutEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "mouseup",
+      (MapsEvent event) => mapEventStreamController
+          .add(MouseUpEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "mousedown",
+      (MapsEvent event) => mapEventStreamController
+          .add(MouseDownEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "dragstart",
+      (MapsEvent event) => mapEventStreamController
+          .add(DragStartEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "dragging",
+      (MapsEvent event) => mapEventStreamController
+          .add(DraggingEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "dragend",
+      (MapsEvent event) => mapEventStreamController
+          .add(DragEndEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "touchstart",
+      (MapsEvent event) => mapEventStreamController
+          .add(TouchStartEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "touchmove",
+      (MapsEvent event) => mapEventStreamController
+          .add(TouchingEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "touchend",
+      (MapsEvent event) => mapEventStreamController
+          .add(TouchEndEvent(mapId, event.lnglat.position)),
+    );
+    map.on(
+      "hotspotclick",
+      (MapsEvent event) => mapEventStreamController
+          .add(PoiClickEvent(mapId, (event as HotspotEvent).poi)),
+    );
   }
 
   @override
@@ -76,18 +174,24 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   }
 
   @override
-  Future<void> updateMapConfig(MapUpdateConfig config, {required int mapId}) async {
+  Future<void> updateMapConfig(MapUpdateConfig config,
+      {required int mapId}) async {
     _map(mapId).updateMapConfig(config);
   }
 
   @override
-  Future<void> moveCamera(CameraPosition position, int duration, {required int mapId}) async {
+  Future<void> moveCamera(CameraPosition position, int duration,
+      {required int mapId}) async {
     _map(mapId).moveCamera(position, duration);
   }
 
   @override
-  Future<void> moveCameraToFitPosition(List<Position>? positions, EdgePadding padding, int duration,
-      {required int mapId}) async {
+  Future<void> moveCameraToFitPosition(
+    List<Position>? positions,
+    EdgePadding padding,
+    int duration, {
+    required int mapId,
+  }) async {
     _map(mapId).moveCameraToFitPosition(positions, padding, duration);
   }
 
@@ -108,13 +212,19 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
       mapEventStreamController.add(MarkerClickEvent(mapId, marker.id));
     });
     markerJS.on("dragstart", (_) {
-      mapEventStreamController.add(MarkerDragStartEvent(mapId, marker.position, marker.id));
+      mapEventStreamController.add(
+        MarkerDragStartEvent(mapId, marker.position, marker.id),
+      );
     });
     markerJS.on("dragging", (_) {
-      mapEventStreamController.add(MarkerDragEvent(mapId, marker.position, marker.id));
+      mapEventStreamController.add(
+        MarkerDragEvent(mapId, marker.position, marker.id),
+      );
     });
     markerJS.on("dragend", (_) {
-      mapEventStreamController.add(MarkerDragEndEvent(mapId, marker.position, marker.id));
+      mapEventStreamController.add(
+        MarkerDragEndEvent(mapId, marker.position, marker.id),
+      );
     });
   }
 
@@ -124,7 +234,11 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   }
 
   @override
-  Future<void> updateMarker(String markerId, Position position, {required int mapId}) async {
+  Future<void> updateMarker(
+    String markerId,
+    Position position, {
+    required int mapId,
+  }) async {
     _map(mapId).updateMarker(markerId, position);
   }
 
