@@ -24,7 +24,7 @@ class _MapControlsPageState extends State<MapControlsPage> {
   static const hawkEye = '鹰眼';
   static const mapType = '地图类型';
 
-  static const androidSupport = [compass, scale, zoom];
+  static const androidSupport = [compass, scale, zoom, geolocation];
   static const iOSSupport = [compass, scale];
 
   final _state = {
