@@ -19,11 +19,6 @@ class _UserLocationPageState extends State<UserLocationPage> {
   late AMapController controller;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
