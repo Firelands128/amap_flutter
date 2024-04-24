@@ -1,8 +1,6 @@
 # AMap for Flutter
 
-<?code-excerpt path-base="example/lib"?>
-
-[![pub package](https://img.shields.io/pub/v/google_maps_flutter.svg)](https://pub.dev/packages/google_maps_flutter)
+[![pub package](https://img.shields.io/pub/v/amap_flutter.svg)](https://pub.dev/packages/amap_flutter)
 
 A Flutter plugin that provides a [AMapFlutter](https://lbs.qq.com/map/) widget.
 
