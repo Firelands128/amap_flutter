@@ -36,115 +36,115 @@ class _MapEventsPageState extends State<MapEventsPage> {
           zoom: 17.2,
         ),
         onMapInitComplete: () {
-          stdout.writeln("onMapInitComplete: ");
+          debugPrint("onMapInitComplete: ");
         },
         onMapCompleted: () {
-          stdout.writeln("onMapCompleted: ");
+          debugPrint("onMapCompleted: ");
         },
         onMapPress: (position) {
-          stdout.writeln("onMapPress: ${position.encode()}");
+          debugPrint("onMapPress: ${position.encode()}");
         },
         onMapDoublePress: (position) {
-          stdout.writeln("onMapDoublePress: ${position.encode()}");
+          debugPrint("onMapDoublePress: ${position.encode()}");
         },
         onMapRightPress: (position) {
-          stdout.writeln("onMapRightPress: ${position.encode()}");
+          debugPrint("onMapRightPress: ${position.encode()}");
         },
         onMapLongPress: (position) {
-          stdout.writeln("onMapLongPress: ${position.encode()}");
+          debugPrint("onMapLongPress: ${position.encode()}");
         },
         onCameraChange: (cameraPosition) {
-          stdout.writeln("onCameraChange: ${cameraPosition.encode()}");
+          debugPrint("onCameraChange: ${cameraPosition.encode()}");
         },
         onCameraChangeStart: (cameraPosition) {
-          stdout.writeln("onCameraChangeStart: ${cameraPosition.encode()}");
+          debugPrint("onCameraChangeStart: ${cameraPosition.encode()}");
         },
         onCameraChangeFinish: (cameraPosition) {
-          stdout.writeln("onCameraChangeFinish: ${cameraPosition.encode()}");
+          debugPrint("onCameraChangeFinish: ${cameraPosition.encode()}");
         },
         onMapMoveStart: (position) {
-          stdout.writeln("onMapMoveStart: ${position.encode()}");
+          debugPrint("onMapMoveStart: ${position.encode()}");
         },
         onMapMove: (position) {
-          stdout.writeln("onMapMove: ${position.encode()}");
+          debugPrint("onMapMove: ${position.encode()}");
         },
         onMapMoveEnd: (position) {
-          stdout.writeln("onMapMoveEnd: ${position.encode()}");
+          debugPrint("onMapMoveEnd: ${position.encode()}");
         },
         onMapResized: (size) {
-          stdout.writeln("onMapResized: ${size.encode()}");
+          debugPrint("onMapResized: ${size.encode()}");
         },
         onZoomChange: (zoom) {
-          stdout.writeln("onZoomChange: $zoom");
+          debugPrint("onZoomChange: $zoom");
         },
         onZoomChangeStart: (zoom) {
-          stdout.writeln("onZoomChangeStart: $zoom");
+          debugPrint("onZoomChangeStart: $zoom");
         },
         onZoomChangeEnd: (zoom) {
-          stdout.writeln("onZoomChangeEnd: $zoom");
+          debugPrint("onZoomChangeEnd: $zoom");
         },
         onRotateChange: (rotate) {
-          stdout.writeln("onRotateChange: $rotate");
+          debugPrint("onRotateChange: $rotate");
         },
         onRotateChangeStart: (rotate) {
-          stdout.writeln("onRotateChangeStart: $rotate");
+          debugPrint("onRotateChangeStart: $rotate");
         },
         onRotateChangeEnd: (rotate) {
-          stdout.writeln("onRotateChangeEnd: $rotate");
+          debugPrint("onRotateChangeEnd: $rotate");
         },
         onMouseMove: (position) {
-          stdout.writeln("onMouseMove: ${position.encode()}");
+          debugPrint("onMouseMove: ${position.encode()}");
         },
         onMouseWheel: (zoom) {
-          stdout.writeln("onMouseWheel: $zoom");
+          debugPrint("onMouseWheel: $zoom");
         },
         onMouseOver: (position) {
-          stdout.writeln("onMouseOver: ${position.encode()}");
+          debugPrint("onMouseOver: ${position.encode()}");
         },
         onMouseOut: (position) {
-          stdout.writeln("onMouseOut: ${position.encode()}");
+          debugPrint("onMouseOut: ${position.encode()}");
         },
         onMouseUp: (position) {
-          stdout.writeln("onMouseUp: ${position.encode()}");
+          debugPrint("onMouseUp: ${position.encode()}");
         },
         onMouseDown: (position) {
-          stdout.writeln("onMouseDown: ${position.encode()}");
+          debugPrint("onMouseDown: ${position.encode()}");
         },
         onDragStart: (position) {
-          stdout.writeln("onDragStart: ${position.encode()}");
+          debugPrint("onDragStart: ${position.encode()}");
         },
         onDragging: (position) {
-          stdout.writeln("onDragging: ${position.encode()}");
+          debugPrint("onDragging: ${position.encode()}");
         },
         onDragEnd: (position) {
-          stdout.writeln("onDragEnd: ${position.encode()}");
+          debugPrint("onDragEnd: ${position.encode()}");
         },
         onTouchStart: (position) {
-          stdout.writeln("onTouchStart: ${position.encode()}");
+          debugPrint("onTouchStart: ${position.encode()}");
         },
         onTouching: (position) {
-          stdout.writeln("onTouching: ${position.encode()}");
+          debugPrint("onTouching: ${position.encode()}");
         },
         onTouchEnd: (position) {
-          stdout.writeln("onTouchEnd: ${position.encode()}");
+          debugPrint("onTouchEnd: ${position.encode()}");
         },
         onPoiClick: (poi) {
-          stdout.writeln("onPoiClick: ${poi.encode()}");
+          debugPrint("onPoiClick: ${poi.encode()}");
         },
         onMarkerClick: (markerId) {
-          stdout.writeln("onMarkerClick: $markerId");
+          debugPrint("onMarkerClick: $markerId");
         },
         onMarkerDragStart: (markerId, position) {
-          stdout.writeln("onMarkerDragStart: $markerId, ${position.encode()}");
+          debugPrint("onMarkerDragStart: $markerId, ${position.encode()}");
         },
         onMarkerDrag: (markerId, position) {
-          stdout.writeln("onMarkerDrag: $markerId, ${position.encode()}");
+          debugPrint("onMarkerDrag: $markerId, ${position.encode()}");
         },
         onMarkerDragEnd: (markerId, position) {
-          stdout.writeln("onMarkerDragEnd: $markerId, ${position.encode()}");
+          debugPrint("onMarkerDragEnd: $markerId, ${position.encode()}");
         },
         onUserLocationChange: (location) {
-          stdout.writeln("onUserLocationChange: ${location.encode()}");
+          debugPrint("onUserLocationChange: ${location.encode()}");
         },
       ),
     );

@@ -42,7 +42,7 @@ class _UserLocationPageState extends State<UserLocationPage> {
       body: AMapFlutter(
         showUserLocation: true,
         onUserLocationChange: (location) {
-          stdout.writeln(
+          debugPrint(
             '${location.position?.latitude}, ${location.position?.longitude}',
           );
         },
