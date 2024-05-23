@@ -1,3 +1,20 @@
+## 0.1.0
+
+! According to [Flutter issue #143922](https://github.com/flutter/flutter/issues/143922), 
+  add ResizeObserver to make sure creating AMap element after map container div attached to the DOM.
+
+Change the direction of map control offset to center on iOS.
+
+Extract checking platform as a common utility.
+
+Use 'dart:ui_web' instead of 'dart:ui_web'.
+
+Upgrade dependencies, and update environment restriction.
+
+Update example app.
+
+Clean up code.
+
 ## 0.0.2
 
 Add GitHub Actions configuration to automatically publish to pub.dev from Github.
