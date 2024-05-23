@@ -555,7 +555,8 @@ class AMapFlutterState extends State<AMapFlutter> {
 
   _onPlatformViewCreated(int id) {
     mapId = id;
-    final AMapController controller = AMapController.init(id, widget);
+    AMapFlutterPlatformInterface.instance.init(id, widget);
+    final AMapController controller = AMapController(widget, mapId: id);
     _initMap();
     widget.onMapCreated?.call(controller);
   }

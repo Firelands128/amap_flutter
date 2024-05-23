@@ -1,8 +1,9 @@
 part of '../amap_flutter.dart';
 
-/// Controller for a single AMap instance running on the host platform.
+/// Controller for a single AMap instance running on the host platform,
+/// which passed in [AMapFlutter.onMapCreated] callback.
 class AMapController {
-  AMapController._(
+  AMapController(
     this._aMapFlutter, {
     required this.mapId,
   }) {
@@ -14,20 +15,6 @@ class AMapController {
 
   /// The map state for a single AMap instance
   final AMapFlutter _aMapFlutter;
-
-  /// Initialize control of a [AMapFlutter] with [id].
-  ///
-  /// Mainly for internal use when instantiating a [AMapController] passed in [AMapFlutter.onMapCreated] callback.
-  static AMapController init(
-    int id,
-    AMapFlutter aMapFlutter,
-  ) {
-    AMapFlutterPlatformInterface.instance.init(id, aMapFlutter);
-    return AMapController._(
-      aMapFlutter,
-      mapId: id,
-    );
-  }
 
   void _connectStreams(int mapId) {
     if (_aMapFlutter.onMapInitComplete != null) {
