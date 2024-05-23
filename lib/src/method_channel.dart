@@ -18,7 +18,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
   }
 
   @override
-  void init(int mapId, AMapFlutter? aMapFlutter) {
+  Future<void> init(int mapId, AMapFlutter? aMapFlutter) async {
     MethodChannel? channel = _channels[mapId];
     if (channel == null) {
       channel = MethodChannel(

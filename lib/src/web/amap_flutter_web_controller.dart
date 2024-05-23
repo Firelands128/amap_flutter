@@ -1,3 +1,7 @@
+import 'dart:async';
+import 'dart:html';
+import 'dart:ui_web' as ui_web;
+
 import 'package:amap_flutter/amap_flutter.dart';
 
 import 'amap_flutter_web_api.dart';
@@ -6,6 +10,7 @@ import 'utils.dart';
 
 class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   final Map<int, AMapFlutterWebApi> _maps = <int, AMapFlutterWebApi>{};
+  final Completer<void> completer = Completer<void>();
 
   /// Accesses the AMapFlutterWebApi associated to the passed mapId.
   AMapFlutterWebApi _map(int mapId) {
@@ -17,13 +22,29 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   }
 
   @override
-  void init(int mapId, AMapFlutter? aMapFlutter) {
+  Future<void> init(int mapId, AMapFlutter? aMapFlutter) async {
     AMapFlutterWebApi? map = _maps[mapId];
     if (map == null) {
-      map = AMapFlutterWebApi(mapId, aMapFlutter: aMapFlutter);
-      addListener(mapId, map.aMap);
-      _maps[mapId] = map;
+      DivElement element =
+          ui_web.platformViewRegistry.getViewById(mapId) as DivElement;
+      ResizeObserver observer = ResizeObserver(
+        (List mutations, ResizeObserver observer) {
+          if (element.isConnected == true) {
+            observer.disconnect();
+            onMapContainerAttached(mapId, aMapFlutter);
+          }
+        },
+      );
+      observer.observe(element);
     }
+    return completer.future;
+  }
+
+  void onMapContainerAttached(int mapId, AMapFlutter? aMapFlutter) {
+    AMapFlutterWebApi map = AMapFlutterWebApi(mapId, aMapFlutter: aMapFlutter);
+    addListener(mapId, map.aMap);
+    _maps[mapId] = map;
+    completer.complete();
   }
 
   void addListener(int mapId, AMap map) {
