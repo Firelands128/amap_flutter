@@ -10,10 +10,6 @@
 .svn/
 migrate_working_dir/
 
-# Keystore files
-*.jks
-*.keystore
-
 # IntelliJ related
 *.iml
 *.ipr
@@ -30,5 +26,4 @@ migrate_working_dir/
 /pubspec.lock
 **/doc/api/
 .dart_tool/
-.packages
 build/
