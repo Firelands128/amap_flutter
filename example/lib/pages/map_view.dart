@@ -1,4 +1,5 @@
 import 'package:amap_flutter/amap_flutter.dart';
+import 'package:amap_flutter_example/utils.dart';
 import 'package:flutter/material.dart';
 
 /// 地图视野调整页面
@@ -59,34 +60,42 @@ class _MapViewPageState extends State<MapViewPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                child: const Text(' 视野 1 '),
-                onPressed: () => controller.moveCamera(position1, duration),
-              ),
-              const SizedBox(width: 32),
-              ElevatedButton(
-                child: const Text(' 视野 2 '),
-                onPressed: () => controller.moveCameraToRegion(
-                  region,
-                  duration,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: ElevatedButton(
+                  child: const Text(' 视野 1 '),
+                  onPressed: () => controller.moveCamera(position1, duration),
                 ),
               ),
-              const SizedBox(width: 32),
-              ElevatedButton(
-                child: const Text(' 视野 3 '),
-                onPressed: () => controller.moveCameraToFitPosition(
-                  [
-                    Position(latitude: 39.98437, longitude: 116.31863),
-                    Position(latitude: 39.98937, longitude: 116.32363),
-                    Position(latitude: 39.98037, longitude: 116.31163),
-                  ],
-                  EdgePadding(
-                    top: 0.2,
-                    right: 0.2,
-                    bottom: 0.2,
-                    left: 0.2,
+              if (!PlatformUtil.isWeb)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: ElevatedButton(
+                    child: const Text(' 视野 2 '),
+                    onPressed: () => controller.moveCameraToRegion(
+                      region,
+                      duration,
+                    ),
                   ),
-                  duration,
+                ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: ElevatedButton(
+                  child: const Text(' 视野 3 '),
+                  onPressed: () => controller.moveCameraToFitPosition(
+                    [
+                      Position(latitude: 39.98437, longitude: 116.31863),
+                      Position(latitude: 39.98937, longitude: 116.32363),
+                      Position(latitude: 39.98037, longitude: 116.31163),
+                    ],
+                    EdgePadding(
+                      top: 0.2,
+                      right: 0.2,
+                      bottom: 0.2,
+                      left: 0.2,
+                    ),
+                    duration,
+                  ),
                 ),
               ),
             ],
