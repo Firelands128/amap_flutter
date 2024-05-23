@@ -94,6 +94,7 @@ class _MapControlsPositionPageState extends State<MapControlsPositionPage> {
                       onChanged: (UIControlPosition position) => changeState(
                         () => _positions[item] = position,
                       ),
+                      offsetDisable: PlatformUtil.isAndroid,
                     ),
                   )
                   .toList(),
@@ -149,6 +150,7 @@ class _LabelControlPosition extends StatelessWidget {
     required this.name,
     required this.position,
     required this.onChanged,
+    this.offsetDisable = false,
   });
 
   static const webSupport = [
@@ -182,6 +184,7 @@ class _LabelControlPosition extends StatelessWidget {
   final String name;
   final UIControlPosition position;
   final ValueChanged<UIControlPosition> onChanged;
+  final bool offsetDisable;
 
   List<UIControlAnchor> get supportOptions {
     if (kIsWeb) {
@@ -195,6 +198,28 @@ class _LabelControlPosition extends StatelessWidget {
       }
     }
     return UIControlAnchor.values;
+  }
+
+  List<Widget> get offsetTextField {
+    if (!offsetDisable) {
+      return [
+        _VerticalTextField(
+          label: "X",
+          initValue: position.offset.x.toString(),
+          onChanged: (value) => onChanged(
+            position.copyWith(offset: position.offset.copyWith(x: value)),
+          ),
+        ),
+        _VerticalTextField(
+          label: "Y",
+          initValue: position.offset.y.toString(),
+          onChanged: (value) => onChanged(
+            position.copyWith(offset: position.offset.copyWith(y: value)),
+          ),
+        ),
+      ];
+    }
+    return [];
   }
 
   @override
@@ -234,20 +259,7 @@ class _LabelControlPosition extends StatelessWidget {
                   position.copyWith(anchor: anchor),
                 ),
               ),
-              _VerticalTextField(
-                label: "X",
-                initValue: position.offset.x.toString(),
-                onChanged: (value) => onChanged(
-                  position.copyWith(offset: position.offset.copyWith(x: value)),
-                ),
-              ),
-              _VerticalTextField(
-                label: "Y",
-                initValue: position.offset.y.toString(),
-                onChanged: (value) => onChanged(
-                  position.copyWith(offset: position.offset.copyWith(y: value)),
-                ),
-              ),
+              ...offsetTextField,
             ],
           )
         ],
