@@ -6,7 +6,7 @@ import '../utils.dart';
 /// 地图事件回调页面
 class MapEventsPage extends StatefulWidget {
   /// 地图事件回调页面构造函数
-  const MapEventsPage({Key? key}) : super(key: key);
+  const MapEventsPage({super.key});
 
   /// 地图事件回调页面标题
   static const title = '地图事件回调';

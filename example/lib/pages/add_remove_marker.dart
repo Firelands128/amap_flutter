@@ -6,7 +6,7 @@ import '../utils.dart';
 /// 添加、移除标记点页面
 class AddRemoveMarkerPage extends StatefulWidget {
   /// 添加、移除标记点页面构造函数
-  const AddRemoveMarkerPage({Key? key}) : super(key: key);
+  const AddRemoveMarkerPage({super.key});
 
   /// 添加、移除标记点页面标题
   static const title = '动态添加、移除标记';

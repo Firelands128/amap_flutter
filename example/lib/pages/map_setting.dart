@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// 地图初始化设置页面
 class MapSettingPage extends StatefulWidget {
   /// 地图初始化设置页面构造函数
-  const MapSettingPage({Key? key}) : super(key: key);
+  const MapSettingPage({super.key});
 
   /// 地图初始化设置页面标题
   static const title = '地图初始化设置';

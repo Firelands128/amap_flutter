@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// 地图控件加载页面
 class MapControlsPage extends StatefulWidget {
   /// 地图控件加载页面构造函数
-  const MapControlsPage({Key? key}) : super(key: key);
+  const MapControlsPage({super.key});
 
   /// 地图控件加载页面标题
   static const title = '地图控件加载';

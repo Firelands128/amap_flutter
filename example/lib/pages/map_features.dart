@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// 地图显示要素页面
 class MapFeaturesPage extends StatefulWidget {
   /// 地图显示要素页面构造函数
-  const MapFeaturesPage({Key? key}) : super(key: key);
+  const MapFeaturesPage({super.key});
 
   /// 地图显示要素页面标题
   static const title = '地图显示要素';

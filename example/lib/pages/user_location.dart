@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 /// 地图定位页面
 class UserLocationPage extends StatefulWidget {
   /// 地图定位页面构造函数
-  const UserLocationPage({Key? key}) : super(key: key);
+  const UserLocationPage({super.key});
 
   /// 地图定位页面标题
   static const title = '地图定位';

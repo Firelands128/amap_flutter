@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// 地图视野调整页面
 class MapViewPage extends StatefulWidget {
   /// 地图视野调整页面构造函数
-  const MapViewPage({Key? key}) : super(key: key);
+  const MapViewPage({super.key});
 
   /// 地图视野调整页面标题
   static const title = '地图视野调整';

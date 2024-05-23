@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 /// 地图类型切换页面
 class MapTypesPage extends StatefulWidget {
   /// 地图类型切换页面构造函数
-  const MapTypesPage({Key? key}) : super(key: key);
+  const MapTypesPage({super.key});
 
   /// 地图类型切换页面标题
   static const title = '地图类型切换';

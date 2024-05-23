@@ -54,20 +54,17 @@ class MapLongPressEvent extends _PositionedMapEvent<void> {
 
 /// 地图视野变化事件
 class CameraChangeEvent extends MapEvent<CameraPosition> {
-  CameraChangeEvent(int mapId, CameraPosition cameraPosition)
-      : super(mapId, cameraPosition);
+  CameraChangeEvent(super.mapId, super.cameraPosition);
 }
 
 /// 地图视野开始变化事件
 class CameraChangeStartEvent extends MapEvent<CameraPosition> {
-  CameraChangeStartEvent(int mapId, CameraPosition cameraPosition)
-      : super(mapId, cameraPosition);
+  CameraChangeStartEvent(super.mapId, super.cameraPosition);
 }
 
 /// 地图视野变化结束事件
 class CameraChangeFinishEvent extends MapEvent<CameraPosition> {
-  CameraChangeFinishEvent(int mapId, CameraPosition cameraPosition)
-      : super(mapId, cameraPosition);
+  CameraChangeFinishEvent(super.mapId, super.cameraPosition);
 }
 
 /// 地图平移开始事件
@@ -88,37 +85,37 @@ class MapMoveEndEvent extends _PositionedMapEvent<void> {
 
 /// 地图容器尺寸改变事件
 class MapResizedEvent extends MapEvent<Size> {
-  MapResizedEvent(int mapId, Size size) : super(mapId, size);
+  MapResizedEvent(super.mapId, super.size);
 }
 
 /// 地图缩放级别改变事件
 class ZoomChangeEvent extends MapEvent<double> {
-  ZoomChangeEvent(int mapId, double zoom) : super(mapId, zoom);
+  ZoomChangeEvent(super.mapId, super.zoom);
 }
 
 /// 地图缩放级别开始改变事件
 class ZoomChangeStartEvent extends MapEvent<double> {
-  ZoomChangeStartEvent(int mapId, double zoom) : super(mapId, zoom);
+  ZoomChangeStartEvent(super.mapId, super.zoom);
 }
 
 /// 地图缩放级别结束改变事件
 class ZoomChangeEndEvent extends MapEvent<double> {
-  ZoomChangeEndEvent(int mapId, double zoom) : super(mapId, zoom);
+  ZoomChangeEndEvent(super.mapId, super.zoom);
 }
 
 /// 地图旋转事件
 class RotateChangeEvent extends MapEvent<double> {
-  RotateChangeEvent(int mapId, double rotate) : super(mapId, rotate);
+  RotateChangeEvent(super.mapId, super.rotate);
 }
 
 /// 地图旋转开始事件
 class RotateChangeStartEvent extends MapEvent<double> {
-  RotateChangeStartEvent(int mapId, double rotate) : super(mapId, rotate);
+  RotateChangeStartEvent(super.mapId, super.rotate);
 }
 
 /// 地图旋转结束事件
 class RotateChangeEndEvent extends MapEvent<double> {
-  RotateChangeEndEvent(int mapId, double rotate) : super(mapId, rotate);
+  RotateChangeEndEvent(super.mapId, super.rotate);
 }
 
 /// 移动鼠标事件
@@ -128,7 +125,7 @@ class MouseMoveEvent extends _PositionedMapEvent<void> {
 
 /// 鼠标滚轮缩放地图事件
 class MouseWheelEvent extends MapEvent<double> {
-  MouseWheelEvent(int mapId, double zoom) : super(mapId, zoom);
+  MouseWheelEvent(super.mapId, super.zoom);
 }
 
 /// 鼠标移入地图容器内时触发事件
@@ -183,36 +180,32 @@ class TouchEndEvent extends _PositionedMapEvent<void> {
 
 /// 点击POI事件
 class PoiClickEvent extends MapEvent<Poi> {
-  PoiClickEvent(int mapId, Poi poi) : super(mapId, poi);
+  PoiClickEvent(super.mapId, super.poi);
 }
 
 /// 点击标记点事件
 class MarkerClickEvent extends MapEvent<String> {
-  MarkerClickEvent(int mapId, String markerId) : super(mapId, markerId);
+  MarkerClickEvent(super.mapId, super.markerId);
 }
 
 /// 开始拖动标记点事件
 class MarkerDragStartEvent extends _PositionedMapEvent<String> {
-  MarkerDragStartEvent(int mapId, Position position, String markerId)
-      : super(mapId, position, markerId);
+  MarkerDragStartEvent(super.mapId, super.position, super.markerId);
 }
 
 /// 拖动标记点事件
 class MarkerDragEvent extends _PositionedMapEvent<String> {
-  MarkerDragEvent(int mapId, Position position, String markerId)
-      : super(mapId, position, markerId);
+  MarkerDragEvent(super.mapId, super.position, super.markerId);
 }
 
 /// 结束拖动标记点事件
 class MarkerDragEndEvent extends _PositionedMapEvent<String> {
-  MarkerDragEndEvent(int mapId, Position position, String markerId)
-      : super(mapId, position, markerId);
+  MarkerDragEndEvent(super.mapId, super.position, super.markerId);
 }
 
 /// 用户位置改变事件
 class UserLocationChangeEvent extends MapEvent<Location> {
-  UserLocationChangeEvent(int mapId, Location location)
-      : super(mapId, location);
+  UserLocationChangeEvent(super.mapId, super.location);
 }
 
 /// 点击用户定位点事件

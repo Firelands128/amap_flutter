@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 /// 地图控件位置设置页面
 class MapControlsPositionPage extends StatefulWidget {
   /// 地图控件位置设置页面构造函数
-  const MapControlsPositionPage({Key? key}) : super(key: key);
+  const MapControlsPositionPage({super.key});
 
   /// 地图控件位置设置页面标题
   static const title = '地图控件位置';

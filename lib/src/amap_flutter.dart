@@ -3,7 +3,7 @@ part of '../amap_flutter.dart';
 /// 高德地图
 class AMapFlutter extends StatefulWidget {
   const AMapFlutter({
-    Key? key,
+    super.key,
     this.mapType,
     this.mapStyle,
     this.mapFeatures = const {"bg", "road", "point", "building"},
@@ -83,7 +83,7 @@ class AMapFlutter extends StatefulWidget {
     this.onMarkerDrag,
     this.onMarkerDragEnd,
     this.onUserLocationChange,
-  }) : super(key: key);
+  });
 
   /// 地图类型编号(iOS and Android Only)
   final MapType? mapType;

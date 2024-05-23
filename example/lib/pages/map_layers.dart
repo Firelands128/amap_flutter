@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// 图层显示页面
 class MapLayersPage extends StatefulWidget {
   /// 图层显示页面构造函数
-  const MapLayersPage({Key? key}) : super(key: key);
+  const MapLayersPage({super.key});
 
   /// 图层显示页面标题
   static const title = '地图图层显示';

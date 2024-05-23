@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 /// 地图限制区域页面
 class MapRestrictionPage extends StatefulWidget {
   /// 地图限制区域页面构造函数
-  const MapRestrictionPage({Key? key}) : super(key: key);
+  const MapRestrictionPage({super.key});
 
   /// 地图限制区域页面标题
   static const title = '地图限制区域';

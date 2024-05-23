@@ -23,7 +23,7 @@ void main() {
 /// 主程序
 class App extends StatefulWidget {
   /// 主程序构造函数
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   State<App> createState() => _AppState();
@@ -134,7 +134,7 @@ class Item extends StatelessWidget {
   final Widget Function(BuildContext) builder;
 
   /// 示例项目构造函数
-  const Item(this.title, this.builder, {Key? key}) : super(key: key);
+  const Item(this.title, this.builder, {super.key});
 
   @override
   Widget build(BuildContext context) {
