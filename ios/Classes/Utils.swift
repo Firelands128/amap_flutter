@@ -157,57 +157,67 @@ extension UIColor {
 
 extension UIControlPosition {
   func controlCenter(size: CGSize, bounds: CGRect) -> CGPoint {
-    let anchorPosition = switch self.anchor {
+    switch self.anchor {
       case .topLeft:
-        CGVectorMake(size.width / 2, size.height / 2)
+        let anchorPosition = CGVectorMake(size.width / 2, size.height / 2)
+        return CGPointMake(anchorPosition.dx + self.offset.x, anchorPosition.dy + self.offset.y)
       case .topCenter:
-        CGVectorMake(bounds.width / 2, size.height / 2)
+        let anchorPosition = CGVectorMake(bounds.width / 2, size.height / 2)
+        return CGPointMake(anchorPosition.dx + self.offset.x, anchorPosition.dy + self.offset.y)
       case .topRight:
-        CGVectorMake(bounds.width - size.width / 2 - 1, size.height / 2)
+        let anchorPosition = CGVectorMake(bounds.width - size.width / 2 - 1, size.height / 2)
+        return CGPointMake(anchorPosition.dx - self.offset.x, anchorPosition.dy + self.offset.y)
       case .centerLeft:
-        CGVectorMake(size.width / 2, bounds.height / 2)
+        let anchorPosition = CGVectorMake(size.width / 2, bounds.height / 2)
+        return CGPointMake(anchorPosition.dx + self.offset.x, anchorPosition.dy + self.offset.y)
       case .center:
-        CGVectorMake(bounds.width / 2, bounds.height / 2)
+        let anchorPosition = CGVectorMake(bounds.width / 2, bounds.height / 2)
+        return CGPointMake(anchorPosition.dx + self.offset.x, anchorPosition.dy + self.offset.y)
       case .centerRight:
-        CGVectorMake(bounds.width - size.width / 2 - 1, bounds.height / 2)
+        let anchorPosition = CGVectorMake(bounds.width - size.width / 2 - 1, bounds.height / 2)
+        return CGPointMake(anchorPosition.dx - self.offset.x, anchorPosition.dy + self.offset.y)
       case .bottomLeft:
-        CGVectorMake(size.width / 2, bounds.height - size.height / 2 - 1)
+        let anchorPosition = CGVectorMake(size.width / 2, bounds.height - size.height / 2 - 1)
+        return CGPointMake(anchorPosition.dx + self.offset.x, anchorPosition.dy - self.offset.y)
       case .bottomCenter:
-        CGVectorMake(bounds.width / 2, bounds.height - size.height / 2 - 1)
+        let anchorPosition = CGVectorMake(bounds.width / 2, bounds.height - size.height / 2 - 1)
+        return CGPointMake(anchorPosition.dx + self.offset.x, anchorPosition.dy - self.offset.y)
       case .bottomRight:
-        CGVectorMake(bounds.width - size.width / 2 - 1, bounds.height - size.height / 2 - 1)
+        let anchorPosition = CGVectorMake(bounds.width - size.width / 2 - 1, bounds.height - size.height / 2 - 1)
+        return CGPointMake(anchorPosition.dx - self.offset.x, anchorPosition.dy - self.offset.y)
     }
-    return CGPointMake(
-      anchorPosition.dx + self.offset.x,
-      anchorPosition.dy + self.offset.y
-    )
   }
 
   func controlOrigin(size: CGSize, bounds: CGRect) -> CGPoint {
-    let anchorPosition = switch self.anchor {
+    switch self.anchor {
       case .topLeft:
-        CGVectorMake(0, 0)
+        let anchorPosition = CGVectorMake(0, 0)
+        return CGPointMake(anchorPosition.dx + self.offset.x,anchorPosition.dy + self.offset.y)
       case .topCenter:
-        CGVectorMake(bounds.width / 2 - size.width / 2, 0)
+        let anchorPosition = CGVectorMake(bounds.width / 2 - size.width / 2, 0)
+        return CGPointMake(anchorPosition.dx + self.offset.x,anchorPosition.dy + self.offset.y)
       case .topRight:
-        CGVectorMake(bounds.width - size.width, 0)
+        let anchorPosition = CGVectorMake(bounds.width - size.width, 0)
+        return CGPointMake(anchorPosition.dx - self.offset.x,anchorPosition.dy + self.offset.y)
       case .centerLeft:
-        CGVectorMake(0, bounds.height / 2 - size.height / 2)
+        let anchorPosition = CGVectorMake(0, bounds.height / 2 - size.height / 2)
+        return CGPointMake(anchorPosition.dx + self.offset.x,anchorPosition.dy + self.offset.y)
       case .center:
-        CGVectorMake(bounds.width / 2 - size.width / 2, bounds.height / 2 - size.height / 2)
+        let anchorPosition = CGVectorMake(bounds.width / 2 - size.width / 2, bounds.height / 2 - size.height / 2)
+        return CGPointMake(anchorPosition.dx + self.offset.x,anchorPosition.dy + self.offset.y)
       case .centerRight:
-        CGVectorMake(bounds.width - size.width, bounds.height / 2 - size.height / 2)
+        let anchorPosition = CGVectorMake(bounds.width - size.width, bounds.height / 2 - size.height / 2)
+        return CGPointMake(anchorPosition.dx - self.offset.x,anchorPosition.dy + self.offset.y)
       case .bottomLeft:
-        CGVectorMake(0, bounds.height - size.height)
+        let anchorPosition = CGVectorMake(0, bounds.height - size.height)
+        return CGPointMake(anchorPosition.dx + self.offset.x,anchorPosition.dy - self.offset.y)
       case .bottomCenter:
-        CGVectorMake(bounds.width / 2 - size.width / 2, bounds.height - size.height)
+        let anchorPosition = CGVectorMake(bounds.width / 2 - size.width / 2, bounds.height - size.height)
+        return CGPointMake(anchorPosition.dx + self.offset.x,anchorPosition.dy - self.offset.y)
       case .bottomRight:
-        CGVectorMake(bounds.width - size.width, bounds.height - size.height)
+        let anchorPosition = CGVectorMake(bounds.width - size.width, bounds.height - size.height)
+        return CGPointMake(anchorPosition.dx - self.offset.x,anchorPosition.dy - self.offset.y)
     }
-    return CGPointMake(
-      anchorPosition.dx + self.offset.x,
-      anchorPosition.dy + self.offset.y
-    )
   }
 }
 
