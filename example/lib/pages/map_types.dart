@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:amap_flutter/amap_flutter.dart';
+import 'package:amap_flutter_example/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -69,8 +68,8 @@ class _MapTypesPageState extends State<MapTypesPage> {
       builder: (context) => SimpleDialog(
         children: [
           for (final item in types.entries)
-            if (Platform.isIOS ||
-                Platform.isAndroid && androidSupport[item.key]!)
+            if (PlatformUtil.isIOS ||
+                PlatformUtil.isAndroid && androidSupport[item.key]!)
               SimpleDialogOption(
                 onPressed: () {
                   setState(() => mapType = item.key);

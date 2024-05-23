@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:amap_flutter/amap_flutter.dart';
+import 'package:amap_flutter_example/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -37,14 +36,12 @@ class _MapControlsPageState extends State<MapControlsPage> {
   };
 
   List<Widget> get items {
-    Iterable<String> keys;
-    if (kIsWeb) {
-      keys = _state.keys;
-    } else if (Platform.isAndroid) {
-      keys = androidSupport;
-    } else {
-      keys = iOSSupport;
-    }
+    Iterable<String> keys = switch (PlatformUtil.platform) {
+      PlatformEnum.web => _state.keys,
+      PlatformEnum.android => androidSupport,
+      PlatformEnum.ios => iOSSupport,
+      PlatformEnum.unknown => [],
+    };
     return keys
         .map(
           (item) => Column(

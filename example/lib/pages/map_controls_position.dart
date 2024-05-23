@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:amap_flutter/amap_flutter.dart';
+import 'package:amap_flutter_example/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -76,14 +75,12 @@ class _MapControlsPositionPageState extends State<MapControlsPositionPage> {
               setState(fn);
             }
 
-            Iterable<String> keys;
-            if (kIsWeb) {
-              keys = webSupport;
-            } else if (Platform.isAndroid) {
-              keys = androidSupport;
-            } else {
-              keys = iOSSupport;
-            }
+            Iterable<String> keys = switch (PlatformUtil.platform) {
+              PlatformEnum.web => webSupport,
+              PlatformEnum.android => androidSupport,
+              PlatformEnum.ios => iOSSupport,
+              PlatformEnum.unknown => [],
+            };
             return SimpleDialog(
               title: const Center(
                 child: Text("地图控件位置设置"),
@@ -190,7 +187,7 @@ class _LabelControlPosition extends StatelessWidget {
     if (kIsWeb) {
       return webSupport;
     }
-    if (Platform.isAndroid) {
+    if (PlatformUtil.isAndroid) {
       if (name == _MapControlsPositionPageState.logo) {
         return androidLogoSupport;
       } else if (name == _MapControlsPositionPageState.zoom) {
