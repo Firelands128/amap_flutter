@@ -236,16 +236,16 @@ class AMapFlutter extends StatefulWidget {
   final void Function()? onMapCompleted;
 
   /// 当地图点击时触发该回调
-  final void Function(Position)? onMapPress;
+  final void Function(LatLng)? onMapPress;
 
   /// 当地图双击时触发该回调(Web only)
-  final void Function(Position)? onMapDoublePress;
+  final void Function(LatLng)? onMapDoublePress;
 
   /// 当地图右键点击时触发该回调(Web only)
-  final void Function(Position)? onMapRightPress;
+  final void Function(LatLng)? onMapRightPress;
 
   /// 当地图长按时触发该回调
-  final void Function(Position)? onMapLongPress;
+  final void Function(LatLng)? onMapLongPress;
 
   /// 当地图视野变化时触发该回调(Support iOS/Android)
   final void Function(CameraPosition)? onCameraChange;
@@ -257,13 +257,13 @@ class AMapFlutter extends StatefulWidget {
   final void Function(CameraPosition)? onCameraChangeFinish;
 
   /// 当地图平移开始时触发该回调
-  final void Function(Position)? onMapMoveStart;
+  final void Function(LatLng)? onMapMoveStart;
 
   /// 当地图平移时触发该回调
-  final void Function(Position)? onMapMove;
+  final void Function(LatLng)? onMapMove;
 
   /// 当地图平移结束时触发该回调
-  final void Function(Position)? onMapMoveEnd;
+  final void Function(LatLng)? onMapMoveEnd;
 
   /// 当地图容器尺寸改变时触发该回调
   final void Function(Size)? onMapResized;
@@ -287,40 +287,40 @@ class AMapFlutter extends StatefulWidget {
   final void Function(double)? onRotateChangeEnd;
 
   /// 当移动鼠标时触发该回调(Web only)
-  final void Function(Position)? onMouseMove;
+  final void Function(LatLng)? onMouseMove;
 
   /// 当鼠标滚轮缩放地图时触发该回调(Web only)
   final void Function(double)? onMouseWheel;
 
   /// 当鼠标移入地图容器内时触发时触发该回调(Web only)
-  final void Function(Position)? onMouseOver;
+  final void Function(LatLng)? onMouseOver;
 
   /// 当鼠标移出地图容器时触发时触发该回调(Web only)
-  final void Function(Position)? onMouseOut;
+  final void Function(LatLng)? onMouseOut;
 
   /// 当鼠标在地图上单击抬起时触发时触发该回调(Web only)
-  final void Function(Position)? onMouseUp;
+  final void Function(LatLng)? onMouseUp;
 
   /// 当鼠标在地图上单击按下时触发时触发该回调(Web only)
-  final void Function(Position)? onMouseDown;
+  final void Function(LatLng)? onMouseDown;
 
   /// 当开始拖拽地图时触发该回调(Web only)
-  final void Function(Position)? onDragStart;
+  final void Function(LatLng)? onDragStart;
 
   /// 当拖拽地图时触发该回调(Web only)
-  final void Function(Position)? onDragging;
+  final void Function(LatLng)? onDragging;
 
   /// 当停止拖拽地图时触发该回调(Web only)
-  final void Function(Position)? onDragEnd;
+  final void Function(LatLng)? onDragEnd;
 
   /// 当开始触摸地图时触发该回调(Web only)
-  final void Function(Position)? onTouchStart;
+  final void Function(LatLng)? onTouchStart;
 
   /// 当触摸移动地图时触发时触发该回调(Web only)
-  final void Function(Position)? onTouching;
+  final void Function(LatLng)? onTouching;
 
   /// 当停止触摸地图时触发该回调(Web only)
-  final void Function(Position)? onTouchEnd;
+  final void Function(LatLng)? onTouchEnd;
 
   /// 当点击地图上任意的POI时调用，方法会传入点击的POI信息
   final void Function(Poi)? onPoiClick;
@@ -329,13 +329,13 @@ class AMapFlutter extends StatefulWidget {
   final void Function(String markerId)? onMarkerClick;
 
   /// 当开始拖动点标记时触发该回调
-  final void Function(String markerId, Position position)? onMarkerDragStart;
+  final void Function(String markerId, LatLng position)? onMarkerDragStart;
 
   /// 当拖动点标记时触发该回调
-  final void Function(String markerId, Position position)? onMarkerDrag;
+  final void Function(String markerId, LatLng position)? onMarkerDrag;
 
   /// 当拖动点标记完成时触发该回调
-  final void Function(String markerId, Position position)? onMarkerDragEnd;
+  final void Function(String markerId, LatLng position)? onMarkerDragEnd;
 
   /// 当前位置改变时触发该回调
   final void Function(Location)? onUserLocationChange;

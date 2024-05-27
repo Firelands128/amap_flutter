@@ -185,7 +185,7 @@ class CameraPosition {
   });
 
   /// 地图视野的位置
-  Position? position;
+  LatLng? position;
 
   /// 地图视野的旋转角度
   double? heading;
@@ -198,7 +198,7 @@ class CameraPosition {
 
   Object encode() {
     return <Object?>[
-      position?.encode(),
+      position?.position.encode(),
       heading,
       skew,
       zoom,
@@ -208,7 +208,7 @@ class CameraPosition {
   static CameraPosition decode(List<Object?> result) {
     return CameraPosition(
       position: result[0] != null
-          ? Position.decode(result[0]! as List<Object?>)
+          ? Position.decode(result[0]! as List<Object?>).latLng
           : null,
       heading: result[1] as double?,
       skew: result[2] as double?,
@@ -294,7 +294,7 @@ class Location {
   });
 
   /// 定位点的位置
-  Position? position;
+  LatLng? position;
 
   /// 定位点的方向
   double? heading;
@@ -304,7 +304,7 @@ class Location {
 
   Object encode() {
     return <Object?>[
-      position?.encode(),
+      position?.position.encode(),
       heading,
       accuracy,
     ];
@@ -313,7 +313,7 @@ class Location {
   static Location decode(List<Object?> result) {
     return Location(
       position: result[0] != null
-          ? Position.decode(result[0]! as List<Object?>)
+          ? Position.decode(result[0]! as List<Object?>).latLng
           : null,
       heading: result[1] as double?,
       accuracy: result[2] as double?,
@@ -807,19 +807,19 @@ class Marker {
   String id;
 
   /// 标记点的位置
-  Position position;
+  LatLng position;
 
   Object encode() {
     return <Object?>[
       id,
-      position.encode(),
+      position.position.encode(),
     ];
   }
 
   static Marker decode(List<Object?> result) {
     return Marker(
       id: result[0]! as String,
-      position: Position.decode(result[1]! as List<Object?>),
+      position: Position.decode(result[1]! as List<Object?>).latLng,
     );
   }
 
@@ -845,19 +845,19 @@ class Poi {
   String name;
 
   /// 兴趣点的位置
-  Position position;
+  LatLng position;
 
   Object encode() {
     return <Object?>[
       name,
-      position.encode(),
+      position.position.encode(),
     ];
   }
 
   static Poi decode(List<Object?> result) {
     return Poi(
       name: result[0]! as String,
-      position: Position.decode(result[1]! as List<Object?>),
+      position: Position.decode(result[1]! as List<Object?>).latLng,
     );
   }
 

@@ -1,6 +1,7 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:amap_flutter_example/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 
 /// 地图视野调整页面
 class MapViewPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _MapViewPageState extends State<MapViewPage> {
   late AMapController controller;
   var animated = false;
   static final position1 = CameraPosition(
-    position: Position(latitude: 39.97837, longitude: 116.31363),
+    position: const LatLng(39.97837, 116.31363),
     zoom: 19,
     heading: 45,
     skew: 45,
@@ -49,7 +50,7 @@ class _MapViewPageState extends State<MapViewPage> {
       body: Stack(children: [
         AMapFlutter(
           initCameraPosition: CameraPosition(
-            position: Position(latitude: 39.984120, longitude: 116.307484),
+            position: const LatLng(39.984120, 116.307484),
             zoom: 17.2,
           ),
           onMapCreated: (controller) => this.controller = controller,
@@ -84,9 +85,9 @@ class _MapViewPageState extends State<MapViewPage> {
                   child: const Text(' 视野 3 '),
                   onPressed: () => controller.moveCameraToFitPosition(
                     [
-                      Position(latitude: 39.98437, longitude: 116.31863),
-                      Position(latitude: 39.98937, longitude: 116.32363),
-                      Position(latitude: 39.98037, longitude: 116.31163),
+                      const LatLng(39.98437, 116.31863),
+                      const LatLng(39.98937, 116.32363),
+                      const LatLng(39.98037, 116.31163),
                     ],
                     EdgePadding(
                       top: 0.2,

@@ -1,4 +1,5 @@
 import 'package:amap_flutter/amap_flutter.dart';
+import 'package:latlong2/latlong.dart';
 
 import 'js/js.dart';
 import 'utils.dart';
@@ -219,10 +220,10 @@ class AMapFlutterWebApi {
   }
 
   Future<void> moveCameraToFitPosition(
-      List<Position>? positions, EdgePadding padding, int duration) async {
+      List<LngLat>? positions, EdgePadding padding, int duration) async {
     final overlays = positions
         ?.map(
-            (position) => MarkerJS(MarkerOptions()..position = position.lngLat))
+            (position) => MarkerJS(MarkerOptions()..position = position))
         .toList();
     aMap.setFitView(overlays, duration == 0,
         [padding.top, padding.bottom, padding.left, padding.right]);
@@ -250,7 +251,7 @@ class AMapFlutterWebApi {
     }
   }
 
-  Future<void> updateMarker(String markerId, Position position) async {
+  Future<void> updateMarker(String markerId, LatLng position) async {
     removeMarker(markerId);
     addMarker(Marker(id: markerId, position: position));
   }

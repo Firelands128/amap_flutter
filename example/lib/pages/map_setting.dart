@@ -1,6 +1,7 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 
 /// 地图初始化设置页面
 class MapSettingPage extends StatefulWidget {
@@ -42,7 +43,7 @@ class _MapSettingPageState extends State<MapSettingPage> {
       body: configured
           ? AMapFlutter(
               initCameraPosition: CameraPosition(
-                position: Position(latitude: 39.984120, longitude: 116.307484),
+                position: const LatLng(39.984120, 116.307484),
                 zoom: 17.2,
               ),
               dragEnable: dragEnable,

@@ -1,6 +1,7 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 
 /// 地图样式切换页面
 class MapStylesPage extends StatefulWidget {
@@ -48,7 +49,7 @@ class _MapStylesPageState extends State<MapStylesPage> {
       ),
       body: AMapFlutter(
         initCameraPosition: CameraPosition(
-          position: Position(latitude: 39.984120, longitude: 116.307484),
+          position: const LatLng(39.984120, 116.307484),
           zoom: 17.2,
         ),
         mapStyle: mapStyle,

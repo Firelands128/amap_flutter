@@ -1,6 +1,7 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:amap_flutter_example/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 
 /// 地图控件加载页面
 class MapControlsPage extends StatefulWidget {
@@ -66,7 +67,7 @@ class _MapControlsPageState extends State<MapControlsPage> {
       appBar: AppBar(title: const Text(MapControlsPage.title)),
       body: AMapFlutter(
         initCameraPosition: CameraPosition(
-          position: Position(latitude: 39.984120, longitude: 116.307484),
+          position: const LatLng(39.984120, 116.307484),
           zoom: 17.2,
         ),
         compassControlEnabled: _state[compass]!,

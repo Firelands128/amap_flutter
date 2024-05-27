@@ -1,5 +1,6 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 
 import '../utils.dart';
 
@@ -30,7 +31,7 @@ class _MapEventsPageState extends State<MapEventsPage> {
       appBar: AppBar(title: const Text(MapEventsPage.title)),
       body: AMapFlutter(
         initCameraPosition: CameraPosition(
-          position: Position(latitude: 39.984120, longitude: 116.307484),
+          position: const LatLng(39.984120, 116.307484),
           zoom: 17.2,
         ),
         onMapInitComplete: () {
@@ -40,16 +41,16 @@ class _MapEventsPageState extends State<MapEventsPage> {
           debugPrint("onMapCompleted: ");
         },
         onMapPress: (position) {
-          debugPrint("onMapPress: ${position.encode()}");
+          debugPrint("onMapPress: ${position.toJson()}");
         },
         onMapDoublePress: (position) {
-          debugPrint("onMapDoublePress: ${position.encode()}");
+          debugPrint("onMapDoublePress: ${position.toJson()}");
         },
         onMapRightPress: (position) {
-          debugPrint("onMapRightPress: ${position.encode()}");
+          debugPrint("onMapRightPress: ${position.toJson()}");
         },
         onMapLongPress: (position) {
-          debugPrint("onMapLongPress: ${position.encode()}");
+          debugPrint("onMapLongPress: ${position.toJson()}");
         },
         onCameraChange: (cameraPosition) {
           debugPrint("onCameraChange: ${cameraPosition.encode()}");
@@ -61,13 +62,13 @@ class _MapEventsPageState extends State<MapEventsPage> {
           debugPrint("onCameraChangeFinish: ${cameraPosition.encode()}");
         },
         onMapMoveStart: (position) {
-          debugPrint("onMapMoveStart: ${position.encode()}");
+          debugPrint("onMapMoveStart: ${position.toJson()}");
         },
         onMapMove: (position) {
-          debugPrint("onMapMove: ${position.encode()}");
+          debugPrint("onMapMove: ${position.toJson()}");
         },
         onMapMoveEnd: (position) {
-          debugPrint("onMapMoveEnd: ${position.encode()}");
+          debugPrint("onMapMoveEnd: ${position.toJson()}");
         },
         onMapResized: (size) {
           debugPrint("onMapResized: ${size.encode()}");
@@ -91,40 +92,40 @@ class _MapEventsPageState extends State<MapEventsPage> {
           debugPrint("onRotateChangeEnd: $rotate");
         },
         onMouseMove: (position) {
-          debugPrint("onMouseMove: ${position.encode()}");
+          debugPrint("onMouseMove: ${position.toJson()}");
         },
         onMouseWheel: (zoom) {
           debugPrint("onMouseWheel: $zoom");
         },
         onMouseOver: (position) {
-          debugPrint("onMouseOver: ${position.encode()}");
+          debugPrint("onMouseOver: ${position.toJson()}");
         },
         onMouseOut: (position) {
-          debugPrint("onMouseOut: ${position.encode()}");
+          debugPrint("onMouseOut: ${position.toJson()}");
         },
         onMouseUp: (position) {
-          debugPrint("onMouseUp: ${position.encode()}");
+          debugPrint("onMouseUp: ${position.toJson()}");
         },
         onMouseDown: (position) {
-          debugPrint("onMouseDown: ${position.encode()}");
+          debugPrint("onMouseDown: ${position.toJson()}");
         },
         onDragStart: (position) {
-          debugPrint("onDragStart: ${position.encode()}");
+          debugPrint("onDragStart: ${position.toJson()}");
         },
         onDragging: (position) {
-          debugPrint("onDragging: ${position.encode()}");
+          debugPrint("onDragging: ${position.toJson()}");
         },
         onDragEnd: (position) {
-          debugPrint("onDragEnd: ${position.encode()}");
+          debugPrint("onDragEnd: ${position.toJson()}");
         },
         onTouchStart: (position) {
-          debugPrint("onTouchStart: ${position.encode()}");
+          debugPrint("onTouchStart: ${position.toJson()}");
         },
         onTouching: (position) {
-          debugPrint("onTouching: ${position.encode()}");
+          debugPrint("onTouching: ${position.toJson()}");
         },
         onTouchEnd: (position) {
-          debugPrint("onTouchEnd: ${position.encode()}");
+          debugPrint("onTouchEnd: ${position.toJson()}");
         },
         onPoiClick: (poi) {
           debugPrint("onPoiClick: ${poi.encode()}");
@@ -133,13 +134,13 @@ class _MapEventsPageState extends State<MapEventsPage> {
           debugPrint("onMarkerClick: $markerId");
         },
         onMarkerDragStart: (markerId, position) {
-          debugPrint("onMarkerDragStart: $markerId, ${position.encode()}");
+          debugPrint("onMarkerDragStart: $markerId, ${position.toJson()}");
         },
         onMarkerDrag: (markerId, position) {
-          debugPrint("onMarkerDrag: $markerId, ${position.encode()}");
+          debugPrint("onMarkerDrag: $markerId, ${position.toJson()}");
         },
         onMarkerDragEnd: (markerId, position) {
-          debugPrint("onMarkerDragEnd: $markerId, ${position.encode()}");
+          debugPrint("onMarkerDragEnd: $markerId, ${position.toJson()}");
         },
         onUserLocationChange: (location) {
           debugPrint("onUserLocationChange: ${location.encode()}");

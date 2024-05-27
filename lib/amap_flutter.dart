@@ -3,8 +3,10 @@ import "dart:async";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
+import "package:latlong2/latlong.dart";
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import "package:stream_transform/stream_transform.dart";
+import 'src/utils.dart';
 
 part "src/amap_flutter.dart";
 part 'src/controller.dart';

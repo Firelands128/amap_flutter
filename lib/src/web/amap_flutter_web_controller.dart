@@ -3,6 +3,7 @@ import 'dart:html';
 import 'dart:ui_web' as ui_web;
 
 import 'package:amap_flutter/amap_flutter.dart';
+import 'package:amap_flutter/src/utils.dart';
 
 import 'amap_flutter_web_api.dart';
 import 'js/js.dart';
@@ -213,7 +214,11 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
     int duration, {
     required int mapId,
   }) async {
-    _map(mapId).moveCameraToFitPosition(positions, padding, duration);
+    _map(mapId).moveCameraToFitPosition(
+      positions?.map((position) => position.lngLat).toList(),
+      padding,
+      duration,
+    );
   }
 
   @override
@@ -234,17 +239,17 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
     });
     markerJS.on("dragstart", (_) {
       mapEventStreamController.add(
-        MarkerDragStartEvent(mapId, marker.position, marker.id),
+        MarkerDragStartEvent(mapId, marker.position.position, marker.id),
       );
     });
     markerJS.on("dragging", (_) {
       mapEventStreamController.add(
-        MarkerDragEvent(mapId, marker.position, marker.id),
+        MarkerDragEvent(mapId, marker.position.position, marker.id),
       );
     });
     markerJS.on("dragend", (_) {
       mapEventStreamController.add(
-        MarkerDragEndEvent(mapId, marker.position, marker.id),
+        MarkerDragEndEvent(mapId, marker.position.position, marker.id),
       );
     });
   }
@@ -260,7 +265,7 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
     Position position, {
     required int mapId,
   }) async {
-    _map(mapId).updateMarker(markerId, position);
+    _map(mapId).updateMarker(markerId, position.latLng);
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 
 import '../utils.dart';
 
@@ -34,7 +35,7 @@ class _AddRemoveMarkerPageState extends State<AddRemoveMarkerPage> {
       appBar: AppBar(title: const Text(AddRemoveMarkerPage.title)),
       body: AMapFlutter(
         initCameraPosition: CameraPosition(
-          position: Position(latitude: 39.984120, longitude: 116.307484),
+          position: const LatLng(39.984120, 116.307484),
           zoom: 17.2,
         ),
         onMapCreated: (controller) => this.controller = controller,
@@ -48,7 +49,7 @@ class _AddRemoveMarkerPageState extends State<AddRemoveMarkerPage> {
     );
   }
 
-  void onTap(Position position) async {
+  void onTap(LatLng position) async {
     final String markerId = 'marker_id_${_markerIdCounter++}';
     final marker = Marker(
       id: markerId,

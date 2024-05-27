@@ -1,6 +1,13 @@
 import "package:amap_flutter/amap_flutter.dart";
+import 'package:latlong2/latlong.dart';
 
 import 'js/js.dart' as js;
+
+extension LatLng$Ext on LatLng {
+  js.LngLat get lngLat {
+    return js.LngLat(longitude, latitude);
+  }
+}
 
 extension Position$Ext on Position {
   js.LngLat get lngLat {
@@ -8,7 +15,11 @@ extension Position$Ext on Position {
   }
 }
 
-extension LatLng$Ext on js.LngLat {
+extension LngLat$Ext on js.LngLat {
+  LatLng get latLng {
+    return LatLng(lat.toDouble(), lng.toDouble());
+  }
+
   Position get position {
     return Position(latitude: lat.toDouble(), longitude: lng.toDouble());
   }
@@ -125,6 +136,6 @@ extension Marker$Ext on Marker {
 
 extension HotspotEvent$Ext on js.HotspotEvent {
   get poi {
-    return Poi(name: name, position: lnglat.position);
+    return Poi(name: name, position: lnglat.latLng);
   }
 }
