@@ -87,6 +87,16 @@ class Anchor {
       y: result[1]! as double,
     );
   }
+
+  Anchor copyWith({
+    double? x,
+    double? y,
+  }) {
+    return Anchor(
+      x: x ?? this.x,
+      y: y ?? this.y,
+    );
+  }
 }
 
 /// 高德地图api key
@@ -115,6 +125,16 @@ class ApiKey {
       androidKey: result[1] as String,
     );
   }
+
+  ApiKey copyWith({
+    String? iosKey,
+    String? androidKey,
+  }) {
+    return ApiKey(
+      iosKey: iosKey ?? this.iosKey,
+      androidKey: androidKey ?? this.androidKey,
+    );
+  }
 }
 
 /// 图片信息
@@ -141,6 +161,16 @@ class Bitmap {
     return Bitmap(
       asset: result[0] as String?,
       bytes: result[1] as Uint8List?,
+    );
+  }
+
+  Bitmap copyWith({
+    String? asset,
+    Uint8List? bytes,
+  }) {
+    return Bitmap(
+      asset: asset ?? this.asset,
+      bytes: bytes ?? this.bytes,
     );
   }
 }
@@ -185,6 +215,20 @@ class CameraPosition {
       zoom: result[3] as double?,
     );
   }
+
+  CameraPosition copyWith({
+    LatLng? position,
+    double? heading,
+    double? skew,
+    double? zoom,
+  }) {
+    return CameraPosition(
+      position: position ?? this.position,
+      heading: heading ?? this.heading,
+      skew: skew ?? this.skew,
+      zoom: zoom ?? this.zoom,
+    );
+  }
 }
 
 /// 视野边缘宽度
@@ -225,6 +269,20 @@ class EdgePadding {
       left: result[3]! as double,
     );
   }
+
+  EdgePadding copyWith({
+    double? top,
+    double? right,
+    double? bottom,
+    double? left,
+  }) {
+    return EdgePadding(
+      top: top ?? this.top,
+      right: right ?? this.right,
+      bottom: bottom ?? this.bottom,
+      left: left ?? this.left,
+    );
+  }
 }
 
 /// 定位点
@@ -259,6 +317,18 @@ class Location {
           : null,
       heading: result[1] as double?,
       accuracy: result[2] as double?,
+    );
+  }
+
+  Location copyWith({
+    LatLng? position,
+    double? heading,
+    double? accuracy,
+  }) {
+    return Location(
+      position: position ?? this.position,
+      heading: heading ?? this.heading,
+      accuracy: accuracy ?? this.accuracy,
     );
   }
 }
@@ -449,6 +519,69 @@ class MapInitConfig {
       skyColor: result[27] != null ? Color(result[27] as int) : null,
     );
   }
+
+  MapInitConfig copyWith({
+    MapType? mapType,
+    String? mapStyle,
+    CameraPosition? cameraPosition,
+    bool? dragEnable,
+    bool? zoomEnable,
+    bool? tiltEnable,
+    bool? rotateEnable,
+    bool? jogEnable,
+    bool? animateEnable,
+    bool? keyboardEnable,
+    bool? compassControlEnabled,
+    bool? scaleControlEnabled,
+    bool? zoomControlEnabled,
+    UIControlPosition? logoPosition,
+    bool? doubleClickZoom,
+    bool? scrollWheel,
+    bool? touchZoom,
+    bool? touchZoomCenter,
+    bool? isHotspot,
+    bool? showBuildingBlock,
+    bool? showLabel,
+    bool? showIndoorMap,
+    String? defaultCursor,
+    String? viewMode,
+    bool? terrain,
+    Color? wallColor,
+    Color? roofColor,
+    Color? skyColor,
+  }) {
+    return MapInitConfig(
+      mapType: mapType ?? this.mapType,
+      mapStyle: mapStyle ?? this.mapStyle,
+      cameraPosition: cameraPosition ?? this.cameraPosition,
+      dragEnable: dragEnable ?? this.dragEnable,
+      zoomEnable: zoomEnable ?? this.zoomEnable,
+      tiltEnable: tiltEnable ?? this.tiltEnable,
+      rotateEnable: rotateEnable ?? this.rotateEnable,
+      jogEnable: jogEnable ?? this.jogEnable,
+      animateEnable: animateEnable ?? this.animateEnable,
+      keyboardEnable: keyboardEnable ?? this.keyboardEnable,
+      compassControlEnabled:
+          compassControlEnabled ?? this.compassControlEnabled,
+      scaleControlEnabled: scaleControlEnabled ?? this.scaleControlEnabled,
+      zoomControlEnabled: zoomControlEnabled ?? this.zoomControlEnabled,
+      logoPosition: logoPosition ?? this.logoPosition,
+      doubleClickZoom: doubleClickZoom ?? this.doubleClickZoom,
+      scrollWheel: scrollWheel ?? this.scrollWheel,
+      touchZoom: touchZoom ?? this.touchZoom,
+      touchZoomCenter: touchZoomCenter ?? this.touchZoomCenter,
+      isHotspot: isHotspot ?? this.isHotspot,
+      showBuildingBlock: showBuildingBlock ?? this.showBuildingBlock,
+      showLabel: showLabel ?? this.showLabel,
+      showIndoorMap: showIndoorMap ?? this.showIndoorMap,
+      defaultCursor: defaultCursor ?? this.defaultCursor,
+      viewMode: viewMode ?? this.viewMode,
+      terrain: terrain ?? this.terrain,
+      wallColor: wallColor ?? this.wallColor,
+      roofColor: roofColor ?? this.roofColor,
+      skyColor: skyColor ?? this.skyColor,
+    );
+  }
 }
 
 /// 更新地图属性
@@ -607,6 +740,60 @@ class MapUpdateConfig {
           : null,
     );
   }
+
+  MapUpdateConfig copyWith({
+    MapType? mapType,
+    String? mapStyle,
+    List<String>? mapFeatures,
+    bool? dragEnable,
+    bool? zoomEnable,
+    bool? tiltEnable,
+    bool? rotateEnable,
+    bool? compassControlEnabled,
+    bool? scaleControlEnabled,
+    bool? zoomControlEnabled,
+    bool? hawkEyeControlEnabled,
+    bool? mapTypeControlEnabled,
+    UIControlPosition? logoPosition,
+    UIControlPosition? compassControlPosition,
+    UIControlPosition? scaleControlPosition,
+    UIControlPosition? zoomControlPosition,
+    bool? showTraffic,
+    bool? showBuildings,
+    bool? showIndoorMap,
+    bool? showSatelliteLayer,
+    bool? showRoadNetLayer,
+    UserLocationConfig? userLocationConfig,
+  }) {
+    return MapUpdateConfig(
+      mapType: mapType ?? this.mapType,
+      mapStyle: mapStyle ?? this.mapStyle,
+      mapFeatures: mapFeatures ?? this.mapFeatures,
+      dragEnable: dragEnable ?? this.dragEnable,
+      zoomEnable: zoomEnable ?? this.zoomEnable,
+      tiltEnable: tiltEnable ?? this.tiltEnable,
+      rotateEnable: rotateEnable ?? this.rotateEnable,
+      compassControlEnabled:
+          compassControlEnabled ?? this.compassControlEnabled,
+      scaleControlEnabled: scaleControlEnabled ?? this.scaleControlEnabled,
+      zoomControlEnabled: zoomControlEnabled ?? this.zoomControlEnabled,
+      hawkEyeControlEnabled:
+          hawkEyeControlEnabled ?? this.hawkEyeControlEnabled,
+      mapTypeControlEnabled:
+          mapTypeControlEnabled ?? this.mapTypeControlEnabled,
+      logoPosition: logoPosition ?? this.logoPosition,
+      compassControlPosition:
+          compassControlPosition ?? this.compassControlPosition,
+      scaleControlPosition: scaleControlPosition ?? this.scaleControlPosition,
+      zoomControlPosition: zoomControlPosition ?? this.zoomControlPosition,
+      showTraffic: showTraffic ?? this.showTraffic,
+      showBuildings: showBuildings ?? this.showBuildings,
+      showIndoorMap: showIndoorMap ?? this.showIndoorMap,
+      showSatelliteLayer: showSatelliteLayer ?? this.showSatelliteLayer,
+      showRoadNetLayer: showRoadNetLayer ?? this.showRoadNetLayer,
+      userLocationConfig: userLocationConfig ?? this.userLocationConfig,
+    );
+  }
 }
 
 /// 标记点配置属性
@@ -635,6 +822,16 @@ class Marker {
       position: Position.decode(result[1]! as List<Object?>),
     );
   }
+
+  Marker copyWith({
+    String? id,
+    LatLng? position,
+  }) {
+    return Marker(
+      id: id ?? this.id,
+      position: position ?? this.position,
+    );
+  }
 }
 
 /// 地图兴趣点
@@ -661,6 +858,16 @@ class Poi {
     return Poi(
       name: result[0]! as String,
       position: Position.decode(result[1]! as List<Object?>),
+    );
+  }
+
+  Poi copyWith({
+    String? name,
+    LatLng? position,
+  }) {
+    return Poi(
+      name: name ?? this.name,
+      position: position ?? this.position,
     );
   }
 }
@@ -694,6 +901,16 @@ class Position {
     return Position(
       latitude: result[0]! as double,
       longitude: result[1]! as double,
+    );
+  }
+
+  Position copyWith({
+    double? latitude,
+    double? longitude,
+  }) {
+    return Position(
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
     );
   }
 }
@@ -736,6 +953,20 @@ class Region {
       west: result[3]! as double,
     );
   }
+
+  Region copyWith({
+    double? north,
+    double? east,
+    double? south,
+    double? west,
+  }) {
+    return Region(
+      north: north ?? this.north,
+      east: east ?? this.east,
+      south: south ?? this.south,
+      west: west ?? this.west,
+    );
+  }
 }
 
 /// 对象的像素尺寸
@@ -759,6 +990,16 @@ class Size {
     return Size(
       width: result[0]! as double,
       height: result[1]! as double,
+    );
+  }
+
+  Size copyWith({
+    double? width,
+    double? height,
+  }) {
+    return Size(
+      width: width ?? this.width,
+      height: height ?? this.height,
     );
   }
 }
@@ -925,6 +1166,22 @@ class UserLocationStyle {
       lineWidth: result[3] as double?,
       image:
           result[4] != null ? Bitmap.decode(result[4]! as List<Object?>) : null,
+    );
+  }
+
+  UserLocationStyle copyWith({
+    UserLocationType? userLocationType,
+    Color? fillColor,
+    Color? strokeColor,
+    double? lineWidth,
+    Bitmap? image,
+  }) {
+    return UserLocationStyle(
+      userLocationType: userLocationType ?? this.userLocationType,
+      fillColor: fillColor ?? this.fillColor,
+      strokeColor: strokeColor ?? this.strokeColor,
+      lineWidth: lineWidth ?? this.lineWidth,
+      image: image ?? this.image,
     );
   }
 }
