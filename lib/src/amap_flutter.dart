@@ -247,13 +247,13 @@ class AMapFlutter extends StatefulWidget {
   /// 当地图长按时触发该回调
   final void Function(Position)? onMapLongPress;
 
-  /// 当地图视野变化时触发该回调
+  /// 当地图视野变化时触发该回调(Support iOS/Android)
   final void Function(CameraPosition)? onCameraChange;
 
-  /// 当地图视野开始变化时触发该回调
+  /// 当地图视野开始变化时触发该回调(Support iOS/Android)
   final void Function(CameraPosition)? onCameraChangeStart;
 
-  /// 当地图视野变化结束时触发该回调
+  /// 当地图视野变化结束时触发该回调(Support iOS/Android)
   final void Function(CameraPosition)? onCameraChangeFinish;
 
   /// 当地图平移开始时触发该回调
