@@ -1,3 +1,7 @@
+## 0.2.0
+
+Use "LatLng" from "latlong2" dependency in public apis.
+
 ## 0.1.0
 
 ! According to [Flutter issue #143922](https://github.com/flutter/flutter/issues/143922), 
