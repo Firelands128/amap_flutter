@@ -5,11 +5,10 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.amap.api.maps.AMapOptions
-import com.amap.api.maps.MapView
+import com.amap.api.maps.TextureMapView
 import com.amap.api.maps.model.Marker
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.platform.PlatformView
-
 
 class AMapFlutter(
   context: Context,
@@ -18,13 +17,13 @@ class AMapFlutter(
   lifecycleProvider: () -> Lifecycle?,
   args: HashMap<*, *>
 ) : PlatformView, DefaultLifecycleObserver {
-  private val mapView: MapView
+  private val mapView: TextureMapView
   private val locationSource = AMapLocationSource(context)
   val controller: AMapController
   val markers = mutableMapOf<String, Marker>()
   val aMapMarkerIdToDartMarkerId = mutableMapOf<String, String>()
 
-  override fun getView(): MapView {
+  override fun getView(): TextureMapView {
     return mapView
   }
 
@@ -45,7 +44,7 @@ class AMapFlutter(
       config.zoomControlEnabled?.let { mapOptions.zoomControlsEnabled(it) }
       config.logoPosition?.anchor?.toLogoPosition()?.let { mapOptions.logoPosition(it) }
     }
-    mapView = MapView(context, mapOptions)
+    mapView = TextureMapView(context, mapOptions)
     controller = AMapController(viewId, binding, AMapApi(this))
     lifecycleProvider()?.addObserver(this)
     mapView.map.setLocationSource(locationSource)
