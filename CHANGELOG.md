@@ -1,3 +1,7 @@
+## 0.2.1
+
+Change ```MapView``` to ```TextureMapView```.
+
 ## 0.2.0
 
 Use "LatLng" from "latlong2" dependency in public apis.
