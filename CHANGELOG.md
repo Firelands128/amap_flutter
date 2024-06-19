@@ -1,3 +1,7 @@
+## 0.2.2
+
+Change return type of "init" method of "AMapFlutter" to "Future".
+
 ## 0.2.1
 
 Change ```MapView``` to ```TextureMapView```.
