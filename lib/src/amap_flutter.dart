@@ -346,7 +346,7 @@ class AMapFlutter extends StatefulWidget {
   /// 初始化 SDK，显示地图前必须调用
   /// 请确保用户设置高德地图SDK API key
   /// 请确保用户同意高德地图SDK隐私协议
-  static void init({
+  static Future<void> init({
     required ApiKey apiKey,
     bool agreePrivacy = true,
   }) async {
