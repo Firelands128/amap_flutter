@@ -350,8 +350,8 @@ class AMapFlutter extends StatefulWidget {
     required ApiKey apiKey,
     bool agreePrivacy = true,
   }) async {
+    await AMapFlutterPlatformInterface.instance.setApiKey(apiKey);
     if (!kIsWeb) {
-      await AMapFlutterPlatformInterface.instance.setApiKey(apiKey);
       await AMapFlutterPlatformInterface.instance.agreePrivacy(agreePrivacy);
     }
   }

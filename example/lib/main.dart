@@ -37,6 +37,7 @@ class _AppState extends State<App> {
       apiKey: ApiKey(
         iosKey: "a4a1394fe817c2f86a424b897b4a9af4",
         androidKey: "d0065c21d2aedd0b234bfb7b88e5d6b2",
+        webKey: "fc9908dc4103f3d8274070bb34ab37af",
       ),
       agreePrivacy: true,
     );

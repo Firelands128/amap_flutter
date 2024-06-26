@@ -187,7 +187,24 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
 
   @override
   Future<void> setApiKey(ApiKey apiKey) async {
-    throw UnsupportedError('setApiKey() has not been supported on web.');
+    final uri = Uri(
+      scheme: "https",
+      host: "webapi.amap.com",
+      path: "/maps",
+      queryParameters: {
+        "v": "2.1Beta",
+        "key": apiKey.webKey,
+        "plugin":
+        "AMap.ToolBar,AMap.ControlBar,AMap.Scale,AMap.HawkEye,AMap.MapType,AMap.Geolocation"
+      },
+    );
+    final element = document.createElement("script");
+    element.attributes = {
+      "type": "text/javascript",
+      "charset": "utf-8",
+      "src": uri.toString(),
+    };
+    document.head?.append(element);
   }
 
   @override
