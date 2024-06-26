@@ -1,3 +1,9 @@
+## 0.3.0
+
+Add ```webKey``` property of ```ApiKey```.
+
+Asynchronously load JS API in ```setApiKey``` method of ```AMapFlutterWebController```.
+
 ## 0.2.2
 
 Change return type of "init" method of "AMapFlutter" to "Future".
