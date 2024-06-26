@@ -222,8 +222,7 @@ class AMapFlutterWebApi {
   Future<void> moveCameraToFitPosition(
       List<LngLat>? positions, EdgePadding padding, int duration) async {
     final overlays = positions
-        ?.map(
-            (position) => MarkerJS(MarkerOptions()..position = position))
+        ?.map((position) => MarkerJS(MarkerOptions()..position = position))
         .toList();
     aMap.setFitView(overlays, duration == 0,
         [padding.top, padding.bottom, padding.left, padding.right]);
