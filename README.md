@@ -21,16 +21,16 @@ Log in to the AMap Services console to get an API key at <https://console.amap.c
 
 ### Initializaition
 
-#### Android and iOS
-You have to set api key and agree privacy before build AMapFlutter by calling ```AMapFlutter.setApiKey()``` and ```AMapFlutter.agreePrivacy()```.
-
-#### Web platform
-* Add script element in ```index.html``` in example app to set version, apiKey, and plugins.
-
-```html
-<script type="text/javascript" 
-src="https://webapi.amap.com/maps?v=2.1Beta&key=/*apiKey*/
-&plugin=AMap.ToolBar,AMap.ControlBar,AMap.Scale,AMap.HawkEye,AMap.MapType,AMap.Geolocation"></script>
+Before using ```AMapFlutter``` widget, you have to call static method ```init``` of ```AMapFlutter```, for example:
+```dart
+AMapFlutter.init(
+  apiKey: ApiKey(
+    iosKey: "a4a1394fe817c2f86a424b897b4a9af4",
+    androidKey: "d0065c21d2aedd0b234bfb7b88e5d6b2",
+    webKey: "fc9908dc4103f3d8274070bb34ab37af",
+  ),
+  agreePrivacy: true,
+);
 ```
 
 ### Sample Usage
