@@ -11,7 +11,6 @@ import 'utils.dart';
 
 class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   final Map<int, AMapFlutterWebApi> _maps = <int, AMapFlutterWebApi>{};
-  final Completer<void> completer = Completer<void>();
 
   /// Accesses the AMapFlutterWebApi associated to the passed mapId.
   AMapFlutterWebApi _map(int mapId) {
@@ -24,6 +23,7 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
 
   @override
   Future<void> init(int mapId, AMapFlutter? aMapFlutter) async {
+    final Completer<void> completer = Completer<void>();
     AMapFlutterWebApi? map = _maps[mapId];
     if (map == null) {
       DivElement element =
@@ -32,20 +32,16 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
         (List mutations, ResizeObserver observer) {
           if (element.isConnected == true) {
             observer.disconnect();
-            onMapContainerAttached(mapId, aMapFlutter);
+            AMapFlutterWebApi map = AMapFlutterWebApi(mapId, aMapFlutter: aMapFlutter);
+            addListener(mapId, map.aMap);
+            _maps[mapId] = map;
+            completer.complete();
           }
         },
       );
       observer.observe(element);
     }
     return completer.future;
-  }
-
-  void onMapContainerAttached(int mapId, AMapFlutter? aMapFlutter) {
-    AMapFlutterWebApi map = AMapFlutterWebApi(mapId, aMapFlutter: aMapFlutter);
-    addListener(mapId, map.aMap);
-    _maps[mapId] = map;
-    completer.complete();
   }
 
   void addListener(int mapId, AMap map) {
@@ -187,6 +183,7 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
 
   @override
   Future<void> setApiKey(ApiKey apiKey) async {
+    final Completer<void> completer = Completer();
     final uri = Uri(
       scheme: "https",
       host: "webapi.amap.com",
@@ -199,12 +196,14 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
       },
     );
     final element = document.createElement("script");
+    element.addEventListener("load", (_) => completer.complete());
     element.attributes = {
       "type": "text/javascript",
       "charset": "utf-8",
       "src": uri.toString(),
     };
     document.head?.append(element);
+    return completer.future;
   }
 
   @override
