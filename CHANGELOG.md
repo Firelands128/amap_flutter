@@ -1,3 +1,9 @@
+## 0.3.1
+
+Make sure "amap" library is loaded when setting api key on web.
+
+Update README.md.
+
 ## 0.3.0
 
 Add ```webKey``` property of ```ApiKey```.
