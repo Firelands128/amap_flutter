@@ -186,14 +186,14 @@ class Bitmap {
 /// 地图视野
 class CameraPosition {
   CameraPosition({
-    this.position,
+    required this.position,
     this.heading,
     this.skew,
     this.zoom,
   });
 
   /// 地图视野的位置
-  LatLng? position;
+  LatLng position;
 
   /// 地图视野的旋转角度
   double? heading;
@@ -206,7 +206,7 @@ class CameraPosition {
 
   Object encode() {
     return <Object?>[
-      position?.position.encode(),
+      position.position.encode(),
       heading,
       skew,
       zoom,
@@ -215,9 +215,7 @@ class CameraPosition {
 
   static CameraPosition decode(List<Object?> result) {
     return CameraPosition(
-      position: result[0] != null
-          ? Position.decode(result[0]! as List<Object?>).latLng
-          : null,
+      position: Position.decode(result[0]! as List<Object?>).latLng,
       heading: result[1] as double?,
       skew: result[2] as double?,
       zoom: result[3] as double?,
@@ -296,13 +294,13 @@ class EdgePadding {
 /// 定位点
 class Location {
   Location({
-    this.position,
+    required this.position,
     this.heading,
     this.accuracy,
   });
 
   /// 定位点的位置
-  LatLng? position;
+  LatLng position;
 
   /// 定位点的方向
   double? heading;
@@ -312,7 +310,7 @@ class Location {
 
   Object encode() {
     return <Object?>[
-      position?.position.encode(),
+      position.position.encode(),
       heading,
       accuracy,
     ];
@@ -320,9 +318,7 @@ class Location {
 
   static Location decode(List<Object?> result) {
     return Location(
-      position: result[0] != null
-          ? Position.decode(result[0]! as List<Object?>).latLng
-          : null,
+      position: Position.decode(result[0]! as List<Object?>).latLng,
       heading: result[1] as double?,
       accuracy: result[2] as double?,
     );

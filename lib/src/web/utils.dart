@@ -42,7 +42,7 @@ extension AMapFlutter$Ext on AMapFlutter {
     final options = js.MapOptions();
     if (mapStyle != null) options.mapStyle = mapStyle as String;
     if (initCameraPosition?.position != null) {
-      options.center = initCameraPosition!.position!.lngLat;
+      options.center = initCameraPosition!.position.lngLat;
     }
     if (initCameraPosition?.zoom != null) {
       options.zoom = initCameraPosition!.zoom as num;
