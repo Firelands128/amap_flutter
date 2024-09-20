@@ -1,3 +1,7 @@
+## 0.3.2
+
+Make ```position``` of ```CameraPosition``` as un-nullable.
+
 ## 0.3.1
 
 Make sure "amap" library is loaded when setting api key on web.
