@@ -1,3 +1,9 @@
+## 0.4.0
+
+Use "geolocator" dependency instead of self defined "Position".
+
+Upgrade Android gradle configuration and iOS configuration.
+
 ## 0.3.2
 
 Make ```position``` of ```CameraPosition``` as un-nullable.
