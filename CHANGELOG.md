@@ -1,3 +1,7 @@
+## 0.4.1
+
+Include "latlong2" dependency in "amap_flutter" dependency.
+
 ## 0.4.0
 
 Use "geolocator" dependency instead of self defined "Position".
