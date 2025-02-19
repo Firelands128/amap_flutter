@@ -1,7 +1,6 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
 
 /// 地图显示要素页面
 class MapFeaturesPage extends StatefulWidget {

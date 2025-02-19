@@ -1,6 +1,5 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
 
 import '../utils.dart';
 

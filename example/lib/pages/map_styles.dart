@@ -1,7 +1,6 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
 
 /// 地图样式切换页面
 class MapStylesPage extends StatefulWidget {

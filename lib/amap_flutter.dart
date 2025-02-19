@@ -8,6 +8,8 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import "package:stream_transform/stream_transform.dart";
 import 'src/utils.dart';
 
+export 'package:latlong2/latlong.dart';
+
 part "src/amap_flutter.dart";
 part 'src/controller.dart';
 part 'src/errors.dart';

@@ -1,7 +1,6 @@
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
 
 /// 图层显示页面
 class MapLayersPage extends StatefulWidget {

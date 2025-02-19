@@ -1,6 +1,5 @@
 import "package:amap_flutter/amap_flutter.dart";
 import 'package:geolocator/geolocator.dart';
-import 'package:latlong2/latlong.dart';
 
 import 'js/js.dart' as js;
 
