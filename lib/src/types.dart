@@ -186,14 +186,14 @@ class Bitmap {
 /// 地图视野
 class CameraPosition {
   CameraPosition({
-    required this.position,
+    required this.latLng,
     this.heading,
     this.skew,
     this.zoom,
   });
 
   /// 地图视野的位置
-  LatLng position;
+  LatLng latLng;
 
   /// 地图视野的旋转角度
   double? heading;
@@ -206,7 +206,7 @@ class CameraPosition {
 
   Object encode() {
     return <Object?>[
-      position.position.encode(),
+      latLng.encode(),
       heading,
       skew,
       zoom,
@@ -215,7 +215,7 @@ class CameraPosition {
 
   static CameraPosition decode(List<Object?> result) {
     return CameraPosition(
-      position: Position.decode(result[0]! as List<Object?>).latLng,
+      latLng: LatLng$Ext.decode(result[0]! as List<Object?>),
       heading: result[1] as double?,
       skew: result[2] as double?,
       zoom: result[3] as double?,
@@ -223,13 +223,13 @@ class CameraPosition {
   }
 
   CameraPosition copyWith({
-    LatLng? position,
+    LatLng? latLng,
     double? heading,
     double? skew,
     double? zoom,
   }) {
     return CameraPosition(
-      position: position ?? this.position,
+      latLng: latLng ?? this.latLng,
       heading: heading ?? this.heading,
       skew: skew ?? this.skew,
       zoom: zoom ?? this.zoom,
@@ -294,13 +294,13 @@ class EdgePadding {
 /// 定位点
 class Location {
   Location({
-    required this.position,
+    required this.latLng,
     this.heading,
     this.accuracy,
   });
 
   /// 定位点的位置
-  LatLng position;
+  LatLng latLng;
 
   /// 定位点的方向
   double? heading;
@@ -310,7 +310,7 @@ class Location {
 
   Object encode() {
     return <Object?>[
-      position.position.encode(),
+      latLng.encode(),
       heading,
       accuracy,
     ];
@@ -318,19 +318,19 @@ class Location {
 
   static Location decode(List<Object?> result) {
     return Location(
-      position: Position.decode(result[0]! as List<Object?>).latLng,
+      latLng: LatLng$Ext.decode(result[0]! as List<Object?>),
       heading: result[1] as double?,
       accuracy: result[2] as double?,
     );
   }
 
   Location copyWith({
-    LatLng? position,
+    LatLng? latLng,
     double? heading,
     double? accuracy,
   }) {
     return Location(
-      position: position ?? this.position,
+      latLng: latLng ?? this.latLng,
       heading: heading ?? this.heading,
       accuracy: accuracy ?? this.accuracy,
     );
@@ -804,36 +804,36 @@ class MapUpdateConfig {
 class Marker {
   Marker({
     required this.id,
-    required this.position,
+    required this.latLng,
   });
 
   /// 标记点ID
   String id;
 
   /// 标记点的位置
-  LatLng position;
+  LatLng latLng;
 
   Object encode() {
     return <Object?>[
       id,
-      position.position.encode(),
+      latLng.encode(),
     ];
   }
 
   static Marker decode(List<Object?> result) {
     return Marker(
       id: result[0]! as String,
-      position: Position.decode(result[1]! as List<Object?>).latLng,
+      latLng: LatLng$Ext.decode(result[1]! as List<Object?>),
     );
   }
 
   Marker copyWith({
     String? id,
-    LatLng? position,
+    LatLng? latLng,
   }) {
     return Marker(
       id: id ?? this.id,
-      position: position ?? this.position,
+      latLng: latLng ?? this.latLng,
     );
   }
 }
@@ -842,79 +842,36 @@ class Marker {
 class Poi {
   Poi({
     required this.name,
-    required this.position,
+    required this.latLng,
   });
 
   /// 兴趣点的名称
   String name;
 
   /// 兴趣点的位置
-  LatLng position;
+  LatLng latLng;
 
   Object encode() {
     return <Object?>[
       name,
-      position.position.encode(),
+      latLng.encode(),
     ];
   }
 
   static Poi decode(List<Object?> result) {
     return Poi(
       name: result[0]! as String,
-      position: Position.decode(result[1]! as List<Object?>).latLng,
+      latLng: LatLng$Ext.decode(result[1]! as List<Object?>),
     );
   }
 
   Poi copyWith({
     String? name,
-    LatLng? position,
+    LatLng? latLng,
   }) {
     return Poi(
       name: name ?? this.name,
-      position: position ?? this.position,
-    );
-  }
-}
-
-/// 位置
-class Position {
-  Position({
-    required double latitude,
-    required double longitude,
-  })  : latitude =
-            latitude < -90.0 ? -90.0 : (latitude > 90.0 ? 90.0 : latitude),
-        longitude = longitude >= -180 && longitude < 180
-            ? longitude
-            : (longitude + 180.0) % 360.0 - 180.0;
-
-  /// 位置的纬度
-  double latitude;
-
-  /// 位置的经度
-  double longitude;
-
-  Object encode() {
-    return <Object?>[
-      latitude,
-      longitude,
-    ];
-  }
-
-  static Position decode(List<Object?> result) {
-    assert(result.length == 2);
-    return Position(
-      latitude: result[0]! as double,
-      longitude: result[1]! as double,
-    );
-  }
-
-  Position copyWith({
-    double? latitude,
-    double? longitude,
-  }) {
-    return Position(
-      latitude: latitude ?? this.latitude,
-      longitude: longitude ?? this.longitude,
+      latLng: latLng ?? this.latLng,
     );
   }
 }

@@ -17,6 +17,7 @@ dependencies:
   stream_transform: ^2.0.0
   js: ^0.7.1
   latlong2: ^0.9.1
+  geolocator: ^8.2.0
 
 dev_dependencies:
   flutter_test:

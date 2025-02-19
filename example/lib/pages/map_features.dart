@@ -44,7 +44,7 @@ class _MapFeaturesPageState extends State<MapFeaturesPage> {
       ),
       body: AMapFlutter(
         initCameraPosition: CameraPosition(
-          position: const LatLng(39.984120, 116.307484),
+          latLng: const LatLng(39.984120, 116.307484),
           zoom: 17.2,
         ),
         mapFeatures: mapFeatures,

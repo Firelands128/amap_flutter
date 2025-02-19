@@ -3,7 +3,7 @@ import 'dart:html';
 import 'dart:ui_web' as ui_web;
 
 import 'package:amap_flutter/amap_flutter.dart';
-import 'package:amap_flutter/src/utils.dart';
+import 'package:latlong2/latlong.dart';
 
 import 'amap_flutter_web_api.dart';
 import 'js/js.dart';
@@ -52,32 +52,32 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
     map.on(
       "click",
       (MapsEvent event) => mapEventStreamController
-          .add(MapPressEvent(mapId, event.lnglat.position)),
+          .add(MapPressEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "dblclick",
       (MapsEvent event) => mapEventStreamController
-          .add(MapDoublePressEvent(mapId, event.lnglat.position)),
+          .add(MapDoublePressEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "rightclick",
       (MapsEvent event) => mapEventStreamController
-          .add(MapRightPressEvent(mapId, event.lnglat.position)),
+          .add(MapRightPressEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "movestart",
       (_) => mapEventStreamController
-          .add(MapMoveStartEvent(mapId, map.getCenter().position)),
+          .add(MapMoveStartEvent(mapId, map.getCenter().latLng)),
     );
     map.on(
       "mapmove",
       (_) => mapEventStreamController
-          .add(MapMoveEvent(mapId, map.getCenter().position)),
+          .add(MapMoveEvent(mapId, map.getCenter().latLng)),
     );
     map.on(
       "moveend",
       (_) => mapEventStreamController
-          .add(MapMoveEndEvent(mapId, map.getCenter().position)),
+          .add(MapMoveEndEvent(mapId, map.getCenter().latLng)),
     );
     map.on(
       "resize",
@@ -117,7 +117,7 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
     map.on(
       "mousemove",
       (MapsEvent event) => mapEventStreamController
-          .add(MouseMoveEvent(mapId, event.lnglat.position)),
+          .add(MouseMoveEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "mousewheel",
@@ -127,52 +127,52 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
     map.on(
       "mouseover",
       (MapsEvent event) => mapEventStreamController
-          .add(MouseOverEvent(mapId, event.lnglat.position)),
+          .add(MouseOverEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "mouseout",
       (MapsEvent event) => mapEventStreamController
-          .add(MouseOutEvent(mapId, event.lnglat.position)),
+          .add(MouseOutEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "mouseup",
       (MapsEvent event) => mapEventStreamController
-          .add(MouseUpEvent(mapId, event.lnglat.position)),
+          .add(MouseUpEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "mousedown",
       (MapsEvent event) => mapEventStreamController
-          .add(MouseDownEvent(mapId, event.lnglat.position)),
+          .add(MouseDownEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "dragstart",
       (MapsEvent event) => mapEventStreamController
-          .add(DragStartEvent(mapId, event.lnglat.position)),
+          .add(DragStartEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "dragging",
       (MapsEvent event) => mapEventStreamController
-          .add(DraggingEvent(mapId, event.lnglat.position)),
+          .add(DraggingEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "dragend",
       (MapsEvent event) => mapEventStreamController
-          .add(DragEndEvent(mapId, event.lnglat.position)),
+          .add(DragEndEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "touchstart",
       (MapsEvent event) => mapEventStreamController
-          .add(TouchStartEvent(mapId, event.lnglat.position)),
+          .add(TouchStartEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "touchmove",
       (MapsEvent event) => mapEventStreamController
-          .add(TouchingEvent(mapId, event.lnglat.position)),
+          .add(TouchingEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "touchend",
       (MapsEvent event) => mapEventStreamController
-          .add(TouchEndEvent(mapId, event.lnglat.position)),
+          .add(TouchEndEvent(mapId, event.lnglat.latLng)),
     );
     map.on(
       "hotspotclick",
@@ -225,7 +225,7 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
 
   @override
   Future<void> moveCameraToFitPosition(
-    List<Position>? positions,
+    List<LatLng>? positions,
     EdgePadding padding,
     int duration, {
     required int mapId,
@@ -255,17 +255,17 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
     });
     markerJS.on("dragstart", (_) {
       mapEventStreamController.add(
-        MarkerDragStartEvent(mapId, marker.position.position, marker.id),
+        MarkerDragStartEvent(mapId, marker.latLng, marker.id),
       );
     });
     markerJS.on("dragging", (_) {
       mapEventStreamController.add(
-        MarkerDragEvent(mapId, marker.position.position, marker.id),
+        MarkerDragEvent(mapId, marker.latLng, marker.id),
       );
     });
     markerJS.on("dragend", (_) {
       mapEventStreamController.add(
-        MarkerDragEndEvent(mapId, marker.position.position, marker.id),
+        MarkerDragEndEvent(mapId, marker.latLng, marker.id),
       );
     });
   }
@@ -278,10 +278,10 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   @override
   Future<void> updateMarker(
     String markerId,
-    Position position, {
+    LatLng latLng, {
     required int mapId,
   }) async {
-    _map(mapId).updateMarker(markerId, position.latLng);
+    _map(mapId).updateMarker(markerId, latLng);
   }
 
   @override

@@ -67,7 +67,7 @@ class _MapControlsPageState extends State<MapControlsPage> {
       appBar: AppBar(title: const Text(MapControlsPage.title)),
       body: AMapFlutter(
         initCameraPosition: CameraPosition(
-          position: const LatLng(39.984120, 116.307484),
+          latLng: const LatLng(39.984120, 116.307484),
           zoom: 17.2,
         ),
         compassControlEnabled: _state[compass]!,

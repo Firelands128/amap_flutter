@@ -35,13 +35,13 @@ class _AddRemoveMarkerPageState extends State<AddRemoveMarkerPage> {
       appBar: AppBar(title: const Text(AddRemoveMarkerPage.title)),
       body: AMapFlutter(
         initCameraPosition: CameraPosition(
-          position: const LatLng(39.984120, 116.307484),
+          latLng: const LatLng(39.984120, 116.307484),
           zoom: 17.2,
         ),
         onMapCreated: (controller) => this.controller = controller,
         onMapPress: (position) => onTap(position),
         onMapLongPress: (position) => onTap(position),
-        onPoiClick: (poi) => onTap(poi.position),
+        onPoiClick: (poi) => onTap(poi.latLng),
         onMarkerClick: (markerId) => onMarkerClick(markerId),
         onMarkerDragEnd: (markerId, position) =>
             context.alert('${position.latitude}, ${position.longitude}'),
@@ -49,11 +49,11 @@ class _AddRemoveMarkerPageState extends State<AddRemoveMarkerPage> {
     );
   }
 
-  void onTap(LatLng position) async {
+  void onTap(LatLng latLng) async {
     final String markerId = 'marker_id_${_markerIdCounter++}';
     final marker = Marker(
       id: markerId,
-      position: position,
+      latLng: latLng,
     );
     markers[markerId] = marker;
     controller.addMarker(marker);

@@ -6,6 +6,8 @@ PODS:
     - Flutter
   - AMapFoundation (1.8.2)
   - Flutter (1.0.0)
+  - geolocator_apple (1.2.0):
+    - Flutter
   - integration_test (0.0.1):
     - Flutter
   - permission_handler_apple (9.3.0):
@@ -14,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - amap_flutter (from `.symlinks/plugins/amap_flutter/ios`)
   - Flutter (from `Flutter`)
+  - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
 
@@ -27,6 +30,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/amap_flutter/ios"
   Flutter:
     :path: Flutter
+  geolocator_apple:
+    :path: ".symlinks/plugins/geolocator_apple/ios"
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
   permission_handler_apple:
@@ -37,7 +42,8 @@ SPEC CHECKSUMS:
   amap_flutter: 002ff8f5eb991f9e4f1f8b4c3f2261669d58040c
   AMapFoundation: 9885c48fc3a78fdfb84a0299a2293e56ea3c9fec
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  integration_test: 13825b8a9334a850581300559b8839134b124670
+  geolocator_apple: 9bcea1918ff7f0062d98345d238ae12718acfbc1
+  integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796

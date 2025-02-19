@@ -128,7 +128,7 @@ class _MapControlsPositionPageState extends State<MapControlsPositionPage> {
           Expanded(
             child: AMapFlutter(
               initCameraPosition: CameraPosition(
-                position: const LatLng(39.984120, 116.307484),
+                latLng: const LatLng(39.984120, 116.307484),
                 zoom: 17.2,
               ),
               scaleControlEnabled: true,

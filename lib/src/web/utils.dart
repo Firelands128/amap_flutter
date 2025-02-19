@@ -1,4 +1,5 @@
 import "package:amap_flutter/amap_flutter.dart";
+import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 
 import 'js/js.dart' as js;
@@ -19,10 +20,6 @@ extension LngLat$Ext on js.LngLat {
   LatLng get latLng {
     return LatLng(lat.toDouble(), lng.toDouble());
   }
-
-  Position get position {
-    return Position(latitude: lat.toDouble(), longitude: lng.toDouble());
-  }
 }
 
 extension SizeJS$Ext on js.Size {
@@ -41,8 +38,8 @@ extension AMapFlutter$Ext on AMapFlutter {
   js.MapOptions get mapOptions {
     final options = js.MapOptions();
     if (mapStyle != null) options.mapStyle = mapStyle as String;
-    if (initCameraPosition?.position != null) {
-      options.center = initCameraPosition!.position.lngLat;
+    if (initCameraPosition?.latLng != null) {
+      options.center = initCameraPosition!.latLng.lngLat;
     }
     if (initCameraPosition?.zoom != null) {
       options.zoom = initCameraPosition!.zoom as num;
@@ -130,12 +127,12 @@ extension UIControlPosition$Ext on UIControlPosition {
 
 extension Marker$Ext on Marker {
   js.MarkerOptions get marker {
-    return js.MarkerOptions()..position = position.lngLat;
+    return js.MarkerOptions()..position = latLng.lngLat;
   }
 }
 
 extension HotspotEvent$Ext on js.HotspotEvent {
   get poi {
-    return Poi(name: name, position: lnglat.latLng);
+    return Poi(name: name, latLng: lnglat.latLng);
   }
 }
