@@ -88,12 +88,7 @@ class _MapViewPageState extends State<MapViewPage> {
                       const LatLng(39.98937, 116.32363),
                       const LatLng(39.98037, 116.31163),
                     ],
-                    EdgePadding(
-                      top: 0.2,
-                      right: 0.2,
-                      bottom: 0.2,
-                      left: 0.2,
-                    ),
+                    const EdgePadding.all(0.2),
                     duration,
                   ),
                 ),

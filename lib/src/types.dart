@@ -247,16 +247,41 @@ class EdgePadding {
   });
 
   /// 上边缘宽度
-  double top;
+  final double top;
 
   /// 右边缘宽度
-  double right;
+  final double right;
 
   /// 下边缘宽度
-  double bottom;
+  final double bottom;
 
   /// 左边缘宽度
-  double left;
+  final double left;
+
+  static const EdgePadding zero = EdgePadding.only();
+
+  const EdgePadding.fromLTRB(this.left, this.top, this.right, this.bottom);
+
+  const EdgePadding.all(double value)
+      : left = value,
+        top = value,
+        right = value,
+        bottom = value;
+
+  const EdgePadding.only({
+    this.left = 0.0,
+    this.top = 0.0,
+    this.right = 0.0,
+    this.bottom = 0.0,
+  });
+
+  const EdgePadding.symmetric({
+    double vertical = 0.0,
+    double horizontal = 0.0,
+  })  : left = horizontal,
+        top = vertical,
+        right = horizontal,
+        bottom = vertical;
 
   Object encode() {
     return <Object?>[
