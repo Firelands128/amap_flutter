@@ -18,9 +18,7 @@ class AMapController {
 
   void _connectStreams(int mapId) {
     if (_aMapFlutter.onMapInitComplete != null) {
-      AMapFlutterPlatformInterface.instance
-          .onMapInitComplete(mapId: mapId)
-          .listen(
+      AMapFlutterPlatformInterface.instance.onMapInitComplete(mapId: mapId).listen(
             (MapInitCompleteEvent e) => _aMapFlutter.onMapInitComplete!(),
           );
     }
@@ -37,38 +35,37 @@ class AMapController {
     if (_aMapFlutter.onMapDoublePress != null) {
       AMapFlutterPlatformInterface.instance
           .onMapDoublePress(mapId: mapId)
-          .listen((MapDoublePressEvent e) =>
-              _aMapFlutter.onMapDoublePress!(e.latLng));
+          .listen((MapDoublePressEvent e) => _aMapFlutter.onMapDoublePress!(e.latLng));
     }
     if (_aMapFlutter.onMapRightPress != null) {
       AMapFlutterPlatformInterface.instance
           .onMapRightPress(mapId: mapId)
-          .listen((MapRightPressEvent e) =>
-              _aMapFlutter.onMapRightPress!(e.latLng));
+          .listen((MapRightPressEvent e) => _aMapFlutter.onMapRightPress!(e.latLng));
     }
     if (_aMapFlutter.onMapLongPress != null) {
-      AMapFlutterPlatformInterface.instance.onMapLongPress(mapId: mapId).listen(
-          (MapLongPressEvent e) => _aMapFlutter.onMapLongPress!(e.latLng));
+      AMapFlutterPlatformInterface.instance
+          .onMapLongPress(mapId: mapId)
+          .listen((MapLongPressEvent e) => _aMapFlutter.onMapLongPress!(e.latLng));
     }
     if (_aMapFlutter.onCameraChange != null) {
-      AMapFlutterPlatformInterface.instance.onCameraChange(mapId: mapId).listen(
-          (CameraChangeEvent e) => _aMapFlutter.onCameraChange!(e.value));
+      AMapFlutterPlatformInterface.instance
+          .onCameraChange(mapId: mapId)
+          .listen((CameraChangeEvent e) => _aMapFlutter.onCameraChange!(e.value));
     }
     if (_aMapFlutter.onCameraChangeStart != null) {
       AMapFlutterPlatformInterface.instance
           .onCameraChangeStart(mapId: mapId)
-          .listen((CameraChangeStartEvent e) =>
-              _aMapFlutter.onCameraChangeStart!(e.value));
+          .listen((CameraChangeStartEvent e) => _aMapFlutter.onCameraChangeStart!(e.value));
     }
     if (_aMapFlutter.onCameraChangeFinish != null) {
       AMapFlutterPlatformInterface.instance
           .onCameraChangeFinish(mapId: mapId)
-          .listen((CameraChangeFinishEvent e) =>
-              _aMapFlutter.onCameraChangeFinish!(e.value));
+          .listen((CameraChangeFinishEvent e) => _aMapFlutter.onCameraChangeFinish!(e.value));
     }
     if (_aMapFlutter.onMapMoveStart != null) {
-      AMapFlutterPlatformInterface.instance.onMapMoveStart(mapId: mapId).listen(
-          (MapMoveStartEvent e) => _aMapFlutter.onMapMoveStart!(e.latLng));
+      AMapFlutterPlatformInterface.instance
+          .onMapMoveStart(mapId: mapId)
+          .listen((MapMoveStartEvent e) => _aMapFlutter.onMapMoveStart!(e.latLng));
     }
     if (_aMapFlutter.onMapMove != null) {
       AMapFlutterPlatformInterface.instance
@@ -76,12 +73,14 @@ class AMapController {
           .listen((MapMoveEvent e) => _aMapFlutter.onMapMove!(e.latLng));
     }
     if (_aMapFlutter.onMapMoveEnd != null) {
-      AMapFlutterPlatformInterface.instance.onMapMoveEnd(mapId: mapId).listen(
-          (MapMoveEndEvent e) => _aMapFlutter.onMapMoveEnd!(e.latLng));
+      AMapFlutterPlatformInterface.instance
+          .onMapMoveEnd(mapId: mapId)
+          .listen((MapMoveEndEvent e) => _aMapFlutter.onMapMoveEnd!(e.latLng));
     }
     if (_aMapFlutter.onMapResized != null) {
-      AMapFlutterPlatformInterface.instance.onMapResized(mapId: mapId).listen(
-          (MapResizedEvent event) => _aMapFlutter.onMapResized!(event.value));
+      AMapFlutterPlatformInterface.instance
+          .onMapResized(mapId: mapId)
+          .listen((MapResizedEvent event) => _aMapFlutter.onMapResized!(event.value));
     }
     if (_aMapFlutter.onZoomChange != null) {
       AMapFlutterPlatformInterface.instance
@@ -91,31 +90,27 @@ class AMapController {
     if (_aMapFlutter.onZoomChangeStart != null) {
       AMapFlutterPlatformInterface.instance
           .onZoomChangeStart(mapId: mapId)
-          .listen((ZoomChangeStartEvent e) =>
-              _aMapFlutter.onZoomChangeStart!(e.value));
+          .listen((ZoomChangeStartEvent e) => _aMapFlutter.onZoomChangeStart!(e.value));
     }
     if (_aMapFlutter.onZoomChangeEnd != null) {
-      AMapFlutterPlatformInterface.instance
-          .onZoomChangeEnd(mapId: mapId)
-          .listen(
+      AMapFlutterPlatformInterface.instance.onZoomChangeEnd(mapId: mapId).listen(
             (ZoomChangeEndEvent e) => _aMapFlutter.onZoomChangeEnd!(e.value),
           );
     }
     if (_aMapFlutter.onRotateChange != null) {
-      AMapFlutterPlatformInterface.instance.onRotateChange(mapId: mapId).listen(
-          (RotateChangeEvent e) => _aMapFlutter.onRotateChange!(e.value));
+      AMapFlutterPlatformInterface.instance
+          .onRotateChange(mapId: mapId)
+          .listen((RotateChangeEvent e) => _aMapFlutter.onRotateChange!(e.value));
     }
     if (_aMapFlutter.onRotateChangeStart != null) {
       AMapFlutterPlatformInterface.instance
           .onRotateChangeStart(mapId: mapId)
-          .listen((RotateChangeStartEvent e) =>
-              _aMapFlutter.onRotateChangeStart!(e.value));
+          .listen((RotateChangeStartEvent e) => _aMapFlutter.onRotateChangeStart!(e.value));
     }
     if (_aMapFlutter.onRotateChangeEnd != null) {
       AMapFlutterPlatformInterface.instance
           .onRotateChangeEnd(mapId: mapId)
-          .listen((RotateChangeEndEvent e) =>
-              _aMapFlutter.onRotateChangeEnd!(e.value));
+          .listen((RotateChangeEndEvent e) => _aMapFlutter.onRotateChangeEnd!(e.value));
     }
     if (_aMapFlutter.onMouseMove != null) {
       AMapFlutterPlatformInterface.instance
@@ -163,8 +158,9 @@ class AMapController {
           .listen((DragEndEvent e) => _aMapFlutter.onDragEnd!(e.latLng));
     }
     if (_aMapFlutter.onTouchStart != null) {
-      AMapFlutterPlatformInterface.instance.onTouchStart(mapId: mapId).listen(
-          (TouchStartEvent e) => _aMapFlutter.onTouchStart!(e.latLng));
+      AMapFlutterPlatformInterface.instance
+          .onTouchStart(mapId: mapId)
+          .listen((TouchStartEvent e) => _aMapFlutter.onTouchStart!(e.latLng));
     }
     if (_aMapFlutter.onTouching != null) {
       AMapFlutterPlatformInterface.instance
@@ -189,25 +185,22 @@ class AMapController {
     if (_aMapFlutter.onMarkerDragStart != null) {
       AMapFlutterPlatformInterface.instance
           .onMarkerDragStart(mapId: mapId)
-          .listen((MarkerDragStartEvent e) =>
-              _aMapFlutter.onMarkerDragStart!(e.value, e.latLng));
+          .listen((MarkerDragStartEvent e) => _aMapFlutter.onMarkerDragStart!(e.value, e.latLng));
     }
     if (_aMapFlutter.onMarkerDrag != null) {
-      AMapFlutterPlatformInterface.instance.onMarkerDrag(mapId: mapId).listen(
-          (MarkerDragEvent e) =>
-              _aMapFlutter.onMarkerDrag!(e.value, e.latLng));
+      AMapFlutterPlatformInterface.instance
+          .onMarkerDrag(mapId: mapId)
+          .listen((MarkerDragEvent e) => _aMapFlutter.onMarkerDrag!(e.value, e.latLng));
     }
     if (_aMapFlutter.onMarkerDragEnd != null) {
       AMapFlutterPlatformInterface.instance
           .onMarkerDragEnd(mapId: mapId)
-          .listen((MarkerDragEndEvent e) =>
-              _aMapFlutter.onMarkerDragEnd!(e.value, e.latLng));
+          .listen((MarkerDragEndEvent e) => _aMapFlutter.onMarkerDragEnd!(e.value, e.latLng));
     }
     if (_aMapFlutter.onUserLocationChange != null) {
       AMapFlutterPlatformInterface.instance
           .onUserLocationChange(mapId: mapId)
-          .listen((UserLocationChangeEvent e) =>
-              _aMapFlutter.onUserLocationChange!(e.value));
+          .listen((UserLocationChangeEvent e) => _aMapFlutter.onUserLocationChange!(e.value));
     }
   }
 
