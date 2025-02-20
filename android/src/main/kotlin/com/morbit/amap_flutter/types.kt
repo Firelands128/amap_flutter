@@ -170,31 +170,31 @@ data class CameraPosition(
 
 /** 视野边缘宽度 */
 data class EdgePadding(
+  /** 左边缘宽度 */
+  val left: Double
   /** 上边缘宽度 */
   val top: Double,
   /** 右边缘宽度 */
   val right: Double,
   /** 下边缘宽度 */
   val bottom: Double,
-  /** 左边缘宽度 */
-  val left: Double
 ) {
   companion object {
     fun fromList(list: List<Any?>): EdgePadding {
-      val top = list[0] as Double
-      val right = list[1] as Double
-      val bottom = list[2] as Double
-      val left = list[3] as Double
-      return EdgePadding(top, right, bottom, left)
+      val left = list[0] as Double
+      val top = list[1] as Double
+      val right = list[2] as Double
+      val bottom = list[3] as Double
+      return EdgePadding(left, top, right, bottom)
     }
   }
 
   fun toList(): List<Any?> {
     return listOf(
+      left,
       top,
       right,
       bottom,
-      left,
     )
   }
 }

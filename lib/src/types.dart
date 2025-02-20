@@ -240,78 +240,53 @@ class CameraPosition {
 /// 视野边缘宽度
 class EdgePadding {
   EdgePadding({
+    required this.left,
     required this.top,
     required this.right,
     required this.bottom,
-    required this.left,
   });
-
-  /// 上边缘宽度
-  final double top;
-
-  /// 右边缘宽度
-  final double right;
-
-  /// 下边缘宽度
-  final double bottom;
 
   /// 左边缘宽度
-  final double left;
+  double left;
 
-  static const EdgePadding zero = EdgePadding.only();
+  /// 上边缘宽度
+  double top;
 
-  const EdgePadding.fromLTRB(this.left, this.top, this.right, this.bottom);
+  /// 右边缘宽度
+  double right;
 
-  const EdgePadding.all(double value)
-      : left = value,
-        top = value,
-        right = value,
-        bottom = value;
-
-  const EdgePadding.only({
-    this.left = 0.0,
-    this.top = 0.0,
-    this.right = 0.0,
-    this.bottom = 0.0,
-  });
-
-  const EdgePadding.symmetric({
-    double vertical = 0.0,
-    double horizontal = 0.0,
-  })  : left = horizontal,
-        top = vertical,
-        right = horizontal,
-        bottom = vertical;
+  /// 下边缘宽度
+  double bottom;
 
   Object encode() {
     return <Object?>[
+      left,
       top,
       right,
       bottom,
-      left,
     ];
   }
 
   static EdgePadding decode(List<Object?> result) {
     return EdgePadding(
-      top: result[0]! as double,
-      right: result[1]! as double,
-      bottom: result[2]! as double,
-      left: result[3]! as double,
+      left: result[0]! as double,
+      top: result[1]! as double,
+      right: result[2]! as double,
+      bottom: result[3]! as double,
     );
   }
 
   EdgePadding copyWith({
+    double? left,
     double? top,
     double? right,
     double? bottom,
-    double? left,
   }) {
     return EdgePadding(
+      left: left ?? this.left,
       top: top ?? this.top,
       right: right ?? this.right,
       bottom: bottom ?? this.bottom,
-      left: left ?? this.left,
     );
   }
 }

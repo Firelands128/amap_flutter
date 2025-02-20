@@ -137,34 +137,34 @@ struct CameraPosition {
 
 /// 视野边缘宽度
 struct EdgePadding {
+  /// 左边缘宽度
+  var left: Double
   /// 上边缘宽度
   var top: Double
   /// 右边缘宽度
   var right: Double
   /// 下边缘宽度
   var bottom: Double
-  /// 左边缘宽度
-  var left: Double
 
   static func fromList(_ list: [Any?]) -> EdgePadding {
-    let top = list[0] as! Double
-    let right = list[1] as! Double
-    let bottom = list[2] as! Double
-    let left = list[3] as! Double
+    let left = list[0] as! Double
+    let top = list[1] as! Double
+    let right = list[2] as! Double
+    let bottom = list[3] as! Double
     return EdgePadding(
+      left: left,
       top: top,
       right: right,
-      bottom: bottom,
-      left: left
+      bottom: bottom
     )
   }
   
   func toList() -> [Any?] {
     return [
+      left,
       top,
       right,
       bottom,
-      left,
     ]
   }
 }
