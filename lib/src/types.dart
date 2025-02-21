@@ -343,6 +343,7 @@ class MapInitConfig {
     this.mapType,
     this.mapStyle,
     this.cameraPosition,
+    this.fitPositions,
     this.dragEnable,
     this.zoomEnable,
     this.tiltEnable,
@@ -378,6 +379,9 @@ class MapInitConfig {
 
   /// 地图视野
   final CameraPosition? cameraPosition;
+
+  /// 地图视野以适应位置
+  final List<Position>? fitPositions;
 
   /// 地图是否允许拖拽
   final bool? dragEnable;
@@ -459,6 +463,7 @@ class MapInitConfig {
       mapType?.index,
       mapStyle,
       cameraPosition?.encode(),
+      fitPositions?.map((position) => position.encode()).toList(),
       dragEnable,
       zoomEnable,
       tiltEnable,
@@ -495,32 +500,32 @@ class MapInitConfig {
       fitPositions: result[3] != null
           ? (result[3] as List).map((position) => Position.decode(position)).toList()
           : null,
-      dragEnable: result[3] as bool?,
-      zoomEnable: result[4] as bool?,
-      tiltEnable: result[5] as bool?,
-      rotateEnable: result[6] as bool?,
-      jogEnable: result[7] as bool?,
-      animateEnable: result[8] as bool?,
-      keyboardEnable: result[9] as bool?,
-      compassControlEnabled: result[10] as bool?,
-      scaleControlEnabled: result[11] as bool?,
-      zoomControlEnabled: result[12] as bool?,
+      dragEnable: result[4] as bool?,
+      zoomEnable: result[5] as bool?,
+      tiltEnable: result[6] as bool?,
+      rotateEnable: result[7] as bool?,
+      jogEnable: result[8] as bool?,
+      animateEnable: result[9] as bool?,
+      keyboardEnable: result[10] as bool?,
+      compassControlEnabled: result[11] as bool?,
+      scaleControlEnabled: result[12] as bool?,
+      zoomControlEnabled: result[13] as bool?,
       logoPosition:
-          result[13] != null ? UIControlPosition.decode(result[13]! as List<Object?>) : null,
-      doubleClickZoom: result[14] as bool?,
-      scrollWheel: result[15] as bool?,
-      touchZoom: result[16] as bool?,
-      touchZoomCenter: result[17] as bool?,
-      isHotspot: result[18] as bool?,
-      showBuildingBlock: result[19] as bool?,
-      showLabel: result[20] as bool?,
-      showIndoorMap: result[21] as bool?,
-      defaultCursor: result[22] as String?,
-      viewMode: result[23] as String?,
-      terrain: result[24] as bool?,
-      wallColor: result[25] != null ? Color(result[25] as int) : null,
-      roofColor: result[26] != null ? Color(result[26] as int) : null,
-      skyColor: result[27] != null ? Color(result[27] as int) : null,
+          result[14] != null ? UIControlPosition.decode(result[14]! as List<Object?>) : null,
+      doubleClickZoom: result[15] as bool?,
+      scrollWheel: result[16] as bool?,
+      touchZoom: result[17] as bool?,
+      touchZoomCenter: result[18] as bool?,
+      isHotspot: result[19] as bool?,
+      showBuildingBlock: result[20] as bool?,
+      showLabel: result[21] as bool?,
+      showIndoorMap: result[22] as bool?,
+      defaultCursor: result[23] as String?,
+      viewMode: result[24] as String?,
+      terrain: result[25] as bool?,
+      wallColor: result[26] != null ? Color(result[25] as int) : null,
+      roofColor: result[27] != null ? Color(result[26] as int) : null,
+      skyColor: result[28] != null ? Color(result[27] as int) : null,
     );
   }
 
@@ -528,6 +533,7 @@ class MapInitConfig {
     MapType? mapType,
     String? mapStyle,
     CameraPosition? cameraPosition,
+    List<Position>? fitPositions,
     bool? dragEnable,
     bool? zoomEnable,
     bool? tiltEnable,
@@ -558,6 +564,7 @@ class MapInitConfig {
       mapType: mapType ?? this.mapType,
       mapStyle: mapStyle ?? this.mapStyle,
       cameraPosition: cameraPosition ?? this.cameraPosition,
+      fitPositions: fitPositions ?? this.fitPositions,
       dragEnable: dragEnable ?? this.dragEnable,
       zoomEnable: zoomEnable ?? this.zoomEnable,
       tiltEnable: tiltEnable ?? this.tiltEnable,

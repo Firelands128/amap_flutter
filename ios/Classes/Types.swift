@@ -65,7 +65,7 @@ struct Anchor {
       y: y
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       x,
@@ -89,7 +89,7 @@ struct Bitmap {
       bytes: bytes
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       asset,
@@ -124,7 +124,7 @@ struct CameraPosition {
       zoom: zoom
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       position?.toList(),
@@ -158,7 +158,7 @@ struct EdgePadding {
       bottom: bottom
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       left,
@@ -191,7 +191,7 @@ struct Location {
       accuracy: accuracy
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       position?.toList(),
@@ -206,6 +206,7 @@ struct MapInitConfig {
   var mapType: MapType? = nil
   var mapStyle: String? = nil
   var cameraPosition: CameraPosition? = nil
+  var fitPositions: [Position]? = nil
   var dragEnable: Bool? = nil
   var zoomEnable: Bool? = nil
   var tiltEnable: Bool? = nil
@@ -242,47 +243,52 @@ struct MapInitConfig {
     if let cameraPositionList: [Any?] = nilOrValue(list[2]) {
       cameraPosition = CameraPosition.fromList(cameraPositionList)
     }
-    let dragEnable: Bool? = nilOrValue(list[3])
-    let zoomEnable: Bool? = nilOrValue(list[4])
-    let tiltEnable: Bool? = nilOrValue(list[5])
-    let rotateEnable: Bool? = nilOrValue(list[6])
-    let jogEnable: Bool? = nilOrValue(list[7])
-    let animateEnable: Bool? = nilOrValue(list[8])
-    let keyboardEnable: Bool? = nilOrValue(list[9])
-    let compassControlEnabled: Bool? = nilOrValue(list[10])
-    let scaleControlEnabled: Bool? = nilOrValue(list[11])
-    let zoomControlEnabled: Bool? = nilOrValue(list[12])
+    var fitPositions: [Position]? = nil
+    if let fitPositionsList: [[Any?]] = nilOrValue(list[3]) {
+      fitPositions = fitPositionsList.map({ position in Position.fromList(position) })
+    }
+    let dragEnable: Bool? = nilOrValue(list[4])
+    let zoomEnable: Bool? = nilOrValue(list[5])
+    let tiltEnable: Bool? = nilOrValue(list[6])
+    let rotateEnable: Bool? = nilOrValue(list[7])
+    let jogEnable: Bool? = nilOrValue(list[8])
+    let animateEnable: Bool? = nilOrValue(list[9])
+    let keyboardEnable: Bool? = nilOrValue(list[10])
+    let compassControlEnabled: Bool? = nilOrValue(list[11])
+    let scaleControlEnabled: Bool? = nilOrValue(list[12])
+    let zoomControlEnabled: Bool? = nilOrValue(list[13])
     var logoPosition: UIControlPosition? = nil
-    if let logoPositionList: [Any?] = nilOrValue(list[13]) {
+    if let logoPositionList: [Any?] = nilOrValue(list[14]) {
       logoPosition = UIControlPosition.fromList(logoPositionList)
     }
-    let doubleClickZoom: Bool? = nilOrValue(list[14])
-    let scrollWheel: Bool? = nilOrValue(list[15])
-    let touchZoom: Bool? = nilOrValue(list[16])
-    let touchZoomCenter: Bool? = nilOrValue(list[17])
-    let isHotspot: Bool? = nilOrValue(list[18])
-    let showBuildingBlock: Bool? = nilOrValue(list[19])
-    let showLabel: Bool? = nilOrValue(list[20])
-    let showIndoorMap: Bool? = nilOrValue(list[21])
-    let defaultCursor: String? = nilOrValue(list[22])
-    let viewMode: String? = nilOrValue(list[23])
-    let terrain: Bool? = nilOrValue(list[24])
+    let doubleClickZoom: Bool? = nilOrValue(list[15])
+    let scrollWheel: Bool? = nilOrValue(list[16])
+    let touchZoom: Bool? = nilOrValue(list[17])
+    let touchZoomCenter: Bool? = nilOrValue(list[18])
+    let isHotspot: Bool? = nilOrValue(list[19])
+    let showBuildingBlock: Bool? = nilOrValue(list[20])
+    let showLabel: Bool? = nilOrValue(list[21])
+    let showIndoorMap: Bool? = nilOrValue(list[22])
+    let defaultCursor: String? = nilOrValue(list[23])
+    let viewMode: String? = nilOrValue(list[24])
+    let terrain: Bool? = nilOrValue(list[25])
     var wallColor: UIColor? = nil
-    if let color: UInt = nilOrValue(list[25]) {
+    if let color: UInt = nilOrValue(list[26]) {
       wallColor = UIColor(hex: color)
     }
     var roofColor: UIColor? = nil
-    if let color: UInt = nilOrValue(list[26]) {
+    if let color: UInt = nilOrValue(list[27]) {
       roofColor = UIColor(hex: color)
     }
     var skyColor: UIColor? = nil
-    if let color: UInt = nilOrValue(list[27]) {
+    if let color: UInt = nilOrValue(list[28]) {
       skyColor = UIColor(hex: color)
     }
     return MapInitConfig(
       mapType: mapType,
       mapStyle: mapStyle,
       cameraPosition: cameraPosition,
+      fitPositions: fitPositions,
       dragEnable: dragEnable,
       zoomEnable: zoomEnable,
       tiltEnable: tiltEnable,
@@ -316,6 +322,7 @@ struct MapInitConfig {
       mapType?.rawValue,
       mapStyle,
       cameraPosition?.toList(),
+      fitPositions?.map({ position in position.toList() }),
       dragEnable,
       zoomEnable,
       tiltEnable,
@@ -480,7 +487,7 @@ struct Marker {
       position: position
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       id,
@@ -504,7 +511,7 @@ struct Poi {
       position: position
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       name,
@@ -528,7 +535,7 @@ struct Position {
       longitude: longitude
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       latitude,
@@ -560,7 +567,7 @@ struct Region {
       west: west
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       north,
@@ -610,7 +617,7 @@ struct UIControlOffset {
       y: y
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       x,
@@ -634,7 +641,7 @@ struct UIControlPosition {
       offset: offset
     )
   }
-  
+
   func toList() -> [Any?] {
     return [
       anchor.rawValue,

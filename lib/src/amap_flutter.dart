@@ -8,6 +8,7 @@ class AMapFlutter extends StatefulWidget {
     this.mapStyle,
     this.mapFeatures = const {"bg", "road", "point", "building"},
     this.initCameraPosition,
+    this.initFitPositions,
     this.dragEnable,
     this.zoomEnable,
     this.tiltEnable,
@@ -96,6 +97,9 @@ class AMapFlutter extends StatefulWidget {
 
   /// 地图初始视野
   final CameraPosition? initCameraPosition;
+
+  /// 地图初始视野以适应位置
+  final List<Position>? initFitPositions;
 
   /// 地图是否允许拖拽
   final bool? dragEnable;
@@ -378,6 +382,7 @@ class AMapFlutterState extends State<AMapFlutter> {
               mapType: widget.mapType,
               mapStyle: widget.mapStyle,
               cameraPosition: widget.initCameraPosition,
+              fitPositions: widget.initFitPositions,
               dragEnable: widget.dragEnable,
               zoomEnable: widget.zoomEnable,
               tiltEnable: widget.tiltEnable,
@@ -416,6 +421,7 @@ class AMapFlutterState extends State<AMapFlutter> {
               mapType: widget.mapType,
               mapStyle: widget.mapStyle,
               cameraPosition: widget.initCameraPosition,
+              fitPositions: widget.initFitPositions,
               dragEnable: widget.dragEnable,
               zoomEnable: widget.zoomEnable,
               tiltEnable: widget.tiltEnable,
@@ -589,6 +595,14 @@ class AMapFlutterState extends State<AMapFlutter> {
       if (widget.initCameraPosition != null) {
         AMapFlutterPlatformInterface.instance.moveCamera(
           widget.initCameraPosition!,
+          0,
+          mapId: mapId,
+        );
+      }
+      if (widget.initFitPositions != null) {
+        AMapFlutterPlatformInterface.instance.moveCameraToFitPosition(
+          widget.initFitPositions,
+          EdgePadding$Ext.all(0.2),
           0,
           mapId: mapId,
         );
