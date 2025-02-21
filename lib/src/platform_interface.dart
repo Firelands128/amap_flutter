@@ -217,7 +217,7 @@ abstract class AMapFlutterPlatformInterface extends PlatformInterface {
 
   /// 移动地图视野到包含一组坐标点的某个地图区域
   Future<void> moveCameraToFitPosition(
-    List<LatLng>? positions,
+    List<Position>? positions,
     EdgePadding padding,
     int duration, {
     required int mapId,
@@ -251,7 +251,7 @@ abstract class AMapFlutterPlatformInterface extends PlatformInterface {
   /// 更新标记点
   Future<void> updateMarker(
     String markerId,
-    LatLng latLng, {
+    Position position, {
     required int mapId,
   }) {
     throw UnimplementedError(

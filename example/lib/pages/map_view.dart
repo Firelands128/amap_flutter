@@ -18,7 +18,7 @@ class _MapViewPageState extends State<MapViewPage> {
   late AMapController controller;
   var animated = false;
   static final position1 = CameraPosition(
-    latLng: const LatLng(39.97837, 116.31363),
+    position: Position(latitude: 39.97837, longitude: 116.31363),
     zoom: 19,
     heading: 45,
     skew: 45,
@@ -49,7 +49,7 @@ class _MapViewPageState extends State<MapViewPage> {
       body: Stack(children: [
         AMapFlutter(
           initCameraPosition: CameraPosition(
-            latLng: const LatLng(39.984120, 116.307484),
+            position: Position(latitude: 39.984120, longitude: 116.307484),
             zoom: 17.2,
           ),
           onMapCreated: (controller) => this.controller = controller,
@@ -84,11 +84,16 @@ class _MapViewPageState extends State<MapViewPage> {
                   child: const Text(' 视野 3 '),
                   onPressed: () => controller.moveCameraToFitPosition(
                     [
-                      const LatLng(39.98437, 116.31863),
-                      const LatLng(39.98937, 116.32363),
-                      const LatLng(39.98037, 116.31163),
+                      Position(latitude: 39.98437, longitude: 116.31863),
+                      Position(latitude: 39.98937, longitude: 116.32363),
+                      Position(latitude: 39.98037, longitude: 116.31163),
                     ],
-                    const EdgePadding.all(0.2),
+                    EdgePadding(
+                      left: 0.2,
+                      top: 0.2,
+                      right: 0.2,
+                      bottom: 0.2,
+                    ),
                     duration,
                   ),
                 ),

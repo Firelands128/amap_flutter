@@ -46,7 +46,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MapPressEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -54,7 +54,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MapDoublePressEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -62,7 +62,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MapRightPressEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -70,7 +70,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MapLongPressEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -102,7 +102,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MapMoveStartEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -110,7 +110,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MapMoveEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -118,7 +118,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MapMoveEndEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -182,7 +182,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MouseMoveEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -198,7 +198,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MouseOverEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -206,7 +206,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MouseOutEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -214,7 +214,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MouseUpEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -222,7 +222,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MouseDownEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -230,7 +230,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(DragStartEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -238,7 +238,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(DraggingEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -246,7 +246,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(DragEndEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -254,7 +254,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(TouchStartEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -262,7 +262,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(TouchingEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -270,7 +270,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(TouchEndEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
         ));
         break;
 
@@ -293,7 +293,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MarkerDragStartEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
           arguments["markerId"] as String,
         ));
         break;
@@ -301,7 +301,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MarkerDragEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
           arguments["markerId"] as String,
         ));
         break;
@@ -309,7 +309,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
         final Map<String, Object?> arguments = _getArgumentDictionary(call);
         mapEventStreamController.add(MarkerDragEndEvent(
           mapId,
-          arguments["position"] as LatLng,
+          arguments["position"] as Position,
           arguments["markerId"] as String,
         ));
         break;
@@ -398,7 +398,7 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
   /// 移动地图视野到包含一组坐标点的某个地图区域
   @override
   Future<void> moveCameraToFitPosition(
-    List<LatLng>? positions,
+    List<Position>? positions,
     EdgePadding padding,
     int duration, {
     required int mapId,
@@ -456,14 +456,14 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
   @override
   Future<void> updateMarker(
     String markerId,
-    LatLng latLng, {
+    Position position, {
     required int mapId,
   }) {
     return _channel(mapId).invokeMethod(
       "updateMarker",
       <String, dynamic>{
         "markerId": markerId,
-        "position": latLng,
+        "position": position,
       },
     );
   }
@@ -545,7 +545,7 @@ class _AMapApiCodec extends StandardMessageCodec {
     } else if (value is Poi) {
       buffer.putUint8(139);
       writeValue(buffer, value.encode());
-    } else if (value is LatLng) {
+    } else if (value is Position) {
       buffer.putUint8(140);
       writeValue(buffer, value.encode());
     } else if (value is Region) {
@@ -599,7 +599,7 @@ class _AMapApiCodec extends StandardMessageCodec {
       case 139:
         return Poi.decode(readValue(buffer) as List<Object?>);
       case 140:
-        return LatLng$Ext.decode(readValue(buffer) as List<Object?>);
+        return Position.decode(readValue(buffer) as List<Object?>);
       case 141:
         return Region.decode(readValue(buffer) as List<Object?>);
       case 142:

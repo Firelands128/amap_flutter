@@ -59,7 +59,7 @@ class _MapLayersPageState extends State<MapLayersPage> {
       appBar: AppBar(title: const Text(MapLayersPage.title)),
       body: AMapFlutter(
         initCameraPosition: CameraPosition(
-          latLng: const LatLng(39.984120, 116.307484),
+          position: Position(latitude: 39.984120, longitude: 116.307484),
           zoom: 17.2,
         ),
         showTraffic: _state[traffic],

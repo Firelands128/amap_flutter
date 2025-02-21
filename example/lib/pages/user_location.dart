@@ -27,7 +27,7 @@ class _UserLocationPageState extends State<UserLocationPage> {
               Location location = await controller.getUserLocation();
               controller.moveCamera(
                 CameraPosition(
-                  latLng: location.latLng,
+                  position: location.position,
                   heading: location.heading,
                   zoom: 13,
                 ),
@@ -41,7 +41,7 @@ class _UserLocationPageState extends State<UserLocationPage> {
         showUserLocation: true,
         onUserLocationChange: (location) {
           debugPrint(
-            '${location.latLng?.latitude}, ${location.latLng?.longitude}',
+            '${location.position.latitude}, ${location.position.longitude}',
           );
         },
         onMapCreated: (controller) async {

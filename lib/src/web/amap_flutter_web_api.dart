@@ -207,7 +207,7 @@ class AMapFlutterWebApi {
   Future<void> moveCamera(CameraPosition position, int duration) async {
     aMap.setZoomAndCenter(
       position.zoom,
-      position.latLng.lngLat,
+      position.position.lngLat,
       duration == 0,
       duration,
     );
@@ -246,9 +246,9 @@ class AMapFlutterWebApi {
     }
   }
 
-  Future<void> updateMarker(String markerId, LatLng latLng) async {
+  Future<void> updateMarker(String markerId, Position position) async {
     removeMarker(markerId);
-    addMarker(Marker(id: markerId, latLng: latLng));
+    addMarker(Marker(id: markerId, position: position));
   }
 
   Future<Location> getUserLocation() async {

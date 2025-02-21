@@ -1,5 +1,5 @@
 import "package:amap_flutter/amap_flutter.dart";
-import 'package:geolocator/geolocator.dart';
+import 'package:amap_flutter/src/utils.dart';
 
 import 'js/js.dart' as js;
 
@@ -37,8 +37,8 @@ extension AMapFlutter$Ext on AMapFlutter {
   js.MapOptions get mapOptions {
     final options = js.MapOptions();
     if (mapStyle != null) options.mapStyle = mapStyle as String;
-    if (initCameraPosition?.latLng != null) {
-      options.center = initCameraPosition!.latLng.lngLat;
+    if (initCameraPosition?.position != null) {
+      options.center = initCameraPosition!.position.lngLat;
     }
     if (initCameraPosition?.zoom != null) {
       options.zoom = initCameraPosition!.zoom as num;
@@ -126,12 +126,12 @@ extension UIControlPosition$Ext on UIControlPosition {
 
 extension Marker$Ext on Marker {
   js.MarkerOptions get marker {
-    return js.MarkerOptions()..position = latLng.lngLat;
+    return js.MarkerOptions()..position = position.lngLat;
   }
 }
 
 extension HotspotEvent$Ext on js.HotspotEvent {
   get poi {
-    return Poi(name: name, latLng: lnglat.latLng);
+    return Poi(name: name, position: lnglat.latLng.position);
   }
 }
