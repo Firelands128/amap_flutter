@@ -1,5 +1,6 @@
 import "dart:async";
 
+import "package:amap_flutter/src/message_codec.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';

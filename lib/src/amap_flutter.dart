@@ -410,7 +410,7 @@ class AMapFlutterState extends State<AMapFlutter> {
               skyColor: widget.skyColor,
             ).encode(),
           },
-          creationParamsCodec: const _AMapApiCodec(),
+          creationParamsCodec: const AMapApiCodec(),
           onPlatformViewCreated: _onPlatformViewCreated,
         );
       case TargetPlatform.iOS:
@@ -447,7 +447,7 @@ class AMapFlutterState extends State<AMapFlutter> {
               skyColor: widget.skyColor,
             ).encode(),
           },
-          creationParamsCodec: const _AMapApiCodec(),
+          creationParamsCodec: const AMapApiCodec(),
           onPlatformViewCreated: _onPlatformViewCreated,
         );
       default:
