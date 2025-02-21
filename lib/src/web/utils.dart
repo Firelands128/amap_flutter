@@ -1,5 +1,4 @@
 import "package:amap_flutter/amap_flutter.dart";
-import 'package:amap_flutter/src/utils.dart';
 
 import 'js/js.dart' as js;
 

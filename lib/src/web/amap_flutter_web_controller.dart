@@ -3,7 +3,6 @@ import 'dart:html';
 import 'dart:ui_web' as ui_web;
 
 import 'package:amap_flutter/amap_flutter.dart';
-import 'package:amap_flutter/src/utils.dart';
 
 import 'amap_flutter_web_api.dart';
 import 'js/js.dart';
