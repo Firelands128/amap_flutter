@@ -374,7 +374,7 @@ class MapInitConfig {
   /// 设置地图类型
   final MapType? mapType;
 
-  /// 设置地图的显示样式
+  /// 设置地图的显示样式(Web Only)
   final String? mapStyle;
 
   /// 地图视野
