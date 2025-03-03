@@ -110,6 +110,7 @@ class AMapController(viewId: Int, binding: FlutterPluginBinding, private val api
 
   /// 当地图加载完成时触发该回调
   fun onMapCompleted() {
+    api.initMap()
     channel.invokeMethod(
       "onMapCompleted",
       null,

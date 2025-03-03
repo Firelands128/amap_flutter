@@ -31,8 +31,9 @@ class AMapFlutter(
 
   init {
     val mapOptions = AMapOptions()
+    var config: MapInitConfig? = null
     if (args["options"] != null) {
-      val config = MapInitConfig.fromList(args["options"] as List<Any?>)
+      config = MapInitConfig.fromList(args["options"] as List<Any?>)
       config.mapType?.toMapType()?.let { mapOptions.mapType(it) }
       config.cameraPosition?.toCameraPosition()?.let { mapOptions.camera(it) }
       config.dragEnable?.let { mapOptions.scrollGesturesEnabled(it) }
@@ -45,7 +46,7 @@ class AMapFlutter(
       config.logoPosition?.anchor?.toLogoPosition()?.let { mapOptions.logoPosition(it) }
     }
     mapView = TextureMapView(context, mapOptions)
-    controller = AMapController(viewId, binding, AMapApi(this))
+    controller = AMapController(viewId, binding, AMapApi(this, config))
     lifecycleProvider()?.addObserver(this)
     mapView.map.setLocationSource(locationSource)
     setTencentMapListener()

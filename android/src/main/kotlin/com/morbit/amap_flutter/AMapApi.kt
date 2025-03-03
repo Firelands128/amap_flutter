@@ -3,8 +3,18 @@ package com.morbit.amap_flutter
 import com.amap.api.maps.CameraUpdateFactory
 import com.amap.api.maps.model.LatLngBounds
 
-class AMapApi(private val amap: AMapFlutter) {
+class AMapApi(private val amap: AMapFlutter, private val config: MapInitConfig?) {
   private val mapView = amap.view
+
+  fun initMap() {
+    config?.fitPositions?.let { positions ->
+      val latLngBoundsBuilder = LatLngBounds.builder()
+      positions.forEach { latLngBoundsBuilder.include(it.toPosition()) }
+      val latLngBounds = latLngBoundsBuilder.build()
+      val cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, 0)
+      mapView.map.moveCamera(cameraUpdate)
+    }
+  }
 
   fun updateMapConfig(config: MapUpdateConfig) {
     config.mapType?.toMapType()?.let { mapView.map.mapType = it }

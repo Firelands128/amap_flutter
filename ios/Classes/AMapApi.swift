@@ -4,49 +4,78 @@ import Flutter
 class _AMapApi: NSObject {
   let registrar: FlutterPluginRegistrar
   let mapView: MAMapView
+  let mapInitConfig: MapInitConfig?
   var markers = [String: MAPointAnnotation]()
   var markerIds = [Int: String]()
 
-  init(registrar: FlutterPluginRegistrar, mapView: MAMapView) {
+  init(registrar: FlutterPluginRegistrar, mapView: MAMapView, mapInitConfig: MapInitConfig?) {
     self.registrar = registrar
     self.mapView = mapView
+    self.mapInitConfig = mapInitConfig
   }
 
-  func initMap(config: MapInitConfig) {
-    if let type = config.mapType {
-      mapView.mapType = type.mapType
-    }
-    if let cameraPosition = config.cameraPosition {
-      if let position = cameraPosition.position {
-        mapView.centerCoordinate = position.coordinate
+  func initMap() {
+    if let config = mapInitConfig {
+      if let type = config.mapType {
+        mapView.mapType = type.mapType
       }
-      if let heading = cameraPosition.heading {
-        mapView.rotationDegree = heading
+      if let cameraPosition = config.cameraPosition {
+        if let position = cameraPosition.position {
+          mapView.centerCoordinate = position.coordinate
+        }
+        if let heading = cameraPosition.heading {
+          mapView.rotationDegree = heading
+        }
+        if let skew = cameraPosition.skew {
+          mapView.cameraDegree = skew
+        }
+        if let zoom = cameraPosition.zoom {
+          mapView.zoomLevel = zoom
+        }
       }
-      if let skew = cameraPosition.skew {
-        mapView.cameraDegree = skew
+      if let fitPositions = config.fitPositions {
+        var north: Double?
+        var east: Double?
+        var south: Double?
+        var west: Double?
+
+        for position in fitPositions {
+          if(north == nil || north! < position.latitude) {
+            north = position.latitude
+          }
+          if(east == nil || east! < position.longitude) {
+            east = position.longitude
+          }
+          if(south == nil || south! > position.latitude) {
+            south = position.latitude
+          }
+          if(west == nil || west! > position.longitude) {
+            west = position.longitude
+          }
+        }
+
+        if(north != nil && east != nil && south != nil && west != nil) {
+          mapView.setRegion(MACoordinateRegion.init(north!, east!, south!, west!), animated: false)
+        }
       }
-      if let zoom = cameraPosition.zoom {
-        mapView.zoomLevel = zoom
+      if let dragEnable = config.dragEnable {
+        mapView.isScrollEnabled = dragEnable
       }
-    }
-    if let dragEnable = config.dragEnable {
-      mapView.isScrollEnabled = dragEnable
-    }
-    if let zoomEnable = config.zoomEnable {
-      mapView.isZoomEnabled = zoomEnable
-    }
-    if let tiltEnable = config.tiltEnable {
-      mapView.isRotateCameraEnabled = tiltEnable
-    }
-    if let rotateEnable = config.rotateEnable {
-      mapView.isRotateEnabled = rotateEnable
-    }
-    if let compassControlEnabled = config.compassControlEnabled {
-      mapView.showsCompass = compassControlEnabled
-    }
-    if let scaleControlEnabled = config.scaleControlEnabled {
-      mapView.showsScale = scaleControlEnabled
+      if let zoomEnable = config.zoomEnable {
+        mapView.isZoomEnabled = zoomEnable
+      }
+      if let tiltEnable = config.tiltEnable {
+        mapView.isRotateCameraEnabled = tiltEnable
+      }
+      if let rotateEnable = config.rotateEnable {
+        mapView.isRotateEnabled = rotateEnable
+      }
+      if let compassControlEnabled = config.compassControlEnabled {
+        mapView.showsCompass = compassControlEnabled
+      }
+      if let scaleControlEnabled = config.scaleControlEnabled {
+        mapView.showsScale = scaleControlEnabled
+      }
     }
   }
 

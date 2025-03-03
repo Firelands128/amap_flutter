@@ -17,10 +17,6 @@ class AMapController: NSObject {
     }
   }
 
-  func initMap(_ config: MapInitConfig) {
-    api.initMap(config: config)
-  }
-
   func onMethodCall(call: FlutterMethodCall, result: @escaping FlutterResult) {
     if(call.method == "updateMapConfig") {
       let arguments = call.arguments as! Dictionary<String, AnyObject>
@@ -102,6 +98,7 @@ class AMapController: NSObject {
 
   /// 当地图初始化完成时触发该回调
   func onMapInitComplete() {
+    api.initMap()
     channel.invokeMethod(
       "onMapInitCompleted",
       arguments: nil

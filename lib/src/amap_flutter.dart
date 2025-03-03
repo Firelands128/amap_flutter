@@ -592,21 +592,6 @@ class AMapFlutterState extends State<AMapFlutter> {
         config,
         mapId: mapId,
       );
-      if (widget.initCameraPosition != null) {
-        AMapFlutterPlatformInterface.instance.moveCamera(
-          widget.initCameraPosition!,
-          0,
-          mapId: mapId,
-        );
-      }
-      if (widget.initFitPositions != null) {
-        AMapFlutterPlatformInterface.instance.moveCameraToFitPosition(
-          widget.initFitPositions,
-          EdgePadding$Ext.all(0.2),
-          0,
-          mapId: mapId,
-        );
-      }
     });
   }
 }

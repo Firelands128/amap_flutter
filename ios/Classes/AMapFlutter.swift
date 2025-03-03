@@ -6,20 +6,19 @@ class AMapFlutter: NSObject, FlutterPlatformView {
   private let mapViewDelegate: AMapViewDelegate
 
   init(frame: CGRect, viewId: Int64, registrar: FlutterPluginRegistrar, args: [String: Any?]?) {
+    var mapInitConfig: MapInitConfig?
+    if(args != nil) {
+      if let options = args!["options"] as? [Any?] {
+        mapInitConfig = MapInitConfig.fromList(options)
+      }
+    }
     mapView = MAMapView(frame: frame)
-    let api = _AMapApi(registrar: registrar, mapView: mapView)
+    let api = _AMapApi(registrar: registrar, mapView: mapView, mapInitConfig: mapInitConfig)
     let controller = AMapController(viewId: viewId, registrar: registrar, api: api)
     mapViewDelegate = AMapViewDelegate(registrar, mapView: mapView, controller: controller)
     super.init()
     mapView.delegate = mapViewDelegate
     mapView.showsUserLocation = false
-
-    if(args != nil) {
-      if let options = args!["options"] as? [Any?] {
-        let config = MapInitConfig.fromList(options)
-        controller.initMap(config)
-      }
-    }
   }
 
   func view() -> UIView {
