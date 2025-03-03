@@ -1,3 +1,21 @@
+## 0.5.0
+
+Add "initFitPositions" in "AMapFlutter".
+
+Add "fitPositions" field in "MapInitConfig".
+
+Use "_AMapApiCodec" as "creationParamsCodec" when creating "AndroidView" and "UiKitView".
+
+When map initializing completed, move camera to fit positions in Android and iOS.
+
+Recover "Position" custom type.
+
+Add "EdgePadding" utility and expose utilities.
+
+Remove the deprecated option 'android.enableR8'.
+
+Upgrade android gradle plugin and compileSdk.
+
 ## 0.4.1
 
 Include "latlong2" dependency in "amap_flutter" dependency.
