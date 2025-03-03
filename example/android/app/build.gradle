@@ -48,9 +48,6 @@ android {
         versionName flutterVersionName
     }
 
-    lintOptions {
-        disable 'InvalidPackage'
-    }
 
     signingConfigs {
         debug {
@@ -80,6 +77,9 @@ android {
             minifyEnabled false //删除无用代码
             shrinkResources false //删除无用资源
         }
+    }
+    lint {
+        disable 'InvalidPackage'
     }
 }
 
