@@ -1,3 +1,7 @@
+## 0.5.1
+
+Add "minZoomLevel" and "maxZoomLevel" property of "AMapFlutter".
+
 ## 0.5.0
 
 Add "initFitPositions" in "AMapFlutter".
