@@ -14,6 +14,8 @@ class AMapApi(private val amap: AMapFlutter, private val config: MapInitConfig?)
       val cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, 0)
       mapView.map.moveCamera(cameraUpdate)
     }
+    config?.minZoom?.let { mapView.map.minZoomLevel = it.toFloat() }
+    config?.maxZoom?.let { mapView.map.maxZoomLevel = it.toFloat() }
   }
 
   fun updateMapConfig(config: MapUpdateConfig) {

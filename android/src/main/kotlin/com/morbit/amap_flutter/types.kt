@@ -236,6 +236,10 @@ data class MapInitConfig(
   val cameraPosition: CameraPosition?,
   /** 地图视野以适应位置 */
   val fitPositions: List<Position>?,
+  /** 地图最小缩放等级 */
+  val minZoom: Double?,
+  /** 地图最大缩放等级 */
+  val maxZoom: Double?,
   /** 地图是否允许拖拽 */
   val dragEnable: Boolean?,
   /** 地图是否允许缩放 */
@@ -294,36 +298,40 @@ data class MapInitConfig(
       val cameraPosition = (list[2] as List<Any?>?)?.let { CameraPosition.fromList(it) }
       val fitPositions =
         (list[3] as List<Any?>?)?.map { position -> Position.fromList(position as List<Any?>) }
-      val dragEnable = list[4] as Boolean?
-      val zoomEnable = list[5] as Boolean?
-      val tiltEnable = list[6] as Boolean?
-      val rotateEnable = list[7] as Boolean?
-      val jogEnable = list[8] as Boolean?
-      val animateEnable = list[9] as Boolean?
-      val keyboardEnable = list[10] as Boolean?
-      val compassControlEnabled = list[11] as Boolean?
-      val scaleControlEnabled = list[12] as Boolean?
-      val zoomControlEnabled = list[13] as Boolean?
-      val logoPosition = (list[14] as List<Any?>?)?.let { UIControlPosition.fromList(it) }
-      val doubleClickZoom = list[15] as Boolean?
-      val scrollWheel = list[16] as Boolean?
-      val touchZoom = list[17] as Boolean?
-      val touchZoomCenter = list[18] as Boolean?
-      val isHotspot = list[19] as Boolean?
-      val showBuildingBlock = list[20] as Boolean?
-      val showLabel = list[21] as Boolean?
-      val showIndoorMap = list[22] as Boolean?
-      val defaultCursor = list[23] as String?
-      val viewMode = list[24] as String?
-      val terrain = list[25] as Boolean?
-      val wallColor = (list[26] as Int?)?.let { Color.valueOf(it) }
-      val roofColor = (list[27] as Int?)?.let { Color.valueOf(it) }
-      val skyColor = (list[28] as Int?)?.let { Color.valueOf(it) }
+      val minZoom = list[4] as Double?
+      val maxZoom = list[5] as Double?
+      val dragEnable = list[6] as Boolean?
+      val zoomEnable = list[7] as Boolean?
+      val tiltEnable = list[8] as Boolean?
+      val rotateEnable = list[9] as Boolean?
+      val jogEnable = list[10] as Boolean?
+      val animateEnable = list[11] as Boolean?
+      val keyboardEnable = list[12] as Boolean?
+      val compassControlEnabled = list[13] as Boolean?
+      val scaleControlEnabled = list[14] as Boolean?
+      val zoomControlEnabled = list[15] as Boolean?
+      val logoPosition = (list[16] as List<Any?>?)?.let { UIControlPosition.fromList(it) }
+      val doubleClickZoom = list[17] as Boolean?
+      val scrollWheel = list[18] as Boolean?
+      val touchZoom = list[19] as Boolean?
+      val touchZoomCenter = list[20] as Boolean?
+      val isHotspot = list[21] as Boolean?
+      val showBuildingBlock = list[22] as Boolean?
+      val showLabel = list[23] as Boolean?
+      val showIndoorMap = list[24] as Boolean?
+      val defaultCursor = list[25] as String?
+      val viewMode = list[26] as String?
+      val terrain = list[27] as Boolean?
+      val wallColor = (list[28] as Int?)?.let { Color.valueOf(it) }
+      val roofColor = (list[29] as Int?)?.let { Color.valueOf(it) }
+      val skyColor = (list[30] as Int?)?.let { Color.valueOf(it) }
       return MapInitConfig(
         mapType,
         mapStyle,
         cameraPosition,
         fitPositions,
+        minZoom,
+        maxZoom,
         dragEnable,
         zoomEnable,
         tiltEnable,
@@ -359,6 +367,8 @@ data class MapInitConfig(
       mapStyle,
       cameraPosition?.toList(),
       fitPositions?.map { it.toList() },
+      minZoom,
+      maxZoom,
       dragEnable,
       zoomEnable,
       tiltEnable,

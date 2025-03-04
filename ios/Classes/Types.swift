@@ -207,6 +207,8 @@ struct MapInitConfig {
   var mapStyle: String? = nil
   var cameraPosition: CameraPosition? = nil
   var fitPositions: [Position]? = nil
+  var minZoom: Double? = nil
+  var maxZoom: Double? = nil
   var dragEnable: Bool? = nil
   var zoomEnable: Bool? = nil
   var tiltEnable: Bool? = nil
@@ -247,41 +249,43 @@ struct MapInitConfig {
     if let fitPositionsList: [[Any?]] = nilOrValue(list[3]) {
       fitPositions = fitPositionsList.map({ position in Position.fromList(position) })
     }
-    let dragEnable: Bool? = nilOrValue(list[4])
-    let zoomEnable: Bool? = nilOrValue(list[5])
-    let tiltEnable: Bool? = nilOrValue(list[6])
-    let rotateEnable: Bool? = nilOrValue(list[7])
-    let jogEnable: Bool? = nilOrValue(list[8])
-    let animateEnable: Bool? = nilOrValue(list[9])
-    let keyboardEnable: Bool? = nilOrValue(list[10])
-    let compassControlEnabled: Bool? = nilOrValue(list[11])
-    let scaleControlEnabled: Bool? = nilOrValue(list[12])
-    let zoomControlEnabled: Bool? = nilOrValue(list[13])
+    let minZoom: Double? = nilOrValue(list[4])
+    let maxZoom: Double? = nilOrValue(list[5])
+    let dragEnable: Bool? = nilOrValue(list[6])
+    let zoomEnable: Bool? = nilOrValue(list[7])
+    let tiltEnable: Bool? = nilOrValue(list[8])
+    let rotateEnable: Bool? = nilOrValue(list[9])
+    let jogEnable: Bool? = nilOrValue(list[10])
+    let animateEnable: Bool? = nilOrValue(list[11])
+    let keyboardEnable: Bool? = nilOrValue(list[12])
+    let compassControlEnabled: Bool? = nilOrValue(list[13])
+    let scaleControlEnabled: Bool? = nilOrValue(list[14])
+    let zoomControlEnabled: Bool? = nilOrValue(list[15])
     var logoPosition: UIControlPosition? = nil
-    if let logoPositionList: [Any?] = nilOrValue(list[14]) {
+    if let logoPositionList: [Any?] = nilOrValue(list[16]) {
       logoPosition = UIControlPosition.fromList(logoPositionList)
     }
-    let doubleClickZoom: Bool? = nilOrValue(list[15])
-    let scrollWheel: Bool? = nilOrValue(list[16])
-    let touchZoom: Bool? = nilOrValue(list[17])
-    let touchZoomCenter: Bool? = nilOrValue(list[18])
-    let isHotspot: Bool? = nilOrValue(list[19])
-    let showBuildingBlock: Bool? = nilOrValue(list[20])
-    let showLabel: Bool? = nilOrValue(list[21])
-    let showIndoorMap: Bool? = nilOrValue(list[22])
-    let defaultCursor: String? = nilOrValue(list[23])
-    let viewMode: String? = nilOrValue(list[24])
-    let terrain: Bool? = nilOrValue(list[25])
+    let doubleClickZoom: Bool? = nilOrValue(list[17])
+    let scrollWheel: Bool? = nilOrValue(list[18])
+    let touchZoom: Bool? = nilOrValue(list[19])
+    let touchZoomCenter: Bool? = nilOrValue(list[20])
+    let isHotspot: Bool? = nilOrValue(list[21])
+    let showBuildingBlock: Bool? = nilOrValue(list[22])
+    let showLabel: Bool? = nilOrValue(list[23])
+    let showIndoorMap: Bool? = nilOrValue(list[24])
+    let defaultCursor: String? = nilOrValue(list[25])
+    let viewMode: String? = nilOrValue(list[26])
+    let terrain: Bool? = nilOrValue(list[27])
     var wallColor: UIColor? = nil
-    if let color: UInt = nilOrValue(list[26]) {
+    if let color: UInt = nilOrValue(list[28]) {
       wallColor = UIColor(hex: color)
     }
     var roofColor: UIColor? = nil
-    if let color: UInt = nilOrValue(list[27]) {
+    if let color: UInt = nilOrValue(list[29]) {
       roofColor = UIColor(hex: color)
     }
     var skyColor: UIColor? = nil
-    if let color: UInt = nilOrValue(list[28]) {
+    if let color: UInt = nilOrValue(list[30]) {
       skyColor = UIColor(hex: color)
     }
     return MapInitConfig(
@@ -289,6 +293,8 @@ struct MapInitConfig {
       mapStyle: mapStyle,
       cameraPosition: cameraPosition,
       fitPositions: fitPositions,
+      minZoom: minZoom,
+      maxZoom: maxZoom,
       dragEnable: dragEnable,
       zoomEnable: zoomEnable,
       tiltEnable: tiltEnable,
@@ -323,6 +329,8 @@ struct MapInitConfig {
       mapStyle,
       cameraPosition?.toList(),
       fitPositions?.map({ position in position.toList() }),
+      minZoom,
+      maxZoom,
       dragEnable,
       zoomEnable,
       tiltEnable,

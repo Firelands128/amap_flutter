@@ -58,6 +58,12 @@ class _AMapApi: NSObject {
           mapView.setRegion(MACoordinateRegion.init(north!, east!, south!, west!), animated: false)
         }
       }
+      if let minZoom = config.minZoom {
+        mapView.minZoomLevel = minZoom
+      }
+      if let maxZoom = config.maxZoom {
+        mapView.maxZoomLevel = maxZoom
+      }
       if let dragEnable = config.dragEnable {
         mapView.isScrollEnabled = dragEnable
       }

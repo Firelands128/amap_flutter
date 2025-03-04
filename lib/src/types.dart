@@ -344,6 +344,8 @@ class MapInitConfig {
     this.mapStyle,
     this.cameraPosition,
     this.fitPositions,
+    this.minZoom,
+    this.maxZoom,
     this.dragEnable,
     this.zoomEnable,
     this.tiltEnable,
@@ -382,6 +384,12 @@ class MapInitConfig {
 
   /// 地图视野以适应位置
   final List<Position>? fitPositions;
+
+  /// 地图最小缩放等级
+  final double? minZoom;
+
+  /// 地图最大缩放等级
+  final double? maxZoom;
 
   /// 地图是否允许拖拽
   final bool? dragEnable;
@@ -464,6 +472,8 @@ class MapInitConfig {
       mapStyle,
       cameraPosition?.encode(),
       fitPositions?.map((position) => position.encode()).toList(),
+      minZoom,
+      maxZoom,
       dragEnable,
       zoomEnable,
       tiltEnable,
@@ -500,32 +510,34 @@ class MapInitConfig {
       fitPositions: result[3] != null
           ? (result[3] as List).map((position) => Position.decode(position)).toList()
           : null,
-      dragEnable: result[4] as bool?,
-      zoomEnable: result[5] as bool?,
-      tiltEnable: result[6] as bool?,
-      rotateEnable: result[7] as bool?,
-      jogEnable: result[8] as bool?,
-      animateEnable: result[9] as bool?,
-      keyboardEnable: result[10] as bool?,
-      compassControlEnabled: result[11] as bool?,
-      scaleControlEnabled: result[12] as bool?,
-      zoomControlEnabled: result[13] as bool?,
+      minZoom: result[4] as double?,
+      maxZoom: result[5] as double?,
+      dragEnable: result[6] as bool?,
+      zoomEnable: result[7] as bool?,
+      tiltEnable: result[8] as bool?,
+      rotateEnable: result[9] as bool?,
+      jogEnable: result[10] as bool?,
+      animateEnable: result[11] as bool?,
+      keyboardEnable: result[12] as bool?,
+      compassControlEnabled: result[13] as bool?,
+      scaleControlEnabled: result[14] as bool?,
+      zoomControlEnabled: result[15] as bool?,
       logoPosition:
-          result[14] != null ? UIControlPosition.decode(result[14]! as List<Object?>) : null,
-      doubleClickZoom: result[15] as bool?,
-      scrollWheel: result[16] as bool?,
-      touchZoom: result[17] as bool?,
-      touchZoomCenter: result[18] as bool?,
-      isHotspot: result[19] as bool?,
-      showBuildingBlock: result[20] as bool?,
-      showLabel: result[21] as bool?,
-      showIndoorMap: result[22] as bool?,
-      defaultCursor: result[23] as String?,
-      viewMode: result[24] as String?,
-      terrain: result[25] as bool?,
-      wallColor: result[26] != null ? Color(result[25] as int) : null,
-      roofColor: result[27] != null ? Color(result[26] as int) : null,
-      skyColor: result[28] != null ? Color(result[27] as int) : null,
+          result[16] != null ? UIControlPosition.decode(result[16]! as List<Object?>) : null,
+      doubleClickZoom: result[17] as bool?,
+      scrollWheel: result[18] as bool?,
+      touchZoom: result[19] as bool?,
+      touchZoomCenter: result[20] as bool?,
+      isHotspot: result[21] as bool?,
+      showBuildingBlock: result[22] as bool?,
+      showLabel: result[23] as bool?,
+      showIndoorMap: result[24] as bool?,
+      defaultCursor: result[25] as String?,
+      viewMode: result[26] as String?,
+      terrain: result[27] as bool?,
+      wallColor: result[28] != null ? Color(result[28] as int) : null,
+      roofColor: result[29] != null ? Color(result[29] as int) : null,
+      skyColor: result[30] != null ? Color(result[30] as int) : null,
     );
   }
 
@@ -534,6 +546,8 @@ class MapInitConfig {
     String? mapStyle,
     CameraPosition? cameraPosition,
     List<Position>? fitPositions,
+    double? minZoom,
+    double? maxZoom,
     bool? dragEnable,
     bool? zoomEnable,
     bool? tiltEnable,
@@ -565,6 +579,8 @@ class MapInitConfig {
       mapStyle: mapStyle ?? this.mapStyle,
       cameraPosition: cameraPosition ?? this.cameraPosition,
       fitPositions: fitPositions ?? this.fitPositions,
+      minZoom: minZoom ?? this.minZoom,
+      maxZoom: maxZoom ?? this.maxZoom,
       dragEnable: dragEnable ?? this.dragEnable,
       zoomEnable: zoomEnable ?? this.zoomEnable,
       tiltEnable: tiltEnable ?? this.tiltEnable,
@@ -1147,11 +1163,9 @@ class Position {
   Position({
     required double latitude,
     required double longitude,
-  })  : latitude =
-  latitude < -90.0 ? -90.0 : (latitude > 90.0 ? 90.0 : latitude),
-        longitude = longitude >= -180 && longitude < 180
-            ? longitude
-            : (longitude + 180.0) % 360.0 - 180.0;
+  })  : latitude = latitude < -90.0 ? -90.0 : (latitude > 90.0 ? 90.0 : latitude),
+        longitude =
+            longitude >= -180 && longitude < 180 ? longitude : (longitude + 180.0) % 360.0 - 180.0;
 
   /// 位置的纬度
   double latitude;

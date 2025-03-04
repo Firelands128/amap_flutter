@@ -9,6 +9,8 @@ class AMapFlutter extends StatefulWidget {
     this.mapFeatures = const {"bg", "road", "point", "building"},
     this.initCameraPosition,
     this.initFitPositions,
+    this.minZoom,
+    this.maxZoom,
     this.dragEnable,
     this.zoomEnable,
     this.tiltEnable,
@@ -100,6 +102,12 @@ class AMapFlutter extends StatefulWidget {
 
   /// 地图初始视野以适应位置
   final List<Position>? initFitPositions;
+
+  /// 地图最小缩放等级
+  final double? minZoom;
+
+  /// 地图最大缩放等级
+  final double? maxZoom;
 
   /// 地图是否允许拖拽
   final bool? dragEnable;
@@ -383,6 +391,8 @@ class AMapFlutterState extends State<AMapFlutter> {
               mapStyle: widget.mapStyle,
               cameraPosition: widget.initCameraPosition,
               fitPositions: widget.initFitPositions,
+              minZoom: widget.minZoom,
+              maxZoom: widget.maxZoom,
               dragEnable: widget.dragEnable,
               zoomEnable: widget.zoomEnable,
               tiltEnable: widget.tiltEnable,
@@ -422,6 +432,8 @@ class AMapFlutterState extends State<AMapFlutter> {
               mapStyle: widget.mapStyle,
               cameraPosition: widget.initCameraPosition,
               fitPositions: widget.initFitPositions,
+              minZoom: widget.minZoom,
+              maxZoom: widget.maxZoom,
               dragEnable: widget.dragEnable,
               zoomEnable: widget.zoomEnable,
               tiltEnable: widget.tiltEnable,
