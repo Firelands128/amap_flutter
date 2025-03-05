@@ -889,6 +889,47 @@ class Poi {
   }
 }
 
+/// 位置
+class Position {
+  Position({
+    required double latitude,
+    required double longitude,
+  })  : latitude = latitude < -90.0 ? -90.0 : (latitude > 90.0 ? 90.0 : latitude),
+        longitude =
+        longitude >= -180 && longitude < 180 ? longitude : (longitude + 180.0) % 360.0 - 180.0;
+
+  /// 位置的纬度
+  double latitude;
+
+  /// 位置的经度
+  double longitude;
+
+  Object encode() {
+    return <Object?>[
+      latitude,
+      longitude,
+    ];
+  }
+
+  static Position decode(List<Object?> result) {
+    assert(result.length == 2);
+    return Position(
+      latitude: result[0]! as double,
+      longitude: result[1]! as double,
+    );
+  }
+
+  Position copyWith({
+    double? latitude,
+    double? longitude,
+  }) {
+    return Position(
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+    );
+  }
+}
+
 /// 地图区域
 class Region {
   Region({
@@ -1154,47 +1195,6 @@ class UserLocationStyle {
       strokeColor: strokeColor ?? this.strokeColor,
       lineWidth: lineWidth ?? this.lineWidth,
       image: image ?? this.image,
-    );
-  }
-}
-
-/// 位置
-class Position {
-  Position({
-    required double latitude,
-    required double longitude,
-  })  : latitude = latitude < -90.0 ? -90.0 : (latitude > 90.0 ? 90.0 : latitude),
-        longitude =
-            longitude >= -180 && longitude < 180 ? longitude : (longitude + 180.0) % 360.0 - 180.0;
-
-  /// 位置的纬度
-  double latitude;
-
-  /// 位置的经度
-  double longitude;
-
-  Object encode() {
-    return <Object?>[
-      latitude,
-      longitude,
-    ];
-  }
-
-  static Position decode(List<Object?> result) {
-    assert(result.length == 2);
-    return Position(
-      latitude: result[0]! as double,
-      longitude: result[1]! as double,
-    );
-  }
-
-  Position copyWith({
-    double? latitude,
-    double? longitude,
-  }) {
-    return Position(
-      latitude: latitude ?? this.latitude,
-      longitude: longitude ?? this.longitude,
     );
   }
 }
