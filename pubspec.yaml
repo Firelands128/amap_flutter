@@ -15,7 +15,7 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   flutter_plugin_android_lifecycle: ^2.0.1
   stream_transform: ^2.0.0
-  js: ^0.7.1
+  js: ^0.6.3
   latlong2: ^0.9.1
   geolocator: ^8.2.0
 
