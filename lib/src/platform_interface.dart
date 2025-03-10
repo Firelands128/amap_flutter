@@ -248,17 +248,6 @@ abstract class AMapFlutterPlatformInterface extends PlatformInterface {
     throw UnimplementedError('removeMarker() has not been implemented.');
   }
 
-  /// 更新标记点
-  Future<void> updateMarker(
-    String markerId,
-    Position position, {
-    required int mapId,
-  }) {
-    throw UnimplementedError(
-      'updateMarker() has not been implemented.',
-    );
-  }
-
   /// 获取当前定位信息
   Future<Location> getUserLocation({required int mapId}) async {
     throw UnimplementedError('getUserLocation() has not been implemented.');

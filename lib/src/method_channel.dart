@@ -452,22 +452,6 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
     );
   }
 
-  /// 更新标记点
-  @override
-  Future<void> updateMarker(
-    String markerId,
-    Position position, {
-    required int mapId,
-  }) {
-    return _channel(mapId).invokeMethod(
-      "updateMarker",
-      <String, dynamic>{
-        "markerId": markerId,
-        "position": position,
-      },
-    );
-  }
-
   /// 获取当前定位信息
   @override
   Future<Location> getUserLocation({required int mapId}) async {

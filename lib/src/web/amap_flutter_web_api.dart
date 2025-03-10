@@ -246,11 +246,6 @@ class AMapFlutterWebApi {
     }
   }
 
-  Future<void> updateMarker(String markerId, Position position) async {
-    removeMarker(markerId);
-    addMarker(Marker(id: markerId, position: position));
-  }
-
   Future<Location> getUserLocation() async {
     throw UnimplementedError();
   }

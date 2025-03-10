@@ -275,15 +275,6 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   }
 
   @override
-  Future<void> updateMarker(
-    String markerId,
-    Position position, {
-    required int mapId,
-  }) async {
-    _map(mapId).updateMarker(markerId, position);
-  }
-
-  @override
   Future<Location> getUserLocation({required int mapId}) async {
     return _map(mapId).getUserLocation();
   }

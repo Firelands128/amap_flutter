@@ -262,15 +262,6 @@ class AMapController {
     );
   }
 
-  /// 更新标记点
-  void updateMarker(String markerId, Position position) {
-    AMapFlutterPlatformInterface.instance.updateMarker(
-      markerId,
-      position,
-      mapId: mapId,
-    );
-  }
-
   /// 获取当前定位
   Future<Location> getUserLocation() {
     return AMapFlutterPlatformInterface.instance.getUserLocation(mapId: mapId);

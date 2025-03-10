@@ -76,13 +76,6 @@ class AMapController(viewId: Int, binding: FlutterPluginBinding, private val api
         result.success(null)
       }
 
-      "updateMarker" -> {
-        val id = call.argument<String>("markerId")!!
-        val position = call.argument<Position>("position")!!
-        api.updateMarker(id, position)
-        result.success(null)
-      }
-
       "start" -> {
         api.start()
         result.success(null)

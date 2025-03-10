@@ -71,13 +71,6 @@ class AMapController: NSObject {
       api.removeMarker(id: id)
       result(nil)
     }
-    else if(call.method == "updateMarker") {
-      let arguments = call.arguments as! Dictionary<String, AnyObject>
-      let markerId = arguments["markerId"] as! String
-      let position = arguments["position"] as! Position
-      api.updateMarker(markerId: markerId, position: position)
-      result(nil)
-    }
     else if(call.method == "start") {
       api.start()
       result(nil)

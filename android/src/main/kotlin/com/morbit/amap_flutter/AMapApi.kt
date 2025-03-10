@@ -103,11 +103,6 @@ class AMapApi(private val amap: AMapFlutter, private val config: MapInitConfig?)
     }
   }
 
-  fun updateMarker(markerId: String, position: Position) {
-    this.removeMarker(markerId)
-    this.addMarker(Marker(markerId, position))
-  }
-
   fun getUserLocation(): Location? {
     return mapView.map.myLocation?.toLocation()
   }

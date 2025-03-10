@@ -204,11 +204,6 @@ class _AMapApi: NSObject {
     return markerIds[annotation]
   }
 
-  func updateMarker(markerId: String, position: Position) {
-    self.removeMarker(id: markerId)
-    self.addMarker(marker: Marker(id: markerId, position: position))
-  }
-
   func getUserLocation() -> Location? {
     return mapView.userLocation?.toLocation
   }
