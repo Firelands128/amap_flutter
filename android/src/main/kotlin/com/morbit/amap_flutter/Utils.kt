@@ -1,6 +1,7 @@
 package com.morbit.amap_flutter
 
 import android.graphics.BitmapFactory
+import androidx.core.graphics.scale
 import com.amap.api.maps.AMap
 import com.amap.api.maps.AMapOptions
 import com.amap.api.maps.model.BitmapDescriptor
@@ -47,7 +48,9 @@ fun Bitmap.toBitmapDescriptor(binding: FlutterPluginBinding): BitmapDescriptor? 
     return BitmapDescriptorFactory.fromAsset(binding.flutterAssets.getAssetFilePathByName(it))
   }
   bytes?.let {
-    return BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeByteArray(it, 0, it.size))
+    val bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
+    bitmap.scale(size.width.toInt(), size.height.toInt())
+    return BitmapDescriptorFactory.fromBitmap(bitmap)
   }
   return null
 }
@@ -77,9 +80,10 @@ fun AndroidLocation.toLocation(): Location {
   )
 }
 
-fun Marker.toMarkerOptions(): MarkerOptions {
+fun Marker.toMarkerOptions(binding: FlutterPluginBinding): MarkerOptions {
   return MarkerOptions().let { options ->
     position.toPosition().let { options.position(it) }
+    bitmap?.toBitmapDescriptor(binding)?.let { options.icon(it) }
     options
   }
 }

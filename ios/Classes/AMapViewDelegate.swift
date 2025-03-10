@@ -20,16 +20,22 @@ class AMapViewDelegate: NSObject, MAMapViewDelegate {
     self.controller = controller
   }
 
-  func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
-    if(annotation is MAPointAnnotation) {
-      let id = "pointReuseIndentifier"
-      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: id) as? MAPinAnnotationView
-      if(annotationView == nil) {
-        annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: id)
+  func mapView(_ mapView: MAMapView!, viewFor _annotation: MAAnnotation!) -> MAAnnotationView! {
+    if let annotation = _annotation as? Annotation {
+      let annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.id)
+      if let bitmap = annotation.bitmap {
+        let image = bitmap.toUIImage(registrar: registrar)
+        let targetSize = CGSize(width: bitmap.size.width, height: bitmap.size.height)
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+        let resizedImage = renderer.image { _ in
+          image?.draw(in: CGRect(origin: .zero, size: targetSize))
+        }
+        annotationView?.image = resizedImage
+        annotationView?.centerOffset = CGPointMake(0, -bitmap.size.height / 2);
       }
-      annotationView!.canShowCallout = true
-      annotationView!.isDraggable = true
-      annotationView!.animatesDrop = false
+      annotationView?.canShowCallout = true
+      annotationView?.isDraggable = true
+      annotationView?.animatesDrop = false
       return annotationView
     }
     return nil

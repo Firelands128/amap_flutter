@@ -150,6 +150,7 @@ class Bitmap {
   Bitmap({
     this.asset,
     this.bytes,
+    required this.size,
   });
 
   /// 图片资源路径
@@ -158,10 +159,14 @@ class Bitmap {
   /// 图片数据
   Uint8List? bytes;
 
+  /// 图片尺寸
+  Size size;
+
   Object encode() {
     return <Object?>[
       asset,
       bytes,
+      size,
     ];
   }
 
@@ -169,16 +174,19 @@ class Bitmap {
     return Bitmap(
       asset: result[0] as String?,
       bytes: result[1] as Uint8List?,
+      size: result[2] as Size,
     );
   }
 
   Bitmap copyWith({
     String? asset,
     Uint8List? bytes,
+    Size? size,
   }) {
     return Bitmap(
       asset: asset ?? this.asset,
       bytes: bytes ?? this.bytes,
+      size: size ?? this.size,
     );
   }
 }
@@ -818,6 +826,7 @@ class Marker {
   Marker({
     required this.id,
     required this.position,
+    this.bitmap,
   });
 
   /// 标记点ID
@@ -826,10 +835,14 @@ class Marker {
   /// 标记点的位置
   Position position;
 
+  /// 标记点自定义图标信息
+  Bitmap? bitmap;
+
   Object encode() {
     return <Object?>[
       id,
       position.encode(),
+      bitmap?.encode(),
     ];
   }
 
@@ -837,16 +850,19 @@ class Marker {
     return Marker(
       id: result[0]! as String,
       position: Position.decode(result[1]! as List<Object?>),
+      bitmap: result[2] != null ? Bitmap.decode(result[2]! as List<Object?>) : null,
     );
   }
 
   Marker copyWith({
     String? id,
     Position? position,
+    Bitmap? bitmap,
   }) {
     return Marker(
       id: id ?? this.id,
       position: position ?? this.position,
+      bitmap: bitmap ?? this.bitmap,
     );
   }
 }

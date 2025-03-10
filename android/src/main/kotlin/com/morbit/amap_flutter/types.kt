@@ -98,13 +98,16 @@ data class Bitmap(
   /** 图片资源路径 */
   val asset: String? = null,
   /** 图片数据 */
-  val bytes: ByteArray? = null
+  val bytes: ByteArray? = null,
+  /** 图片尺寸 */
+  val size: Size,
 ) {
   companion object {
     fun fromList(list: List<Any?>): Bitmap {
       val asset = list[0] as String?
       val bytes = list[1] as ByteArray?
-      return Bitmap(asset, bytes)
+      val size = list[2] as Size
+      return Bitmap(asset, bytes, size)
     }
   }
 
@@ -112,6 +115,7 @@ data class Bitmap(
     return listOf(
       asset,
       bytes,
+      size,
     )
   }
 
@@ -126,6 +130,7 @@ data class Bitmap(
       if (other.bytes == null) return false
       if (!bytes.contentEquals(other.bytes)) return false
     } else if (other.bytes != null) return false
+    if (size != other.size) return false
 
     return true
   }
@@ -133,6 +138,7 @@ data class Bitmap(
   override fun hashCode(): Int {
     var result = asset?.hashCode() ?: 0
     result = 31 * result + (bytes?.contentHashCode() ?: 0)
+    result = 31 * result + size.hashCode()
     return result
   }
 }
@@ -513,12 +519,15 @@ data class Marker(
   val id: String,
   /** 标记点的位置 */
   val position: Position,
+  /** 标记点自定义图标信息 */
+  val bitmap: Bitmap?,
 ) {
   companion object {
     fun fromList(list: List<Any?>): Marker {
       val id = list[0] as String
       val position = Position.fromList(list[1] as List<Any?>)
-      return Marker(id, position)
+      val bitmap = (list[2] as List<Any?>?)?.let { Bitmap.fromList(it) }
+      return Marker(id, position, bitmap)
     }
   }
 
@@ -526,6 +535,7 @@ data class Marker(
     return listOf(
       id,
       position.toList(),
+      bitmap?.toList(),
     )
   }
 }

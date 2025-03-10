@@ -89,7 +89,7 @@ class AMapApi(private val amap: AMapFlutter, private val config: MapInitConfig?)
   }
 
   fun addMarker(marker: Marker) {
-    val aMapMarker = mapView.map.addMarker(marker.toMarkerOptions())
+    val aMapMarker = mapView.map.addMarker(marker.toMarkerOptions(amap.binding))
     amap.markers[marker.id] = aMapMarker
     amap.aMapMarkerIdToDartMarkerId[aMapMarker.id] = marker.id
   }

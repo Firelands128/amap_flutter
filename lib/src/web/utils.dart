@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import "package:amap_flutter/amap_flutter.dart";
 
 import 'js/js.dart' as js;
@@ -84,7 +86,18 @@ extension Region$Ext on Region {
 extension Bitmap$Ext on Bitmap {
   js.Icon? get icon {
     if (asset != null) {
-      return js.Icon(js.IconOpts()..image = asset!);
+      return js.Icon(
+        js.IconOpts()
+          ..image = asset!
+          ..size = size.size,
+      );
+    }
+    if (bytes != null) {
+      return js.Icon(
+        js.IconOpts()
+          ..image = "data:image/png;base64,${base64Encode(bytes!)}"
+          ..size = size.size,
+      );
     }
     return null;
   }

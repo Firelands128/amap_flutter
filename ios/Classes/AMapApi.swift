@@ -5,7 +5,7 @@ class _AMapApi: NSObject {
   let registrar: FlutterPluginRegistrar
   let mapView: MAMapView
   let mapInitConfig: MapInitConfig?
-  var markers = [String: MAPointAnnotation]()
+  var markers = [String: Annotation]()
   var markerIds = [Int: String]()
 
   init(registrar: FlutterPluginRegistrar, mapView: MAMapView, mapInitConfig: MapInitConfig?) {

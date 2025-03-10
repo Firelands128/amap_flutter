@@ -80,13 +80,17 @@ struct Bitmap {
   var asset: String? = nil
   /// 图片数据
   var bytes: FlutterStandardTypedData? = nil
+  /// 图片尺寸
+  var size: Size
 
   static func fromList(_ list: [Any?]) -> Bitmap {
     let asset: String? = nilOrValue(list[0])
     let bytes: FlutterStandardTypedData? = nilOrValue(list[1])
+    let size: Size = list[2] as! Size
     return Bitmap(
       asset: asset,
-      bytes: bytes
+      bytes: bytes,
+      size: size
     )
   }
 
@@ -94,6 +98,7 @@ struct Bitmap {
     return [
       asset,
       bytes,
+      size,
     ]
   }
 }
@@ -486,13 +491,20 @@ struct Marker {
   var id: String
   /// 标记点的位置
   var position: Position
+  /// 标记点自定义图标信息
+  var bitmap: Bitmap?
 
   static func fromList(_ list: [Any?]) -> Marker {
     let id = list[0] as! String
     let position = Position.fromList(list[1] as! [Any?])
+    var bitmap: Bitmap? = nil
+    if let bitmapList: [Any?] = nilOrValue(list[2]) {
+      bitmap = Bitmap.fromList(bitmapList)
+    }
     return Marker(
       id: id,
-      position: position
+      position: position,
+      bitmap: bitmap
     )
   }
 
@@ -500,6 +512,7 @@ struct Marker {
     return [
       id,
       position.toList(),
+      bitmap?.toList(),
     ]
   }
 }
