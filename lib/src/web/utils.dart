@@ -85,21 +85,12 @@ extension Region$Ext on Region {
 
 extension Bitmap$Ext on Bitmap {
   js.Icon? get icon {
-    if (asset != null) {
-      return js.Icon(
-        js.IconOpts()
-          ..image = asset!
-          ..size = size.size,
-      );
-    }
-    if (bytes != null) {
-      return js.Icon(
-        js.IconOpts()
-          ..image = "data:image/png;base64,${base64Encode(bytes!)}"
-          ..size = size.size,
-      );
-    }
-    return null;
+    final image = bytes != null ? "data:image/png;base64,${base64Encode(bytes!)}" : asset;
+    if (image == null) return null;
+
+    final icon = js.Icon(js.IconOpts()..image = image);
+    if (size != null) icon.setSize(size!.size);
+    return icon;
   }
 }
 

@@ -81,12 +81,12 @@ struct Bitmap {
   /// 图片数据
   var bytes: FlutterStandardTypedData? = nil
   /// 图片尺寸
-  var size: Size
+  var size: Size? = nil
 
   static func fromList(_ list: [Any?]) -> Bitmap {
     let asset: String? = nilOrValue(list[0])
     let bytes: FlutterStandardTypedData? = nilOrValue(list[1])
-    let size: Size = list[2] as! Size
+    let size: Size? = nilOrValue(list[2])
     return Bitmap(
       asset: asset,
       bytes: bytes,

@@ -105,6 +105,8 @@ extension Bitmap {
     }
     if let bytes = self.bytes {
       image = UIImage(data: bytes.data)
+    }
+    if let size = self.size {
       let targetSize = CGSize(width: size.width, height: size.height)
       let renderer = UIGraphicsImageRenderer(size: targetSize)
       image = renderer.image { _ in
@@ -268,15 +270,6 @@ extension UserLocationType {
         MAUserTrackingMode.followWithHeading
       default:
         nil
-    }
-  }
-}
-
-extension UIView {
-  func asImage() -> UIImage {
-    let renderer = UIGraphicsImageRenderer(bounds: bounds)
-    return renderer.image { rendererContext in
-      layer.render(in: rendererContext.cgContext)
     }
   }
 }

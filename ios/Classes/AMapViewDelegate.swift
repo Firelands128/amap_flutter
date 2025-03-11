@@ -24,14 +24,10 @@ class AMapViewDelegate: NSObject, MAMapViewDelegate {
     if let annotation = _annotation as? Annotation {
       let annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.id)
       if let bitmap = annotation.bitmap {
-        let image = bitmap.toUIImage(registrar: registrar)
-        let targetSize = CGSize(width: bitmap.size.width, height: bitmap.size.height)
-        let renderer = UIGraphicsImageRenderer(size: targetSize)
-        let resizedImage = renderer.image { _ in
-          image?.draw(in: CGRect(origin: .zero, size: targetSize))
+        annotationView?.image = bitmap.toUIImage(registrar: registrar)
+        if let size = annotationView?.image?.size {
+          annotationView?.centerOffset = CGPointMake(0, -size.height / 2);
         }
-        annotationView?.image = resizedImage
-        annotationView?.centerOffset = CGPointMake(0, -bitmap.size.height / 2);
       }
       annotationView?.canShowCallout = true
       annotationView?.isDraggable = true

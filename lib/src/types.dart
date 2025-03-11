@@ -150,7 +150,7 @@ class Bitmap {
   Bitmap({
     this.asset,
     this.bytes,
-    required this.size,
+    this.size,
   });
 
   /// 图片资源路径
@@ -160,7 +160,7 @@ class Bitmap {
   Uint8List? bytes;
 
   /// 图片尺寸
-  Size size;
+  Size? size;
 
   Object encode() {
     return <Object?>[
@@ -174,7 +174,7 @@ class Bitmap {
     return Bitmap(
       asset: result[0] as String?,
       bytes: result[1] as Uint8List?,
-      size: result[2] as Size,
+      size: result[2] as Size?,
     );
   }
 

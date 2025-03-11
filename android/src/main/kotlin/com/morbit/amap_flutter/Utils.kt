@@ -44,15 +44,17 @@ fun UIControlAnchor.toZoomPosition(): Int? {
 }
 
 fun Bitmap.toBitmapDescriptor(binding: FlutterPluginBinding): BitmapDescriptor? {
+  var bitmap: android.graphics.Bitmap? = null
   asset?.let {
-    return BitmapDescriptorFactory.fromAsset(binding.flutterAssets.getAssetFilePathByName(it))
+    bitmap = BitmapDescriptorFactory.fromAsset(binding.flutterAssets.getAssetFilePathByName(it)).bitmap
   }
   bytes?.let {
-    val bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
-    bitmap.scale(size.width.toInt(), size.height.toInt())
-    return BitmapDescriptorFactory.fromBitmap(bitmap)
+    bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
   }
-  return null
+  size?.let {
+    bitmap = bitmap?.scale(it.width.toInt(), it.height.toInt())
+  }
+  return BitmapDescriptorFactory.fromBitmap(bitmap)
 }
 
 fun AMapCameraPosition.toCameraPosition(): CameraPosition {

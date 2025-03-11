@@ -100,13 +100,13 @@ data class Bitmap(
   /** 图片数据 */
   val bytes: ByteArray? = null,
   /** 图片尺寸 */
-  val size: Size,
+  val size: Size? = null,
 ) {
   companion object {
     fun fromList(list: List<Any?>): Bitmap {
       val asset = list[0] as String?
       val bytes = list[1] as ByteArray?
-      val size = list[2] as Size
+      val size = list[2] as Size?
       return Bitmap(asset, bytes, size)
     }
   }
@@ -138,7 +138,7 @@ data class Bitmap(
   override fun hashCode(): Int {
     var result = asset?.hashCode() ?: 0
     result = 31 * result + (bytes?.contentHashCode() ?: 0)
-    result = 31 * result + size.hashCode()
+    result = 31 * result + (size?.hashCode() ?: 0)
     return result
   }
 }
