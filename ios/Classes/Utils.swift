@@ -106,8 +106,9 @@ extension Bitmap {
     if let bytes = self.bytes {
       image = UIImage(data: bytes.data)
     }
-    if let size = self.size {
-      let targetSize = CGSize(width: size.width, height: size.height)
+    if let effectiveSize = self.size?.cgSize() ?? image?.size {
+      let scale = UIScreen.main.scale
+      let targetSize = CGSize(width: effectiveSize.width / scale, height: effectiveSize.height / scale)
       let renderer = UIGraphicsImageRenderer(size: targetSize)
       image = renderer.image { _ in
         image?.draw(in: CGRect(origin: .zero, size: targetSize))
@@ -151,6 +152,12 @@ extension Position {
 extension Region {
   var region: MACoordinateRegion {
     return MACoordinateRegion.init(north, east, south, west)
+  }
+}
+
+extension Size {
+  func cgSize() -> CGSize {
+    return CGSizeMake(width, height)
   }
 }
 
