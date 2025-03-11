@@ -1,3 +1,17 @@
+## 0.5.2
+
+Separate ```MessageCodec``` as a standalone file.
+
+Remove ```updateMarker``` api.
+
+Add functionality of showing custom marker icon.
+
+Add ```size``` property in ```Bitmap``` and add ```bitmap``` property in ```Marker```.
+
+Add marker icon as asset and customize marker icon of map in example app.
+
+Scale marker icon size on iOS platform.
+
 ## 0.5.1
 
 Add "minZoomLevel" and "maxZoomLevel" property of "AMapFlutter".
