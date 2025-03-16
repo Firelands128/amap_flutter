@@ -173,7 +173,12 @@ class _AMapApi: NSObject {
     }
 
     if(north != nil && east != nil && south != nil && west != nil) {
-      mapView.setRegion(MACoordinateRegion.init(north!, east!, south!, west!), animated: duration > 0)
+      let origin = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: north!, longitude: west!))
+      let destination = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: south!, longitude: east!))
+      let size = MAMapSize(width: destination.x - origin.x, height: destination.y - origin.y)
+      let mapRect = MAMapRect.init(origin: origin, size: size)
+      let edgePadding = UIEdgeInsets(top: padding.top, left: padding.left, bottom: padding.bottom, right: padding.right)
+      mapView.setVisibleMapRect(mapRect, edgePadding: edgePadding, animated: false)
     }
   }
 

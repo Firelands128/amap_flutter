@@ -88,7 +88,7 @@ class _MapViewPageState extends State<MapViewPage> {
                       Position(latitude: 39.98937, longitude: 116.32363),
                       Position(latitude: 39.98037, longitude: 116.31163),
                     ],
-                    EdgePadding$Ext.all(0.2),
+                    EdgePadding$Ext.all(100),
                     duration,
                   ),
                 ),
