@@ -1,3 +1,7 @@
+## 0.5.3
+
+Use "setVisibleMapRect" to move camera in iOS, as edge padding can be set.
+
 ## 0.5.2
 
 Separate ```MessageCodec``` as a standalone file.
