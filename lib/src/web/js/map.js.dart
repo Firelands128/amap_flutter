@@ -85,11 +85,43 @@ extension type AMap._(JSObject _) implements JSObject {
   /// 设置当前地图显示状态
   external void setStatus(JSObject status);
 
+  /// 添加单个覆盖物。
+  @JS("add")
+  external void addOverlay(Overlay overlay);
+
+  /// 添加多个覆盖物。
+  @JS("add")
+  external void addOverlays(JSArray<Overlay> overlays);
+
+  /// 添加单个图层。
+  @JS("add")
+  external void addLayer(Layer layer);
+
+  /// 添加多个图层。
+  @JS("add")
+  external void addLayers(JSArray<Layer> layer);
+
   /// 获取地图默认鼠标指针样式
   external JSString getDefaultCursor();
 
   /// 设置地图默认鼠标指针样式
   external void setDefaultCursor(String cursor);
+
+  /// 添加单个覆盖物。
+  @JS("remove")
+  external void removeOverlay(Overlay overlay);
+
+  /// 添加多个覆盖物。
+  @JS("remove")
+  external void removeOverlays(JSArray<Overlay> overlays);
+
+  /// 添加单个图层。
+  @JS("remove")
+  external void removeLayer(Layer layer);
+
+  /// 添加多个图层。
+  @JS("remove")
+  external void removeLayers(JSArray<Layer> layer);
 
   /// 注销地图对象，并清空地图容器
   external void destroy();
@@ -213,30 +245,6 @@ extension type AMap._(JSObject _) implements JSObject {
 
   /// 解绑地图事件
   external void off(String type, JSExportedDartFunction handler);
-
-  /// 添加覆盖物
-  external void addOverlay(Overlay overlay);
-
-  /// 添加多个覆盖物
-  external void addOverlays(JSArray<Overlay> overlays);
-
-  /// 添加图层
-  external void addLayer(Layer layer);
-
-  /// 添加多个图层
-  external void addLayers(JSArray<Layer> layers);
-
-  /// 删除覆盖物
-  external void removeOverlay(Overlay overlay);
-
-  /// 删除多个覆盖物
-  external void removeOverlays(JSArray<Overlay> overlays);
-
-  /// 删除图层
-  external void removeLayer(Layer layer);
-
-  /// 删除多个图层
-  external void removeLayers(JSArray<Layer> layers);
 }
 
 extension type MapOptions._(JSObject _) implements JSObject {
