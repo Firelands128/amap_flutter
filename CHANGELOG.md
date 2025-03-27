@@ -1,3 +1,19 @@
+## 0.6.0
+
+Remove ```geolocator``` dependency and upgrade dependencies.
+
+Add ```/android/app/.cxx``` directory in ```.gitignore``` file.
+
+Upgrade ```Gradle``` and ```Android Gradle Plugin``` versions.
+
+Update ```compileSdk``` version in Android.
+
+Stop exporting ```latlong2``` dependency.
+
+Upgrade to use Dart3.3 new feature as using extension type to do js interop.
+
+Add JS function name in JS annotation and remove unnecessary JS annotation.
+
 ## 0.5.3
 
 Use "setVisibleMapRect" to move camera in iOS, as edge padding can be set.
