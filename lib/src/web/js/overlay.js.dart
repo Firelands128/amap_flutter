@@ -530,7 +530,6 @@ extension type CircleMarkerOptions._(JSObject _) implements JSObject {
 }
 
 /// 构造多边形对象，通过EllipseOptions指定多边形样式
-@JS()
 extension type Ellipse._(JSObject _) implements Overlay {
   /// 构造函数
   external Ellipse(EllipseOptions opts);
@@ -634,7 +633,6 @@ extension type EllipseOptions._(JSObject _) implements JSObject {
 }
 
 /// 构造矩形对象，通过RectangleOptions指定多边形样式
-@JS()
 extension type Rectangle._(JSObject _) implements Overlay {
   /// 构造函数
   external Rectangle(RectangleOptions opts);
@@ -732,7 +730,6 @@ extension type RectangleOptions._(JSObject _) implements JSObject {
 }
 
 /// GeoJSON类，继承自OverLayGroup，可实现GeoJSON对象与OverlayGroup的相互转换
-@JS()
 extension type GeoJSON._(JSObject _) implements OverlayGroup {
   external GeoJSON(GeoJSONOptions opts);
 

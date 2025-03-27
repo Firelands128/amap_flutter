@@ -213,7 +213,6 @@ extension type Forecast._(JSObject _) implements JSObject {
 }
 
 /// 公交站点查询服务，根据输入关键字、ID查询公交站点信息。
-@JS()
 extension type StationSearch._(JSObject _) implements JSObject {
   /// 构造函数
   external StationSearch(StationSearchOptions opts);
@@ -253,7 +252,6 @@ extension type StationSearchCallback(JSFunction _) implements JSFunction {
 }
 
 /// 公交路线查询类，通过extensions属性控制返回信息详略
-@JS()
 extension type LineSearch._(JSObject _) implements JSObject {
   /// 构造函数
   external LineSearch(LineSearchOptions opts, String extensions);
@@ -294,7 +292,6 @@ extension type LineSearchCallback(JSFunction _) implements JSFunction {
 
 /// AMap.RoadInfoSearch道路及道路交叉口查询服务，用与查询道路相关信息。
 // AMap.RoadInfoSearch提供根据道路ID、道路名称查询道路信息，提供交叉路口ID以及交叉路口名称查询交叉口信息等功能。
-@JS()
 extension type RoadInfoSearch._(JSObject _) implements JSObject {
   /// 构造函数
   external RoadInfoSearch(RoadInfoSearchOptions opts);

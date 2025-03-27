@@ -283,7 +283,6 @@ extension type DrivingTMC._(JSObject _) implements JSObject {
 }
 
 /// 驾车路线规划服务，提供起、终点坐标的驾车导航路线查询功能
-@JS()
 extension type TruckDriving._(JSObject _) implements JSObject {
   /// 构造函数
   external TruckDriving(TruckDrivingOptions opts);
@@ -513,7 +512,6 @@ extension type WalkStep._(JSObject _) implements JSObject {
 }
 
 /// 公交换乘服务，提供起始点公交路线规划服务，目前公交换乘仅支持同一城市的公交路线规划，跨城市出行规划请参考驾车导航查询。公交换乘查询返回结果整合步行信息，若换乘路段（Segment）换乘类型为地铁 “SUBWAY”，则至少包含一条地铁口信息（SubwayEntrance）。用户可以通过自定义回调函数取回并显示查询结果。若服务请求失败，系统将返回错误信息。
-@JS()
 extension type Transfer._(JSObject _) implements JSObject {
   external Transfer(TransferOptions opts);
 
@@ -547,7 +545,6 @@ extension type Transfer._(JSObject _) implements JSObject {
   external void setCityd(String cityd);
 }
 
-@JS()
 extension type TransferPolicy._(JSObject _) implements JSObject {
   /// 最快捷模式
   @JS("LEAST_TIME")
@@ -927,7 +924,6 @@ extension type RailwaySpace._(JSObject _) implements JSObject {
 }
 
 /// 骑行路线规划服务，提供起、终点坐标的驾车导航路线查询功能
-@JS()
 extension type Riding._(JSObject _) implements JSObject {
   /// 构造函数
   external Riding(RidingOptions opts);
@@ -1090,7 +1086,6 @@ extension type RidingTMC._(JSObject _) implements JSObject {
   external JSArray<LngLat> polyline;
 }
 
-@JS()
 extension type DragRoute._(JSObject _) implements JSObject {
   /// 构造函数
   external DragRoute(
@@ -1134,7 +1129,6 @@ extension type DragRouteOptions._(JSObject _) implements JSObject {
 }
 
 /// 可拖拽货车路径规划
-@JS()
 extension type DragRouteTruck._(JSObject _) implements JSObject {
   /// 构造函数
   external DragRouteTruck(AMap map, DragRouteTruckOptions opts);
@@ -1320,7 +1314,6 @@ extension type DragRouteTruckUpdateOptions._(JSObject _) implements JSObject {
 }
 
 /// 轨迹纠偏服务插件。用于将一组带方向的、可能偏离道路的经纬度轨迹，纠正为准确沿着道路的一条经纬度路径。
-@JS()
 extension type GraspRoad._(JSObject _) implements JSObject {
   /// 构造函数
   external GraspRoad();

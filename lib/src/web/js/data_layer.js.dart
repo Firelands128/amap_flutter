@@ -6,7 +6,6 @@ import 'package:web/web.dart' show HTMLCanvasElement;
 import 'js.dart';
 
 /// 热力图，基于第三方heatmap.js实现，以特殊高亮的形式显示数据密集程度。根据密集程度的不同，图上会呈现不同的颜色，以直观的形式展现数据密度。
-@JS()
 extension type HeatMap._(JSObject _) implements JSObject {
   /// 构造函数
   external HeatMap(AMap map, HeatMapOptions opts);
@@ -86,7 +85,6 @@ extension type HeatMap3DOptions._(JSObject _) implements JSObject {
   external JSNumber gridSize;
 }
 
-@JS()
 extension type VectorLayer._(JSObject _) implements JSObject {
   /// 构造函数
   external VectorLayer(VectorLayerOptions opts);
@@ -131,7 +129,6 @@ extension type VectorLayerOptions._(JSObject _) implements JSObject {
 }
 
 /// 标注层
-@JS()
 extension type LabelsLayer._(JSObject _) implements JSObject {
   /// 构造函数
   external LabelsLayer(LabelsLayerOptions opts);
@@ -209,7 +206,6 @@ extension type LabelsLayerOptions._(JSObject _) implements JSObject {
 }
 
 /// 自定义图层是一种完全由开发者来指定绘制方法的图层
-@JS()
 extension type CustomLayer._(JSObject _) implements JSObject {
   external CustomLayer(HTMLCanvasElement canvas, CustomLayerOption opts);
 
@@ -305,7 +301,6 @@ extension type FlexibleLayerOptions._(JSObject _) implements JSObject {
 }
 
 /// 图片图层类，用户可以将一张静态图片作为图层添加在地图上，图片图层会随缩放级别而自适应缩放。
-@JS()
 extension type ImageLayer._(JSObject _) implements JSObject {
   /// 构造函数
   external ImageLayer(ImageLayerOptions opts);
@@ -374,7 +369,6 @@ extension type ImageLayerOptions._(JSObject _) implements JSObject {
 }
 
 /// Canvas图层类，用户可以将一个 Canvas 作为图层添加在地图上，Canvas图层会随缩放级别而自适应缩放。
-@JS()
 extension type CanvasLayer._(JSObject _) implements JSObject {
   /// 构造函数
   external CanvasLayer(CanvasLayerOptions opts);
@@ -446,7 +440,6 @@ extension type CanvasLayerOptions._(JSObject _) implements JSObject {
 }
 
 /// 3d 自定义图层
-@JS()
 extension type GLCustomLayer._(JSObject _) implements JSObject {
   /// 构造函数
   external GLCustomLayer(GlCustomLayerOptions opts);

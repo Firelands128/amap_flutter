@@ -273,7 +273,6 @@ extension type MoveAlongOptions._(JSObject _) implements JSObject {
 }
 
 /// 文本标记
-@JS()
 extension type Text._(JSObject _) implements Overlay {
   /// 构造函数
   external Text(TextOptions opts);
@@ -509,7 +508,6 @@ extension type IconOpts._(JSObject _) implements JSObject {
 }
 
 /// 标注类
-@JS()
 extension type LabelMarker._(JSObject _) implements Overlay {
   /// 构造函数
   external LabelMarker(LabelMarkerOptions opts);
@@ -716,7 +714,6 @@ extension type TextStyleOptions._(JSObject _) implements JSObject {
 }
 
 /// 灵活点标记
-@JS()
 extension type ElasticMarker._(JSObject _) implements Overlay {
   /// 构造函数
   external ElasticMarker(ElasticMarkerOptions opts);
@@ -898,7 +895,6 @@ extension type ElasticLabel._(JSObject _) implements JSObject {
 }
 
 /// 用于展示大量点标记，将点标记按照距离进行聚合，以提高绘制性能。点聚合支持用户自定义样式，以插件形式调用
-@JS()
 extension type MarkerCluster._(JSObject _) implements Overlay {
   /// 构造函数
   external MarkerCluster(
@@ -986,7 +982,6 @@ extension type MarkerClusterOptions._(JSObject _) implements JSObject {
 }
 
 /// 海量点类
-@JS()
 extension type MassMarks._(JSObject _) implements Overlay {
   /// 构造函数
   external MassMarks(JSArray<MassData> data, JSArray<MassMarkersOptions> opts);
@@ -1086,7 +1081,6 @@ extension type MassMarkersStyleOptions._(JSObject _) implements JSObject {
 }
 
 /// 用于实现点标记沿线段或者路径轨迹移动的动画基类，可用于满足轨迹回放、实时轨迹等场景。MoveAnimation无需单独声明或初始化，Marker、Text、LabelMarker均已继承了 MoveAnimation的实现。
-@JS()
 extension type MoveAnimation._(JSObject _) implements Overlay {
   /// 以给定时间移动点标记到指定位置，加载 AMap.MoveAnimation 后可以使用
   external void moveTo(LngLat targetPosition, MoveToOptions opts);

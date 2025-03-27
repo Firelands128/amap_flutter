@@ -55,7 +55,6 @@ extension type RangingToolOptions._(JSObject _) implements JSObject {
 }
 
 /// 鼠标工具插件
-@JS()
 extension type MouseTool._(JSObject _) implements JSObject {
   /// 构造函数
   external MouseTool(AMap map);
@@ -92,7 +91,6 @@ extension type MouseTool._(JSObject _) implements JSObject {
 }
 
 /// Polygon 编辑器
-@JS()
 extension type PolygonEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external PolygonEditor(
@@ -144,7 +142,6 @@ extension type PolygonEditorOptions._(JSObject _) implements JSObject {
 }
 
 /// 折线编辑插件
-@JS()
 extension type PolylineEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external PolylineEditor(
@@ -184,7 +181,6 @@ extension type PolylineEditorOptions._(JSObject _) implements JSObject {
 }
 
 /// 圆编辑插件
-@JS()
 extension type CircleEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external CircleEditor(AMap map, Circle? circle, CircleEditorOptions? opts);
@@ -220,7 +216,6 @@ extension type CircleEditorOptions._(JSObject _) implements JSObject {
 }
 
 /// 贝塞尔曲线编辑器
-@JS()
 extension type BezierCurveEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external BezierCurveEditor(
@@ -266,7 +261,6 @@ extension type BezierCurveEditorOptions._(JSObject _) implements JSObject {
 }
 
 /// 椭圆编辑器
-@JS()
 extension type EllipseEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external EllipseEditor(
@@ -309,7 +303,6 @@ extension type EllipseEditorOptions._(JSObject _) implements JSObject {
 }
 
 /// 矩形编辑器
-@JS()
 extension type RectangleEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external RectangleEditor(

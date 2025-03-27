@@ -1,4 +1,3 @@
-@JS()
 library stringify;
 
 import 'dart:js_interop';

@@ -6,7 +6,6 @@ import 'package:web/web.dart' show EventListener, HTMLElement;
 import 'js.dart';
 
 /// 右键菜单
-@JS()
 extension type ContextMenu._(JSObject _) implements JSObject {
   /// 构造函数
   external ContextMenu(OverlayOptions opts);

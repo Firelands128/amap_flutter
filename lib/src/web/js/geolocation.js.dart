@@ -139,7 +139,6 @@ extension type GeolocationResult._(JSObject _) implements JSObject {
 }
 
 /// 根据IP返回对应城市信息，提供根据输入IP或自动获取IP获取对应城市信息功能。 用户可以通过自定义回调函数取回并显示查询结果。 若服务请求失败，系统将返回错误信息。
-@JS()
 extension type CitySearch._(JSObject _) implements JSObject {
   /// 构造函数
   external CitySearch();

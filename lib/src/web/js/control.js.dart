@@ -68,7 +68,6 @@ extension type ToolBar._(JSObject _) implements Control {
 }
 
 /// 组合了旋转、倾斜、复位在内的地图控件
-@JS()
 extension type ControlBar._(JSObject _) implements Control {
   /// 构造函数
   external ControlBar(ControlConfig opts);
@@ -126,7 +125,6 @@ extension type LayerInfo._(JSObject _) implements JSObject {
 }
 
 /// 鹰眼控件，用于显示缩略地图，显示于地图右下角，可以随主图的视口变化而变化，也可以配置成固定位置实现类似于南海附图的效果。
-@JS()
 extension type HawkEye._(JSObject _) implements Control {
   external HawkEye(HawkEyeOptions options);
 }
