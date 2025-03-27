@@ -1,3 +1,6 @@
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
+
 import 'package:amap_flutter/amap_flutter.dart';
 
 import 'js/js.dart';
@@ -32,33 +35,35 @@ class AMapFlutterWebApi {
       aMap.setMapStyle(config.mapStyle!);
     }
     if (config.mapFeatures != null) {
-      aMap.setFeatures(config.mapFeatures!);
+      aMap.setFeatures(config.mapFeatures!.map((e) => e.toJS).toList().toJS);
     }
     if (config.dragEnable != null ||
         config.zoomEnable != null ||
         config.tiltEnable != null ||
         config.rotateEnable != null) {
-      Map<String, bool> status = {};
+      JSObject status = JSObject();
       if (config.dragEnable != null) {
-        status["dragEnable"] = config.dragEnable!;
+        status.setProperty("dragEnable".toJS, config.dragEnable!.toJS);
       }
       if (config.zoomEnable != null) {
-        status["zoomEnable"] = config.zoomEnable!;
+        status.setProperty("zoomEnable".toJS, config.zoomEnable!.toJS);
       }
       if (config.tiltEnable != null) {
-        status["tiltEnable"] = config.tiltEnable!;
+        status.setProperty("tiltEnable".toJS, config.tiltEnable!.toJS);
       }
       if (config.rotateEnable != null) {
-        status["rotateEnable"] = config.rotateEnable!;
+        status.setProperty("rotateEnable".toJS, config.rotateEnable!.toJS);
       }
       aMap.setStatus(status);
     }
-    if (config.compassControlEnabled != null || config.compassControlPosition != null) {
+    if (config.compassControlEnabled != null ||
+        config.compassControlPosition != null) {
       if (_controlBar != null) {
         aMap.removeControl(_controlBar!);
         _controlBar == null;
       }
-      if (config.compassControlEnabled == null || config.compassControlEnabled == true) {
+      if (config.compassControlEnabled == null ||
+          config.compassControlEnabled == true) {
         final controlConfig = ControlConfig();
         if (config.compassControlPosition != null) {
           controlConfig.position = config.compassControlPosition!.position;
@@ -67,12 +72,14 @@ class AMapFlutterWebApi {
         aMap.addControl(_controlBar!);
       }
     }
-    if (config.scaleControlEnabled != null || config.scaleControlPosition != null) {
+    if (config.scaleControlEnabled != null ||
+        config.scaleControlPosition != null) {
       if (_scale != null) {
         aMap.removeControl(_scale!);
         _scale = null;
       }
-      if (config.scaleControlEnabled == null || config.scaleControlEnabled == true) {
+      if (config.scaleControlEnabled == null ||
+          config.scaleControlEnabled == true) {
         final controlConfig = ControlConfig();
         if (config.scaleControlPosition != null) {
           controlConfig.position = config.scaleControlPosition!.position;
@@ -81,12 +88,14 @@ class AMapFlutterWebApi {
         aMap.addControl(_scale!);
       }
     }
-    if (config.zoomControlEnabled != null || config.zoomControlPosition != null) {
+    if (config.zoomControlEnabled != null ||
+        config.zoomControlPosition != null) {
       if (_toolbar != null) {
         aMap.removeControl(_toolbar!);
         _toolbar = null;
       }
-      if (config.zoomControlEnabled == null || config.zoomControlEnabled == true) {
+      if (config.zoomControlEnabled == null ||
+          config.zoomControlEnabled == true) {
         final controlConfig = ControlConfig();
         if (config.zoomControlPosition != null) {
           controlConfig.position = config.zoomControlPosition!.position;
@@ -175,27 +184,34 @@ class AMapFlutterWebApi {
           config.userLocationConfig!.userLocationStyle != null) {
         final options = GeolocationOptions();
         if (config.userLocationConfig!.userLocationButton != null) {
-          options.showButton = config.userLocationConfig!.userLocationButton!;
+          options.showButton =
+              config.userLocationConfig!.userLocationButton!.toJS;
         }
         if (config.userLocationConfig!.showUserLocation != null) {
-          options.showMarker = config.userLocationConfig!.showUserLocation!;
+          options.showMarker =
+              config.userLocationConfig!.showUserLocation!.toJS;
         }
         if (config.userLocationConfig!.userLocationStyle != null) {
-          final userLocationStyle = config.userLocationConfig!.userLocationStyle!;
+          final userLocationStyle =
+              config.userLocationConfig!.userLocationStyle!;
           final circleOptions = CircleOptions();
           if (userLocationStyle.fillColor != null) {
-            circleOptions.fillColor = "#${userLocationStyle.fillColor!.value.toRadixString(16)}";
+            circleOptions.fillColor =
+                "#${userLocationStyle.fillColor!.toARGB32().toRadixString(16)}"
+                    .toJS;
           }
           if (userLocationStyle.strokeColor != null) {
             circleOptions.strokeColor =
-                "#${userLocationStyle.strokeColor!.value.toRadixString(16)}";
+                "#${userLocationStyle.strokeColor!.toARGB32().toRadixString(16)}"
+                    .toJS;
           }
           if (userLocationStyle.lineWidth != null) {
-            circleOptions.strokeWeight = userLocationStyle.lineWidth!;
+            circleOptions.strokeWeight = userLocationStyle.lineWidth!.toJS;
           }
           options.circleOptions = circleOptions;
           if (userLocationStyle.image?.icon != null) {
-            options.markerOptions = MarkerOptions()..icon = userLocationStyle.image!.icon!;
+            options.markerOptions = MarkerOptions()
+              ..icon = userLocationStyle.image!.icon!;
           }
         }
         _geolocation = Geolocation(options);
@@ -208,19 +224,26 @@ class AMapFlutterWebApi {
     aMap.setZoomAndCenter(
       position.zoom,
       position.position.lngLat,
-      duration == 0,
+      (duration == 0).toJS,
       duration,
     );
   }
 
   Future<void> moveCameraToFitPosition(
       List<LngLat>? positions, EdgePadding padding, int duration) async {
-    final overlays =
-        positions?.map((position) => MarkerJS(MarkerOptions()..position = position)).toList();
+    final overlays = positions
+        ?.map((position) => MarkerJS(MarkerOptions()..position = position))
+        .toList()
+        .toJS;
     aMap.setFitView(
       overlays,
-      duration == 0,
-      [padding.top, padding.bottom, padding.left, padding.right],
+      (duration == 0).toJS,
+      [
+        padding.top.toJS,
+        padding.bottom.toJS,
+        padding.left.toJS,
+        padding.right.toJS,
+      ].toJS,
     );
   }
 

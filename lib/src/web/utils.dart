@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:js_interop';
 
 import "package:amap_flutter/amap_flutter.dart";
 import 'package:latlong2/latlong.dart';
@@ -19,13 +20,13 @@ extension Position$Ext on Position {
 
 extension LngLat$Ext on js.LngLat {
   LatLng get latLng {
-    return LatLng(lat.toDouble(), lng.toDouble());
+    return LatLng(lat.toDartDouble, lng.toDartDouble);
   }
 }
 
 extension SizeJS$Ext on js.Size {
   Size get size {
-    return Size(width: getWidth().toDouble(), height: getHeight().toDouble());
+    return Size(width: getWidth().toDartDouble, height: getHeight().toDartDouble);
   }
 }
 
@@ -38,42 +39,42 @@ extension Size$Ext on Size {
 extension AMapFlutter$Ext on AMapFlutter {
   js.MapOptions get mapOptions {
     final options = js.MapOptions();
-    if (mapStyle != null) options.mapStyle = mapStyle as String;
+    if (mapStyle != null) options.mapStyle = mapStyle!.toJS;
     if (initCameraPosition?.position != null) {
       options.center = initCameraPosition!.position.lngLat;
     }
     if (initCameraPosition?.zoom != null) {
-      options.zoom = initCameraPosition!.zoom as num;
+      options.zoom = initCameraPosition!.zoom!.toJS;
     }
     if (initCameraPosition?.heading != null) {
-      options.rotation = initCameraPosition!.heading as num;
+      options.rotation = initCameraPosition!.heading!.toJS;
     }
     if (initCameraPosition?.skew != null) {
-      options.pitch = initCameraPosition!.skew as num;
+      options.pitch = initCameraPosition!.skew!.toJS;
     }
-    if (dragEnable != null) options.dragEnable = dragEnable as bool;
-    if (zoomEnable != null) options.zoomEnable = zoomEnable as bool;
-    if (tiltEnable != null) options.pitchEnable = tiltEnable as bool;
-    if (rotateEnable != null) options.rotateEnable = rotateEnable as bool;
-    if (jogEnable != null) options.jogEnable = jogEnable!;
-    if (animateEnable != null) options.animateEnable = animateEnable!;
-    if (keyboardEnable != null) options.keyboardEnable = keyboardEnable!;
-    if (doubleClickZoom != null) options.doubleClickZoom = doubleClickZoom!;
-    if (scrollWheel != null) options.scrollWheel = scrollWheel!;
-    if (touchZoom != null) options.touchZoom = touchZoom!;
-    if (touchZoomCenter != null) options.touchZoomCenter = touchZoomCenter!;
-    if (isHotspot != null) options.isHotspot = isHotspot!;
+    if (dragEnable != null) options.dragEnable = dragEnable!.toJS;
+    if (zoomEnable != null) options.zoomEnable = zoomEnable!.toJS;
+    if (tiltEnable != null) options.pitchEnable = tiltEnable!.toJS;
+    if (rotateEnable != null) options.rotateEnable = rotateEnable!.toJS;
+    if (jogEnable != null) options.jogEnable = jogEnable!.toJS;
+    if (animateEnable != null) options.animateEnable = animateEnable!.toJS;
+    if (keyboardEnable != null) options.keyboardEnable = keyboardEnable!.toJS;
+    if (doubleClickZoom != null) options.doubleClickZoom = doubleClickZoom!.toJS;
+    if (scrollWheel != null) options.scrollWheel = scrollWheel!.toJS;
+    if (touchZoom != null) options.touchZoom = touchZoom!.toJS;
+    if (touchZoomCenter != null) options.touchZoomCenter = touchZoomCenter!.toJS;
+    if (isHotspot != null) options.isHotspot = isHotspot!.toJS;
     if (showBuildingBlock != null) {
-      options.showBuildingBlock = showBuildingBlock!;
+      options.showBuildingBlock = showBuildingBlock!.toJS;
     }
-    if (showLabel != null) options.showLabel = showLabel!;
-    if (showIndoorMap != null) options.showIndoorMap = showIndoorMap!;
-    if (defaultCursor != null) options.defaultCursor = defaultCursor!;
-    if (viewMode != null) options.viewMode = viewMode!;
-    if (terrain != null) options.terrain = terrain!;
-    if (wallColor != null) options.wallColor = wallColor!.toString();
-    if (roofColor != null) options.roofColor = roofColor!.toString();
-    if (skyColor != null) options.skyColor = skyColor!.toString();
+    if (showLabel != null) options.showLabel = showLabel!.toJS;
+    if (showIndoorMap != null) options.showIndoorMap = showIndoorMap!.toJS;
+    if (defaultCursor != null) options.defaultCursor = defaultCursor!.toJS;
+    if (viewMode != null) options.viewMode = viewMode!.toJS;
+    if (terrain != null) options.terrain = terrain!.toJS;
+    if (wallColor != null) options.wallColor = wallColor!.toString().toJS;
+    if (roofColor != null) options.roofColor = roofColor!.toString().toJS;
+    if (skyColor != null) options.skyColor = skyColor!.toString().toJS;
     return options;
   }
 }
@@ -89,7 +90,7 @@ extension Bitmap$Ext on Bitmap {
     final image = bytes != null ? "data:image/png;base64,${base64Encode(bytes!)}" : asset;
     if (image == null) return null;
 
-    final icon = js.Icon(js.IconOpts()..image = image);
+    final icon = js.Icon(js.IconOpts()..image = image.toJS);
     if (size != null) icon.setSize(size!.size);
     return icon;
   }
@@ -100,30 +101,30 @@ extension UIControlPosition$Ext on UIControlPosition {
     switch (anchor) {
       case UIControlAnchor.topLeft:
         return js.ControlPosition()
-          ..top = "${offset.y}px"
-          ..left = "${offset.x}px";
+          ..top = "${offset.y}px".toJS
+          ..left = "${offset.x}px".toJS;
       case UIControlAnchor.topCenter:
-        return js.ControlPosition()..top = "${offset.y}px";
+        return js.ControlPosition()..top = "${offset.y}px".toJS;
       case UIControlAnchor.topRight:
         return js.ControlPosition()
-          ..top = "${offset.y}px"
-          ..right = "${offset.x}px";
+          ..top = "${offset.y}px".toJS
+          ..right = "${offset.x}px".toJS;
       case UIControlAnchor.centerLeft:
-        return js.ControlPosition()..left = "${offset.x}px";
+        return js.ControlPosition()..left = "${offset.x}px".toJS;
       case UIControlAnchor.center:
         return js.ControlPosition();
       case UIControlAnchor.centerRight:
-        return js.ControlPosition()..right = "${offset.x}px";
+        return js.ControlPosition()..right = "${offset.x}px".toJS;
       case UIControlAnchor.bottomLeft:
         return js.ControlPosition()
-          ..left = "${offset.x}px"
-          ..bottom = "${offset.y}px";
+          ..left = "${offset.x}px".toJS
+          ..bottom = "${offset.y}px".toJS;
       case UIControlAnchor.bottomCenter:
-        return js.ControlPosition()..bottom = "${offset.y}px";
+        return js.ControlPosition()..bottom = "${offset.y}px".toJS;
       case UIControlAnchor.bottomRight:
         return js.ControlPosition()
-          ..bottom = "${offset.y}px"
-          ..right = "${offset.x}px";
+          ..bottom = "${offset.y}px".toJS
+          ..right = "${offset.x}px".toJS;
     }
   }
 }
@@ -136,6 +137,6 @@ extension Marker$Ext on Marker {
 
 extension HotspotEvent$Ext on js.HotspotEvent {
   get poi {
-    return Poi(name: name, position: lnglat.latLng.position);
+    return Poi(name: name.toDart, position: lnglat.latLng.position);
   }
 }

@@ -1,43 +1,43 @@
 @JS("AMap")
 library amap_flutter;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
 /// 用于加载OGC标准的WMS地图服务的一种图层类，仅支持EPSG3857坐标系统的WMS图层。
 @JS("TileLayer.WMS")
-class WMS {
+extension type WMS._(JSObject _) implements JSObject {
   /// 构造函数
   external WMS(WMSLayerOptions opts);
 
   /// 设置OGC标准的WMS getMap接口的参数，包括VERSION、LAYERS、STYLES、FORMAT、TRANSPARENT等
-  external void setParams(Object params);
+  external void setParams(JSObject params);
 
   /// 获取 OGC 标准的 WMS getMap 接口的参数
-  external Object getParams();
+  external JSObject getParams();
 
   /// 设置 WMS 服务地址
   external void setUrl(String url);
 
   /// 获取图层参数信息
-  external Object getOptions();
+  external JSObject getOptions();
 
   /// 获取图层层级
-  external num getzIndex();
+  external JSNumber getzIndex();
 
   /// 设置图层层级，数字越大图层层级越高
   external void setzIndex(num zIndex);
 
   /// 获取图层透明度
-  external num getOpacity();
+  external JSNumber getOpacity();
 
   /// 设置图层透明度，范围 [0 ~ 1]
   external void setOpacity(num opacity);
 
   /// 获取该图层可显示的级别范围，默认取值范围为[2-30]
-  external List<num> getZooms();
+  external JSArray<JSNumber> getZooms();
 
   /// 获取该图层可显示的级别范围
-  external void setZooms(List<num> zooms);
+  external void setZooms(JSArray<JSNumber> zooms);
 
   /// 设置图层可见
   external void show();
@@ -46,71 +46,70 @@ class WMS {
   external void hide();
 }
 
-@JS()
-@anonymous
-class WMSLayerOptions {
+extension type WMSLayerOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external WMSLayerOptions();
+  WMSLayerOptions() : this._(JSObject());
 
   /// wmts服务的url地址，如：' https://services.arcgisonline.com/arcgis/rest/services/'+ 'Demographics/USA_Population_Density/MapServer/WMTS/'
-  external String url;
+  external JSString url;
 
   /// 地图级别切换时，不同级别的图片是否进行混合，如图层的图像内容为部分透明请设置为false
-  external bool blend;
+  external JSBoolean blend;
 
   /// OGC标准的WMS地图服务的GetMap接口的参数，包括VERSION、LAYERS、STYLES、FORMAT、TRANSPARENT等，CRS、BBOX、REQUEST、WIDTH、HEIGHT等参数请勿添加
-  external Object params;
+  external JSObject params;
 
   /// 支持的缩放级别范围，默认范围 [2-30]
-  external List<num> zooms;
+  external JSArray<JSNumber> zooms;
 
   /// 透明度，默认 1
-  external num opacity;
+  external JSNumber opacity;
 
   /// 是否显示，默认 true
-  external bool visible;
+  external JSBoolean visible;
 
   /// 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
-  external num zIndex;
+  external JSNumber zIndex;
 }
 
 /// 用于加载 OGC 标准的 WMTS 地图服务的一种图层类，仅支持 EPSG3857 坐标系统的 WMTS 图层
 @JS("TileLayer.WMTS")
-class WMTS {
+extension type WMTS._(JSObject _) implements JSObject {
+  /// 构造函数
   external WMTS(WMTSLayerOptions opts);
 
   /// 设置 OGC 标准的 WMTS getTile接口的参数，包括Version、Layer、Style、Format、Service等
-  external void setParams(Object params);
+  external void setParams(JSObject params);
 
   /// 获取 OGC 标准的 WMTS getMap 接口的参数
-  external Object getParams();
+  external JSObject getParams();
 
   /// 获取 WMTS 服务地址
-  external String getUrl();
+  external JSString getUrl();
 
   /// 设置 WMTS 服务地址
   external void setUrl(String url);
 
   /// 获取图层参数信息
-  external Object getOptions();
+  external JSObject getOptions();
 
   /// 获取图层层级
-  external num getzIndex();
+  external JSNumber getzIndex();
 
   /// 设置图层层级，数字越大图层层级越高
   external void setzIndex(num zIndex);
 
   /// 获取图层透明度
-  external num getOpacity();
+  external JSNumber getOpacity();
 
   /// 设置图层透明度，范围 [0 ~ 1]
   external void setOpacity(num opacity);
 
   /// 获取该图层可显示的级别范围，默认取值范围为[2-30]
-  external List<num> getZooms();
+  external JSArray<JSNumber> getZooms();
 
   /// 获取该图层可显示的级别范围
-  external void setZooms(List<num> zooms);
+  external void setZooms(JSArray<JSNumber> zooms);
 
   /// 设置图层可见
   external void show();
@@ -119,72 +118,66 @@ class WMTS {
   external void hide();
 }
 
-@JS()
-@anonymous
-class WMTSLayerOptions {
+extension type WMTSLayerOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external WMTSLayerOptions();
+  WMTSLayerOptions() : this._(JSObject());
 
   /// wms服务的url地址，如' https://ahocevar.com/geoserver/wms '
-  external String url;
+  external JSString url;
 
   /// 地图级别切换时，不同级别的图片是否进行混合，如图层的图像内容为部分透明请设置为false
-  external bool blend;
+  external JSBoolean blend;
 
   /// OGC标准的WMTS地图服务的GetTile接口的参数，包括Version、Layer、 Style、Format、Service等，TileMatrixSet、TileRow、TileCol、Request等参数请勿添加
-  external Object params;
+  external JSObject params;
 
   /// 支持的缩放级别范围，默认范围 [2-30]
-  external List<num> zooms;
+  external JSArray<JSNumber> zooms;
 
   /// 透明度，默认 1
-  external num opacity;
+  external JSNumber opacity;
 
   /// 是否显示，默认 true
-  external bool visible;
+  external JSBoolean visible;
 
   /// 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
-  external num zIndex;
+  external JSNumber zIndex;
 }
 
 /// 简易矢量瓦片图层
-@JS()
-class MapboxVectorTileLayer {
+extension type MapboxVectorTileLayer._(JSObject _) implements JSObject {
+  /// 构造函数
   external MapboxVectorTileLayer(MapboxVTLayerOptions opts);
 }
 
-@JS()
-@anonymous
-class MapboxVTLayerOptions {
+extension type MapboxVTLayerOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external MapboxVTLayerOptions();
+  MapboxVTLayerOptions() : this._(JSObject());
 
   /// 图层的层级，默认为80
-  external num zIndex;
+  external JSNumber zIndex;
 
   /// 图层透明度，默认为1
-  external num opacity;
+  external JSNumber opacity;
 
   /// MVT 数据的链接地址
-  external String? url;
+  external JSString? url;
 
   /// 图层是否可见，默认为true
-  external bool visible;
+  external JSBoolean visible;
 
   /// 图层缩放等级范围，默认为[2,22]
-  external List<num> zooms;
+  external JSArray<JSNumber> zooms;
 
   /// 瓦片数据等级范围，超过范围会使用最大/最小等级的数据，默认为[2,18]
-  external List<num> dataZooms;
+  external JSArray<JSNumber> dataZooms;
 
   external MapboxVTLayerStyle styles;
 }
 
-@JS()
-@anonymous
-class MapboxVTLayerStyle {
+extension type MapboxVTLayerStyle._(JSObject _) implements JSObject {
   /// 构造函数
-  external MapboxVTLayerStyle();
+  MapboxVTLayerStyle() : this._(JSObject());
 
   /// 面类型的样式
   external PolygonStyle? polygon;
@@ -199,108 +192,100 @@ class MapboxVTLayerStyle {
   external PolyhedronStyle? polyhedron;
 }
 
-@JS()
-@anonymous
-class PolygonStyle {
+extension type PolygonStyle._(JSObject _) implements JSObject {
   /// 构造函数
-  external PolygonStyle();
+  PolygonStyle() : this._(JSObject());
 
   /// 使用数据中的哪个图层，默认使用 default 图层
-  external String sourceLayer;
+  external JSString sourceLayer;
 
   /// 面填充颜色
-  external String? color;
+  external JSString? color;
 
   /// 描边宽度
-  external num? borderWidth;
+  external JSNumber? borderWidth;
 
   /// 描边线的虚线配置，例如： [10,5,8,5]
-  external List<num>? dash;
+  external JSArray<JSNumber>? dash;
 
   /// 描边颜色
-  external String? borderColor;
+  external JSString? borderColor;
 
   /// 其他属性值中对于函数形式的值，假如需要获取外部变量，要使用数组的形式传入，便于在函数内部访问外部变量。请看下面的示例。
-  external List? injection;
+  external JSArray? injection;
 
   /// 是否显示
-  external bool? visible;
+  external JSBoolean? visible;
 }
 
-@JS()
-@anonymous
-class LineStyle {
+extension type LineStyle._(JSObject _) implements JSObject {
   /// 构造函数
-  external LineStyle();
+  LineStyle() : this._(JSObject());
 
   /// 使用数据中的哪个图层，默认使用 default 图层
-  external String sourceLayer;
+  external JSString sourceLayer;
 
   /// 线填充颜色
-  external String? color;
+  external JSString? color;
 
   /// 宽度
-  external num? lineWidth;
+  external JSNumber? lineWidth;
 
   /// 虚线配置，例如： [10,5,8,5]
-  external String? dash;
+  external JSString? dash;
 
   /// 其他属性值中对于函数形式的值，假如需要获取外部变量，要使用数组的形式传入，便于在函数内部访问外部变量。请看下面的示例。
-  external List? injection;
+  external JSArray? injection;
 
   /// 是否显示
-  external bool? visible;
+  external JSBoolean? visible;
 }
 
-@JS()
-@anonymous
-class PointStyle {
+extension type PointStyle._(JSObject _) implements JSObject {
   /// 构造函数
-  external PointStyle();
+  PointStyle() : this._(JSObject());
 
   /// 使用数据中的哪个图层，默认使用 default 图层
-  external String sourceLayer;
+  external JSString sourceLayer;
 
   /// 圆点的半径，单位像素
-  external String? radius;
+  external JSString? radius;
 
   /// 圆的填充颜色
-  external num? color;
+  external JSNumber? color;
 
   /// 描边的宽度
-  external String? borderWidth;
+  external JSString? borderWidth;
 
   /// 描边的颜色
-  external String? borderColor;
+  external JSString? borderColor;
 
   /// 其他属性值中对于函数形式的值，假如需要获取外部变量，要使用数组的形式传入，便于在函数内部访问外部变量。请看下面的示例。
-  external List? injection;
+  external JSArray? injection;
 
   /// 是否显示
-  external bool? visible;
+  external JSBoolean? visible;
 }
 
-@JS()
-@anonymous
-class PolyhedronStyle {
+extension type PolyhedronStyle._(JSObject _) implements JSObject {
   /// 构造函数
-  external PolyhedronStyle();
+  PolyhedronStyle() : this._(JSObject());
 
   /// 使用数据中的哪个图层，默认使用 default 图层
-  external String sourceLayer;
+  external JSString sourceLayer;
 
   /// 顶面颜色
-  external String? topColor;
+  external JSString? topColor;
 
   /// 侧面颜色
-  external String? sideColor;
+  external JSString? sideColor;
 
   /// 侧面纹理，优先级高于侧面颜色
-  external String? texture;
+  external JSString? texture;
 
   /// 其他属性值中对于函数形式的值，假如需要获取外部变量，要使用数组的形式传入，便于在函数内部访问外部变量。请看下面的示例。
-  external List? injection;
+  external JSArray? injection;
 
   /// 是否显示
-  external bool? visible;
+  external JSBoolean? visible;
 }

@@ -1,5 +1,5 @@
-import 'dart:html';
 import 'dart:ui_web' as ui_web;
+import 'package:web/web.dart' show HTMLDivElement;
 
 import 'package:amap_flutter/amap_flutter.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -16,7 +16,7 @@ class AMapFlutterWebPlugin extends Registrar {
     ui_web.platformViewRegistry.registerViewFactory(
       'amap_flutter',
       (int viewId) {
-        return DivElement()
+        return HTMLDivElement()
           ..id = viewId.toString()
           ..style.width = '100%'
           ..style.height = '100%';

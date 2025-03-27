@@ -1,13 +1,11 @@
 @JS("AMap")
 library amap_flutter;
 
-import 'package:js/js.dart';
-
+import 'dart:js_interop';
 import 'js.dart';
 
 /// 构造一个距离量测插件对象
-@JS()
-class RangingTool {
+extension type RangingTool._(JSObject _) implements JSObject {
   /// 构造函数
   external RangingTool(AMap map, RangingToolOptions opts);
 
@@ -15,38 +13,36 @@ class RangingTool {
   external void turnOn();
 
   /// 关闭测距工具，removeOverlays：是否删除测距过程产生的覆盖物
-  external void turnOff(bool removeOverlays);
+  external void turnOff(JSBoolean removeOverlays);
 }
 
-@JS()
-@anonymous
-class RangingToolOptions {
+extension type RangingToolOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external RangingToolOptions();
+  RangingToolOptions() : this._(JSObject());
 
   /// 设置量测起始点标记属性对象，包括点标记样式、大小等，参考 MarkerOptions
-  external Object startMarkerOptions;
+  external JSObject startMarkerOptions;
 
   /// 设置量测中间点标记属性对象，包括点标记样式、大小等，参考 MarkerOptions
-  external Object midMarkerOptions;
+  external JSObject midMarkerOptions;
 
   /// 设置量测结束点标记属性对象，包括点标记样式、大小等，参考 MarkerOptions
-  external Object endMarkerOptions;
+  external JSObject endMarkerOptions;
 
   /// 设置距离量测线的属性对象，包括线样式、颜色等，参考 PolylineOptions
-  external Object lineOptions;
+  external JSObject lineOptions;
 
   /// 设置距离量测过程中临时量测线的属性对象，包括线样式、颜色，参考 PolylineOptions
-  external Object tmpLineOptions;
+  external JSObject tmpLineOptions;
 
   /// 设置量测起始点标签的文字内容，默认为“起点”
-  external String startLabelText;
+  external JSString startLabelText;
 
   /// 设置量测中间点处标签的文字内容，默认为当前量测结果值
-  external String midLabelText;
+  external JSString midLabelText;
 
   /// 设置量测结束点处标签的文字内容，默认为当前量测结果值
-  external String endLabelText;
+  external JSString endLabelText;
 
   /// 设置量测起始点标签的偏移量。默认值：Pixel(-6, 6)
   external Pixel startLabelOffset;
@@ -60,7 +56,7 @@ class RangingToolOptions {
 
 /// 鼠标工具插件
 @JS()
-class MouseTool {
+extension type MouseTool._(JSObject _) implements JSObject {
   /// 构造函数
   external MouseTool(AMap map);
 
@@ -92,12 +88,12 @@ class MouseTool {
   external void rectZoomOut(PolygonOptions opts);
 
   /// 关闭当前鼠标操作。参数arg设为true时，鼠标操作关闭的同时清除地图上绘制的所有覆盖物对象；设为false时，保留所绘制的覆盖物对象。默认为false
-  external void close(bool ifClear);
+  external void close(JSBoolean ifClear);
 }
 
 /// Polygon 编辑器
 @JS()
-class PolygonEditor {
+extension type PolygonEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external PolygonEditor(
     AMap map,
@@ -109,49 +105,47 @@ class PolygonEditor {
   external void open();
 
   /// 设置编辑对象
-  external void setTarget(dynamic tar, Polygon overlay);
+  external void setTarget(JSAny tar, Polygon overlay);
 
   /// 获取编辑对象
   external Polygon? getTarget();
 
   /// 设置吸附多边形
-  external void setAdsorbPolygons(List<Polygon> list);
+  external void setAdsorbPolygons(JSArray<Polygon> list);
 
   /// 清空所有的吸附多边形
   external void clearAdsorbPolygons();
 
   /// 添加吸附多边形
-  external void addAdsorbPolygons(List<Polygon> list);
+  external void addAdsorbPolygons(JSArray<Polygon> list);
 
   /// 删除吸附多边形
-  external void removeAdsorbPolygons(List<Polygon> list);
+  external void removeAdsorbPolygons(JSArray<Polygon> list);
 
   /// 停止编辑对象
   external void close();
 }
 
-@JS()
-@anonymous
-class PolygonEditorOptions {
+extension type PolygonEditorOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external PolygonEditorOptions();
+  PolygonEditorOptions() : this._(JSObject());
 
   /// 新创建的对象样式
-  external Object? createOptions;
+  external JSObject? createOptions;
 
   /// 编辑样式
-  external Object? editOptions;
+  external JSObject? editOptions;
 
   /// 顶点样式 CircleMarkerOptions
-  external Object? controlPoint;
+  external JSObject? controlPoint;
 
   /// 中间点样式 CircleMarkerOptions
-  external Object? midControlPoint;
+  external JSObject? midControlPoint;
 }
 
 /// 折线编辑插件
 @JS()
-class PolylineEditor {
+extension type PolylineEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external PolylineEditor(
     AMap map,
@@ -172,28 +166,26 @@ class PolylineEditor {
   external void close();
 }
 
-@JS()
-@anonymous
-class PolylineEditorOptions {
+extension type PolylineEditorOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external PolylineEditorOptions();
+  PolylineEditorOptions() : this._(JSObject());
 
   /// 新创建的对象样式
-  external Object? createOptions;
+  external JSObject? createOptions;
 
   /// 编辑样式
-  external Object? editOptions;
+  external JSObject? editOptions;
 
   /// 顶点样式 CircleMarkerOptions
-  external Object? controlPoint;
+  external JSObject? controlPoint;
 
   /// 中间点样式 CircleMarkerOptions
-  external Object? midControlPoint;
+  external JSObject? midControlPoint;
 }
 
 /// 圆编辑插件
 @JS()
-class CircleEditor {
+extension type CircleEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external CircleEditor(AMap map, Circle? circle, CircleEditorOptions? opts);
 
@@ -210,28 +202,26 @@ class CircleEditor {
   external void close();
 }
 
-@JS()
-@anonymous
-class CircleEditorOptions {
+extension type CircleEditorOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external CircleEditorOptions();
+  CircleEditorOptions() : this._(JSObject());
 
   /// 新创建的对象样式
-  external Object? createOptions;
+  external JSObject? createOptions;
 
   /// 编辑样式
-  external Object? editOptions;
+  external JSObject? editOptions;
 
   /// 移动点样式 MarkerOptions
-  external Object? movePoint;
+  external JSObject? movePoint;
 
   /// reaize点样式 MarkerOptions
-  external Object? resizePoint;
+  external JSObject? resizePoint;
 }
 
 /// 贝塞尔曲线编辑器
 @JS()
-class BezierCurveEditor {
+extension type BezierCurveEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external BezierCurveEditor(
     AMap map,
@@ -252,34 +242,32 @@ class BezierCurveEditor {
   external void close();
 }
 
-@JS()
-@anonymous
-class BezierCurveEditorOptions {
+extension type BezierCurveEditorOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external BezierCurveEditorOptions();
+  BezierCurveEditorOptions() : this._(JSObject());
 
   /// 新创建的对象样式
-  external Object? createOptions;
+  external JSObject? createOptions;
 
   /// 编辑样式
-  external Object? editOptions;
+  external JSObject? editOptions;
 
   /// 顶点样式 MarkerOptions
-  external Object? controlPoint;
+  external JSObject? controlPoint;
 
   /// 中间点样式 MarkerOptions
-  external Object? midControlPoint;
+  external JSObject? midControlPoint;
 
   /// 贝塞尔控制点样式 MarkerOptions
-  external Object? bezierControlPoint;
+  external JSObject? bezierControlPoint;
 
   /// 贝塞尔控制线样式 PolylineOptions
-  external Object? bezierControlLine;
+  external JSObject? bezierControlLine;
 }
 
 /// 椭圆编辑器
 @JS()
-class EllipseEditor {
+extension type EllipseEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external EllipseEditor(
     AMap map,
@@ -300,31 +288,29 @@ class EllipseEditor {
   external void close();
 }
 
-@JS()
-@anonymous
-class EllipseEditorOptions {
+extension type EllipseEditorOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external EllipseEditorOptions();
+  EllipseEditorOptions() : this._(JSObject());
 
   /// 新创建的对象样式
-  external Object? createOptions;
+  external JSObject? createOptions;
 
   /// 编辑样式
-  external Object? editOptions;
+  external JSObject? editOptions;
 
   /// 移动点样式 MarkerOptions
-  external Object? movePoint;
+  external JSObject? movePoint;
 
   /// reaizeX点样式 MarkerOptions
-  external Object? resizeXPoint;
+  external JSObject? resizeXPoint;
 
   /// reaizeY点样式 MarkerOptions
-  external Object? resizeYPoint;
+  external JSObject? resizeYPoint;
 }
 
 /// 矩形编辑器
 @JS()
-class RectangleEditor {
+extension type RectangleEditor._(JSObject _) implements JSObject {
   /// 构造函数
   external RectangleEditor(
     AMap map,
@@ -345,21 +331,19 @@ class RectangleEditor {
   external void close();
 }
 
-@JS()
-@anonymous
-class RectangleEditorOptions {
+extension type RectangleEditorOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external RectangleEditorOptions();
+  RectangleEditorOptions() : this._(JSObject());
 
   /// 新创建的对象样式
-  external Object? createOptions;
+  external JSObject? createOptions;
 
   /// 编辑样式
-  external Object? editOptions;
+  external JSObject? editOptions;
 
   /// 西南点样式 MarkerOptions
-  external Object? southWestPoint;
+  external JSObject? southWestPoint;
 
   /// 东北点样式 MarkerOptions
-  external Object? northEastPoint;
+  external JSObject? northEastPoint;
 }

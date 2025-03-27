@@ -1,7 +1,6 @@
 @JS("AMap")
 library amap_flutter;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
-@JS()
-abstract class Layer {}
+extension type Layer._(JSObject _) implements JSObject {}

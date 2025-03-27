@@ -1,52 +1,51 @@
 @JS("AMap")
 library amap_flutter;
 
-import 'dart:html';
-
-import 'package:js/js.dart';
-
+import 'dart:js_interop';
+import 'package:web/web.dart' show HTMLElement;
 import 'js.dart';
 
 /// GeometryUtil为一组空间数据计算的函数库，v1.4.2新增。支持点线面的空间关系计算、长度、面积计算等等，
-@JS()
-class GeometryUtil {
+extension type GeometryUtil._(JSObject _) implements JSObject {
+  /// 构造函数
   external GeometryUtil();
 
   /// 计算两个经纬度点之间的实际距离。单位：米
-  external num distance(LngLat p1, LngLat p2);
+  external JSNumber distance(LngLat p1, LngLat p2);
 
   /// 计算一个经纬度路径围成区域的实际面积。单位：平米
-  external num ringArea(List<LngLat> ring);
+  external JSNumber ringArea(JSArray<LngLat> ring);
 
   /// 计算一个带有绝对海拔的经纬度高度路径围成区域的实际面积。单位：平米
-  external num ringAreaByAltitude(num averageAltitude);
+  external JSNumber ringAreaByAltitude(JSNumber averageAltitude);
 
   /// 判断一个经纬度路径是否为顺时针
-  external bool isClockwise(List<LngLat> ring);
+  external JSBoolean isClockwise(JSArray<LngLat> ring);
 
   /// 判断一个经纬度路径面类型
-  external bool typePolygon(List<LngLat> ring);
+  external JSBoolean typePolygon(JSArray<LngLat> ring);
 
   /// 将一个路径变为顺时针
-  external List<LngLat> makesureClockwise(List<LngLat> ring);
+  external JSArray<LngLat> makesureClockwise(JSArray<LngLat> ring);
 
   /// 将一个路径变为逆时针
-  external List<LngLat> makesureAntiClockwise(List<LngLat> ring);
+  external JSArray<LngLat> makesureAntiClockwise(JSArray<LngLat> ring);
 
   /// 计算一个经纬度路径的实际长度。单位：米
-  external num distanceOfLine(List<LngLat> ring);
+  external JSNumber distanceOfLine(JSArray<LngLat> ring);
 
   /// 计算一个经纬度带绝对海报高度路径的实际长度。单位：米
-  external num distanceOfLineByAltitude(List<LngLat> ring);
+  external JSNumber distanceOfLineByAltitude(JSArray<LngLat> ring);
 
   /// 计算一个经纬度带绝对海报高度两点空间距离的实际长度。单位：米
-  external num distanceLineByAltitude(List<num> pt1, List<num> pt2);
+  external JSNumber distanceLineByAltitude(
+      JSArray<JSNumber> pt1, JSArray<JSNumber> pt2);
 
   /// 计算两个经纬度面的交叉区域。只适用于凸多边形
-  external ringRingClip(List<LngLat> ring1, List<LngLat> ring2);
+  external JSNumber ringRingClip(JSArray<LngLat> ring1, JSArray<LngLat> ring2);
 
   /// 判断两个线段是否相交
-  external bool doesSegmentsIntersect(
+  external JSBoolean doesSegmentsIntersect(
     LngLat p1,
     LngLat p2,
     LngLat p3,
@@ -54,308 +53,313 @@ class GeometryUtil {
   );
 
   /// 判断线段和一个路径是否相交
-  external bool doesSegmentLineIntersect(
+  external JSBoolean doesSegmentLineIntersect(
     LngLat p1,
     LngLat p2,
-    List<LngLat> line,
+    JSArray<LngLat> line,
   );
 
   /// 判断线段和一个环是否相交
-  external bool doesSegmentRingIntersect(
+  external JSBoolean doesSegmentRingIntersect(
     LngLat p1,
     LngLat p2,
-    List<LngLat> ring,
+    JSArray<LngLat> ring,
   );
 
   /// 判断线段和多个环是否相交
-  external bool doesSegmentPolygonIntersect(LngLat p1, LngLat p2);
+  external JSBoolean doesSegmentPolygonIntersect(LngLat p1, LngLat p2);
 
   /// 判断两个经纬度路径是否相交
-  external bool doesLineLineIntersect(List<LngLat> line1, List<LngLat> line2);
+  external JSBoolean doesLineLineIntersect(
+      JSArray<LngLat> line1, JSArray<LngLat> line2);
 
   /// 判断经纬度路径和经纬度面是否交叉
-  external bool doesLineRingIntersect(List<LngLat> line, List<LngLat> ring);
+  external JSBoolean doesLineRingIntersect(
+      JSArray<LngLat> line, JSArray<LngLat> ring);
 
   /// 判断两个经纬度面是否交叉
-  external bool doesRingRingIntersect(List<LngLat> ring1, List<LngLat> ring2);
+  external JSBoolean doesRingRingIntersect(
+      JSArray<LngLat> ring1, JSArray<LngLat> ring2);
 
   /// 判断点是否在环内，支持任意坐标系
-  external bool pointInRing(LngLat p, List<LngLat> ring);
+  external JSBoolean pointInRing(LngLat p, JSArray<LngLat> ring);
 
   /// 判断点是否在环内
-  external bool isPointInRing(LngLat p, List<LngLat> ring);
+  external JSBoolean isPointInRing(LngLat p, JSArray<LngLat> ring);
 
   /// 判断点是否在环内
-  external bool isPointInBbox(LngLat p, List<LngLat> bbox);
+  external JSBoolean isPointInBbox(LngLat p, JSArray<LngLat> bbox);
 
   /// 判断环是否在另一个环内
-  external bool isRingInRing(List<LngLat> ring1, List<LngLat> ring2);
+  external JSBoolean isRingInRing(JSArray<LngLat> ring1, JSArray<LngLat> ring2);
 
   /// 判断点是否在多个环组成区域内
-  external bool isPointInPolygon(LngLat p, List<LngLat> rings);
+  external JSBoolean isPointInPolygon(LngLat p, JSArray<LngLat> rings);
 
   /// 判断点是否在带洞多多边型内
-  external bool isPointInPolygons(LngLat p, List<LngLat> polygons);
+  external JSBoolean isPointInPolygons(LngLat p, JSArray<LngLat> polygons);
 
   /// 判断P1是否在P2P3上，tolerance为误差范围
-  external bool isPointOnSegment(
+  external JSBoolean isPointOnSegment(
     LngLat p1,
     LngLat p2,
     LngLat p3,
-    num tolerance,
+    JSNumber tolerance,
   );
 
   /// 判断P是否在line上，tolerance为误差范围
-  external bool isPointOnLine(LngLat p, List<LngLat> line, num tolerance);
+  external JSBoolean isPointOnLine(
+      LngLat p, JSArray<LngLat> line, JSNumber tolerance);
 
   /// 判断P是否在ring的边上，tolerance为误差范围
-  external bool isPointOnRing(LngLat p, List<LngLat> ring, num tolerance);
+  external JSBoolean isPointOnRing(
+      LngLat p, JSArray<LngLat> ring, JSNumber tolerance);
 
   /// 判断P是否在多个ring的边上，tolerance为误差范围
-  external bool isPointOnPolygon(LngLat p, num tolerance);
+  external JSBoolean isPointOnPolygon(LngLat p, JSNumber tolerance);
 
   /// 计算P2P3上距离P1最近的点
-  external bool closestOnSegment(LngLat p1, LngLat p2, LngLat p3);
+  external JSBoolean closestOnSegment(LngLat p1, LngLat p2, LngLat p3);
 
   /// 计算line上距离P最近的点
-  external bool closestOnLine(LngLat p, List<LngLat> line);
+  external JSBoolean closestOnLine(LngLat p, JSArray<LngLat> line);
 
   /// 计算P2P3到P1的距离。单位：米
   external LngLat distanceToSegment(LngLat p1, LngLat p2, LngLat p3);
 
   /// 计算P到line的距离。单位：米
-  external num distanceToLine(LngLat p, List<LngLat> line);
+  external JSNumber distanceToLine(LngLat p, JSArray<LngLat> line);
 }
 
-@JS()
-class DomUtil {
+extension type DomUtil._(JSObject _) implements JSObject {
+  /// 构造函数
   external DomUtil();
 
   /// 获取DOM元素的大小
-  external Size getViewport(HtmlElement obj);
+  external Size getViewport(HTMLElement obj);
 
   /// 获取DOM元素距离窗口左上角的距离
-  external Pixel getViewportOffset(HtmlElement element);
+  external Pixel getViewportOffset(HTMLElement element);
 
   /// 在parentNode内部创建一个className类名的tagName元素
-  external HtmlElement create(
+  external HTMLElement create(
     String tagName,
-    HtmlElement container,
+    HTMLElement container,
     String className,
     String position,
   );
 
   /// DOM元素是否包含className
-  external bool hasClass(HtmlElement el, String name);
+  external JSBoolean hasClass(HTMLElement el, String name);
 
   /// 给DOM元素添加一个className
-  external void addClass(HtmlElement el, String name);
+  external void addClass(HTMLElement el, String name);
 
   /// 给DOM元素设置为className样式
-  external void setClass(HtmlElement el, String name);
+  external void setClass(HTMLElement el, String name);
 
   /// 给DOM元素删除一个className
-  external void removeClass(HtmlElement el, String name);
+  external void removeClass(HTMLElement el, String name);
 
   /// 将DOM元素从父节点删除
-  external void remove(HtmlElement el);
+  external void remove(HTMLElement el);
 
   /// 清空DOM元素
-  external void empty(HtmlElement el);
+  external void empty(HTMLElement el);
 
   /// 给DOM元素旋转一个角度，以center为中心，center以元素左上角为坐标原点
-  external void rotate(HtmlElement target, num angle, Pixel center);
+  external void rotate(HTMLElement target, JSNumber angle, Pixel center);
 
   ///给DOM元素删除一组样式，Object同样式表
-  external void setCss(HtmlElement obj, Object css);
+  external void setCss(HTMLElement obj, JSObject css);
 
   /// 给DOM元素设定一个透明度
-  external void setOpacity(HtmlElement el, num value);
+  external void setOpacity(HTMLElement el, JSNumber value);
 }
 
-@JS()
-class Browser {
+extension type Browser._(JSObject _) implements JSObject {
+  /// 构造函数
   external Browser();
 
   /// 当前浏览器userAgent
-  external String us;
+  external JSString get us;
 
   /// 是否移动设备
-  external bool mobile;
+  external JSBoolean get mobile;
 
   /// 平台类型，如：'windows'、'mac'、'ios'、'android'、'other'
-  external String plat;
+  external JSString get plat;
 
   /// 是否windows设备
-  external bool windows;
+  external JSBoolean get windows;
 
   /// 是否iOS设备
-  external bool ios;
+  external JSBoolean get ios;
 
   /// 是否iPad
-  external bool iPad;
+  external JSBoolean get iPad;
 
   /// 是否iPhone
   @JS("Phone")
-  external bool iPhone;
+  external JSBoolean get iPhone;
 
   /// 是否安卓设备
-  external bool android;
+  external JSBoolean get android;
 
   /// 是否安卓4以下系统
-  external bool android23;
+  external JSBoolean get android23;
 
   /// 是否Chrome浏览器
-  external bool chrome;
+  external JSBoolean get chrome;
 
   /// 是否火狐浏览器
-  external bool firefox;
+  external JSBoolean get firefox;
 
   /// 是否Safari浏览器
-  external bool safari;
+  external JSBoolean get safari;
 
   /// 是否微信
-  external bool wechat;
+  external JSBoolean get wechat;
 
   /// 是否UC浏览器
-  external bool uc;
+  external JSBoolean get uc;
 
   /// 是否QQ或者QQ浏览器
-  external bool qq;
+  external JSBoolean get qq;
 
   /// 是否IE
-  external bool ie;
+  external JSBoolean get ie;
 
   /// 是否IE6
-  external bool ie6;
+  external JSBoolean get ie6;
 
   /// 是否IE7
-  external bool ie7;
+  external JSBoolean get ie7;
 
   /// 是否IE8
-  external bool ie8;
+  external JSBoolean get ie8;
 
   /// 是否IE9
-  external bool ie9;
+  external JSBoolean get ie9;
 
   /// 是否IE10
-  external bool ie10;
+  external JSBoolean get ie10;
 
   /// 是否IE11
-  external bool ie11;
+  external JSBoolean get ie11;
 
   ///是否IE9以下
-  external bool ielt9;
+  external JSBoolean get ielt9;
 
   /// 是否Edge浏览器
-  external bool edge;
+  external JSBoolean get edge;
 
   /// 是否支持LocaStorage
-  external bool isLocalStorage;
+  external JSBoolean get isLocalStorage;
 
   /// 是否支持Geolocation
-  external bool isGeolocation;
+  external JSBoolean get isGeolocation;
 
   /// 是否Webkit移动浏览器
-  external bool mobileWebkit;
+  external JSBoolean get mobileWebkit;
 
   /// 是否支持Css3D的Webkit移动端浏览器
-  external bool mobileWebkit3d;
+  external JSBoolean get mobileWebkit3d;
 
   /// 是否高清屏幕，devicePixelRatio>1
-  external bool retina;
+  external JSBoolean get retina;
 
   /// 是否触屏
-  external bool touch;
+  external JSBoolean get touch;
 
   /// 是否msPointer设备
-  external bool msPointer;
+  external JSBoolean get msPointer;
 
   /// 是否pointer设备
-  external bool pointer;
+  external JSBoolean get pointer;
 
   /// 是否webkit浏览器
-  external bool webkit;
+  external JSBoolean get webkit;
 
   /// 是否支持Css3D的Webkit浏览器
-  external bool webkit3d;
+  external JSBoolean get webkit3d;
 
   /// 是否支持Css3D的gecko浏览器
-  external bool gecko3d;
+  external JSBoolean get gecko3d;
 
   /// 是否支持Css3D的ie浏览器
-  external bool ie3d;
+  external JSBoolean get ie3d;
 
   /// 是否支持Css3D的浏览器
-  external bool any3d;
+  external JSBoolean get any3d;
 
   /// 是否支持Css3D的opera浏览器
-  external bool opera3d;
+  external JSBoolean get opera3d;
 
   /// 是否支持canvas
-  external bool isCanvas;
+  external JSBoolean get isCanvas;
 
   /// 是否支持svg
-  external bool isSvg;
+  external JSBoolean get isSvg;
 
   /// 是否支持vml
-  external bool isVML;
+  external JSBoolean get isVML;
 
   /// 是否支持WebWorker
-  external bool isWorker;
+  external JSBoolean get isWorker;
 
   /// 是否支持WebSocket
-  external bool isWebsocket;
+  external JSBoolean get isWebsocket;
 
   /// 是否支持webgl
-  external bool isWebGL;
+  external JSBoolean get isWebGL;
 }
 
-@JS()
-class Util {
+extension type Util._(JSObject _) implements JSObject {
+  /// 构造函数
   external Util();
 
   /// 判断参数是否为DOM元素
-  external bool isDOM(dynamic obj);
+  external JSBoolean isDOM(JSObject obj);
 
-  external String colorNameToHex(String colorName);
+  external JSString colorNameToHex(String colorName);
 
   /// 将16进制RGB转为rgba(R,G,B,A)
-  external String rgbHex2Rgba(String hex);
+  external JSString rgbHex2Rgba(String hex);
 
   /// 将16进制RGBA转为rgba(R,G,B,A)
-  external String argbHex2Rgba(String hex);
+  external JSString argbHex2Rgba(String hex);
 
   /// 判断一个对象是否为空
-  external bool isEmpty(dynamic obj);
+  external JSBoolean isEmpty(JSObject obj);
 
   /// 从数组删除元素
-  external void deleteItemFromArray(dynamic array, dynamic item);
+  external void deleteItemFromArray(JSObject array, JSObject item);
 
   /// 按索引删除数组元素
-  external void deleteItemFromArrayByIndex(dynamic array, num index);
+  external void deleteItemFromArrayByIndex(JSObject array, JSNumber index);
 
   /// 返回元素索引
-  external num indexOf(dynamic array, dynamic item);
+  external JSNumber indexOf(JSObject array, JSObject item);
 
   /// 保留小数点后digits位
-  external num format(num num, num digits);
+  external JSNumber format(JSNumber num, JSNumber digits);
 
   /// 判断是否数组
-  external bool isArray(dynamic obj);
+  external JSBoolean isArray(JSObject obj);
 
   /// 判断数组是否包含某个元素
-  external bool includes(List<dynamic> array, dynamic item);
+  external JSBoolean includes(JSArray<JSObject> array, JSObject item);
 
   /// 同原生requestIdleCallback
-  external num requestIdleCallback(Function func);
+  external JSNumber requestIdleCallback(JSExportedDartFunction func);
 
   /// 同原生 cancelIdleCallback
-  external void cancelIdleCallback(num id);
+  external void cancelIdleCallback(JSNumber id);
 
   /// 同原生 Util.requestAnimFrame
-  external num requestAnimFrame(Function func);
+  external JSNumber requestAnimFrame(JSExportedDartFunction func);
 
   /// 同原生 Util.cancelAnimFrame
-  external void cancelAnimFrame(num id);
+  external void cancelAnimFrame(JSNumber id);
 }

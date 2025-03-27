@@ -1,7 +1,8 @@
 @JS("AMap")
 library amap_flutter;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
 /// 异步加载插件
-external void plugin(List<String> plugins, Function() callback);
+@JS()
+external void plugin(JSArray<JSString> plugins, JSFunction callback);

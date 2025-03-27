@@ -1,15 +1,13 @@
 @JS("AMap")
 library amap_flutter;
 
-import 'dart:html';
-
-import 'package:js/js.dart';
-
+import 'dart:js_interop';
+import 'package:web/web.dart' show EventListener, HTMLElement;
 import 'js.dart';
 
 /// 右键菜单
 @JS()
-class ContextMenu {
+extension type ContextMenu._(JSObject _) implements JSObject {
   /// 构造函数
   external ContextMenu(OverlayOptions opts);
 
@@ -26,15 +24,13 @@ class ContextMenu {
   external void removeItem(String text, EventListener fn);
 }
 
-@JS()
-@anonymous
-class OverlayOptions {
+extension type OverlayOptions._(JSObject _) implements JSObject {
   /// 构造函数
-  external OverlayOptions();
+  OverlayOptions() : this._(JSObject());
 
   /// 右键菜单显示的位置
   external LngLat position;
 
   /// 右键菜单内容（针对自定义菜单时，添加菜单内容及功能。可以是HTML要素字符串或者HTML DOM对象。）
-  external HtmlElement content;
+  external HTMLElement content;
 }

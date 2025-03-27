@@ -1,5 +1,6 @@
 import 'dart:async';
-import 'dart:html';
+import 'package:web/web.dart' hide Location;
+import 'dart:js_interop';
 import 'dart:ui_web' as ui_web;
 
 import 'package:amap_flutter/amap_flutter.dart';
@@ -25,18 +26,19 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
     final Completer<void> completer = Completer<void>();
     AMapFlutterWebApi? map = _maps[mapId];
     if (map == null) {
-      DivElement element =
-          ui_web.platformViewRegistry.getViewById(mapId) as DivElement;
+      HTMLDivElement element =
+          ui_web.platformViewRegistry.getViewById(mapId) as HTMLDivElement;
       ResizeObserver observer = ResizeObserver(
-        (List mutations, ResizeObserver observer) {
+        ((JSArray mutations, ResizeObserver observer) {
           if (element.isConnected == true) {
             observer.disconnect();
-            AMapFlutterWebApi map = AMapFlutterWebApi(mapId, aMapFlutter: aMapFlutter);
+            AMapFlutterWebApi map =
+                AMapFlutterWebApi(mapId, aMapFlutter: aMapFlutter);
             addListener(mapId, map.aMap);
             _maps[mapId] = map;
             completer.complete();
           }
-        },
+        }).toJS,
       );
       observer.observe(element);
     }
@@ -46,137 +48,137 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   void addListener(int mapId, AMap map) {
     map.on(
       "complete",
-      (_) => mapEventStreamController.add(MapCompleteEvent(mapId)),
+      (() => mapEventStreamController.add(MapCompleteEvent(mapId))).toJS,
     );
     map.on(
       "click",
-      (MapsEvent event) => mapEventStreamController
-          .add(MapPressEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(MapPressEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "dblclick",
-      (MapsEvent event) => mapEventStreamController
-          .add(MapDoublePressEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(MapDoublePressEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "rightclick",
-      (MapsEvent event) => mapEventStreamController
-          .add(MapRightPressEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(MapRightPressEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "movestart",
-      (_) => mapEventStreamController
-          .add(MapMoveStartEvent(mapId, map.getCenter().latLng.position)),
+      (() => mapEventStreamController
+          .add(MapMoveStartEvent(mapId, map.getCenter().latLng.position))).toJS,
     );
     map.on(
       "mapmove",
-      (_) => mapEventStreamController
-          .add(MapMoveEvent(mapId, map.getCenter().latLng.position)),
+      (() => mapEventStreamController
+          .add(MapMoveEvent(mapId, map.getCenter().latLng.position))).toJS,
     );
     map.on(
       "moveend",
-      (_) => mapEventStreamController
-          .add(MapMoveEndEvent(mapId, map.getCenter().latLng.position)),
+      (() => mapEventStreamController
+          .add(MapMoveEndEvent(mapId, map.getCenter().latLng.position))).toJS,
     );
     map.on(
       "resize",
-      (_) => mapEventStreamController
-          .add(MapResizedEvent(mapId, map.getSize().size)),
+      (() => mapEventStreamController
+          .add(MapResizedEvent(mapId, map.getSize().size))).toJS,
     );
     map.on(
       "zoomstart",
-      (_) => mapEventStreamController
-          .add(ZoomChangeStartEvent(mapId, map.getZoom().toDouble())),
+      (() => mapEventStreamController
+          .add(ZoomChangeStartEvent(mapId, map.getZoom().toDartDouble))).toJS,
     );
     map.on(
       "zoomchange",
-      (_) => mapEventStreamController
-          .add(ZoomChangeEvent(mapId, map.getZoom().toDouble())),
+      (() => mapEventStreamController
+          .add(ZoomChangeEvent(mapId, map.getZoom().toDartDouble))).toJS,
     );
     map.on(
       "zoomend",
-      (_) => mapEventStreamController
-          .add(ZoomChangeEndEvent(mapId, map.getZoom().toDouble())),
+      (() => mapEventStreamController
+          .add(ZoomChangeEndEvent(mapId, map.getZoom().toDartDouble))).toJS,
     );
     map.on(
       "rotatestart",
-      (_) => mapEventStreamController
-          .add(RotateChangeStartEvent(mapId, map.getRotation().toDouble())),
+      (() => mapEventStreamController.add(
+          RotateChangeStartEvent(mapId, map.getRotation().toDartDouble))).toJS,
     );
     map.on(
       "rotatechange",
-      (_) => mapEventStreamController
-          .add(RotateChangeEvent(mapId, map.getRotation().toDouble())),
+      (() => mapEventStreamController
+          .add(RotateChangeEvent(mapId, map.getRotation().toDartDouble))).toJS,
     );
     map.on(
       "rotateend",
-      (_) => mapEventStreamController
-          .add(RotateChangeEndEvent(mapId, map.getRotation().toDouble())),
+      (() => mapEventStreamController.add(
+          RotateChangeEndEvent(mapId, map.getRotation().toDartDouble))).toJS,
     );
     map.on(
       "mousemove",
-      (MapsEvent event) => mapEventStreamController
-          .add(MouseMoveEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(MouseMoveEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "mousewheel",
-      (_) => mapEventStreamController
-          .add(MouseWheelEvent(mapId, map.getZoom().toDouble())),
+      (() => mapEventStreamController
+          .add(MouseWheelEvent(mapId, map.getZoom().toDartDouble))).toJS,
     );
     map.on(
       "mouseover",
-      (MapsEvent event) => mapEventStreamController
-          .add(MouseOverEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(MouseOverEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "mouseout",
-      (MapsEvent event) => mapEventStreamController
-          .add(MouseOutEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(MouseOutEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "mouseup",
-      (MapsEvent event) => mapEventStreamController
-          .add(MouseUpEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(MouseUpEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "mousedown",
-      (MapsEvent event) => mapEventStreamController
-          .add(MouseDownEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(MouseDownEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "dragstart",
-      (MapsEvent event) => mapEventStreamController
-          .add(DragStartEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(DragStartEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "dragging",
-      (MapsEvent event) => mapEventStreamController
-          .add(DraggingEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(DraggingEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "dragend",
-      (MapsEvent event) => mapEventStreamController
-          .add(DragEndEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(DragEndEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "touchstart",
-      (MapsEvent event) => mapEventStreamController
-          .add(TouchStartEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(TouchStartEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "touchmove",
-      (MapsEvent event) => mapEventStreamController
-          .add(TouchingEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(TouchingEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "touchend",
-      (MapsEvent event) => mapEventStreamController
-          .add(TouchEndEvent(mapId, event.lnglat.latLng.position)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(TouchEndEvent(mapId, event.lnglat.latLng.position))).toJS,
     );
     map.on(
       "hotspotclick",
-      (MapsEvent event) => mapEventStreamController
-          .add(PoiClickEvent(mapId, (event as HotspotEvent).poi)),
+      ((MapsEvent event) => mapEventStreamController
+          .add(PoiClickEvent(mapId, (event as HotspotEvent).poi))).toJS,
     );
   }
 
@@ -191,16 +193,14 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
         "v": "2.1Beta",
         "key": apiKey.webKey,
         "plugin":
-        "AMap.ToolBar,AMap.ControlBar,AMap.Scale,AMap.HawkEye,AMap.MapType,AMap.Geolocation"
+            "AMap.ToolBar,AMap.ControlBar,AMap.Scale,AMap.HawkEye,AMap.MapType,AMap.Geolocation"
       },
     );
     final element = document.createElement("script");
-    element.addEventListener("load", (_) => completer.complete());
-    element.attributes = {
-      "type": "text/javascript",
-      "charset": "utf-8",
-      "src": uri.toString(),
-    };
+    element.addEventListener("load", (() => completer.complete()).toJS);
+    element.setAttribute("type", "text/javascript");
+    element.setAttribute("charset", "utf-8");
+    element.setAttribute("src", uri.toString());
     document.head?.append(element);
     return completer.future;
   }
@@ -249,24 +249,26 @@ class AMapFlutterWebController extends AMapFlutterPlatformInterface {
   @override
   Future<void> addMarker(Marker marker, {required int mapId}) async {
     MarkerJS markerJS = await _map(mapId).addMarker(marker);
-    markerJS.on("click", (_) {
-      mapEventStreamController.add(MarkerClickEvent(mapId, marker.id));
-    });
-    markerJS.on("dragstart", (_) {
-      mapEventStreamController.add(
-        MarkerDragStartEvent(mapId, marker.position, marker.id),
-      );
-    });
-    markerJS.on("dragging", (_) {
-      mapEventStreamController.add(
-        MarkerDragEvent(mapId, marker.position, marker.id),
-      );
-    });
-    markerJS.on("dragend", (_) {
-      mapEventStreamController.add(
-        MarkerDragEndEvent(mapId, marker.position, marker.id),
-      );
-    });
+    markerJS.on(
+      "click",
+      (() => mapEventStreamController.add(MarkerClickEvent(mapId, marker.id)))
+          .toJS,
+    );
+    markerJS.on(
+      "dragstart",
+      (() => mapEventStreamController
+          .add(MarkerDragStartEvent(mapId, marker.position, marker.id))).toJS,
+    );
+    markerJS.on(
+      "dragging",
+      (() => mapEventStreamController
+          .add(MarkerDragEvent(mapId, marker.position, marker.id))).toJS,
+    );
+    markerJS.on(
+      "dragend",
+      (() => mapEventStreamController
+          .add(MarkerDragEndEvent(mapId, marker.position, marker.id))).toJS,
+    );
   }
 
   @override
