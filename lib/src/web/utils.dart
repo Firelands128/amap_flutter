@@ -6,9 +6,14 @@ import 'package:latlong2/latlong.dart';
 
 import 'js/js.dart' as js;
 
+/// LatLng的扩展工具
 extension LatLng$Ext on LatLng {
   js.LngLat get lngLat {
     return js.LngLat(longitude, latitude);
+  }
+
+  Position get position {
+    return Position(latitude: latitude, longitude: longitude);
   }
 }
 

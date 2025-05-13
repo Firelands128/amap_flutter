@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:web/web.dart' hide Location;
 import 'dart:js_interop';
 import 'dart:ui_web' as ui_web;
 
 import 'package:amap_flutter/amap_flutter.dart';
+import 'package:web/web.dart' hide Location;
 
 import 'amap_flutter_web_api.dart';
 import 'js/js.dart';
