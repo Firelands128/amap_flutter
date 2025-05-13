@@ -1,3 +1,9 @@
+## 0.7.0
+
+Migrate deprecated "onBackground" to "onSurface".
+
+Move conversion from "LatLng" to "Position" to web utils.
+
 ## 0.6.1
 
 Update annotation view in iOS to fix an issue where tapping on the left side of the custom icon did not trigger the "didAnnotationViewTapped" method.
