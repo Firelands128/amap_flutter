@@ -35,7 +35,7 @@ class _MapFeaturesPageState extends State<MapFeaturesPage> {
             child: Text(
               "设置",
               style: TextStyle(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ),

@@ -40,7 +40,7 @@ class _MapStylesPageState extends State<MapStylesPage> {
             child: Text(
               styles[mapStyle]!,
               style: TextStyle(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ),

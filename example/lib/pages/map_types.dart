@@ -46,7 +46,7 @@ class _MapTypesPageState extends State<MapTypesPage> {
             child: Text(
               types[mapType]!,
               style: TextStyle(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ),
