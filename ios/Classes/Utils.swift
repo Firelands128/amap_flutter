@@ -86,8 +86,16 @@ extension MATouchPoi {
 
 extension MAUserLocation {
   var toLocation: Location {
+    guard let location = self.location else {
+      return Location(
+        position: Position(latitude: 0, longitude: 0),
+        heading: 0,
+        accuracy: 0
+      )
+    }
+
     return Location(
-      position: location?.coordinate.position,
+      position: location.coordinate.position,
       heading: heading?.trueHeading ?? location.course,
       accuracy: max(location.horizontalAccuracy, location.verticalAccuracy)
     )

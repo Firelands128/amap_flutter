@@ -29,6 +29,12 @@ class _AddRemoveMarkerPageState extends State<AddRemoveMarkerPage> {
   }
 
   @override
+  void dispose() {
+    controller.destroy();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(AddRemoveMarkerPage.title)),

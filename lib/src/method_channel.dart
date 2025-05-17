@@ -455,7 +455,8 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
   /// 获取当前定位信息
   @override
   Future<Location> getUserLocation({required int mapId}) async {
-    final result = await _channel(mapId).invokeMethod<Location>("getUserLocation");
+    final result =
+        await _channel(mapId).invokeMethod<Location>("getUserLocation");
     if (result == null) throw "Failed to get user location";
     return result;
   }
@@ -480,10 +481,12 @@ class AMapFlutterMethodChannel extends AMapFlutterPlatformInterface {
 
   /// 销毁
   @override
-  Future<void> destroy({required int mapId}) {
+  Future<void> destroy({required int mapId}) async {
+    final result = await _channel(mapId).invokeMethod("destroy");
     if (_channels.containsKey(mapId)) {
+      _channels[mapId]?.setMethodCallHandler(null);
       _channels.remove(mapId);
     }
-    return _channel(mapId).invokeMethod("destroy");
+    return result;
   }
 }

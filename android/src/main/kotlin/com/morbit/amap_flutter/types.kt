@@ -725,8 +725,8 @@ data class UserLocationStyle(
   companion object {
     fun fromList(list: List<Any?>): UserLocationStyle {
       val userLocationType = (list[0] as Int?)?.let { UserLocationType.ofRaw(it) }
-      val fillColor = (list[1] as Int?)?.let { Color.valueOf(it) }
-      val strokeColor = (list[2] as Int?)?.let { Color.valueOf(it) }
+      val fillColor = (list[1] as? Number)?.toInt()?.let { Color.valueOf(it) }
+      val strokeColor = (list[2] as? Number)?.toInt()?.let { Color.valueOf(it) }
       val lineWidth = list[3] as Double?
       val image = (list[4] as List<Any?>?)?.let { Bitmap.fromList(it) }
       return UserLocationStyle(
